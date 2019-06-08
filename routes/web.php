@@ -30,7 +30,7 @@ Route::get('logout', function () {
     auth('user')->logout();
     auth('sysad')->logout();
 
-    return redirect('/index');
+    return redirect('/');
 })->name('logout');
 
 
@@ -164,16 +164,16 @@ Route::group(
 
         //registered_event_list
         Route::get('admin/events/events_lists/{id}', function ($id) {
-            $data['events'] = \App\Event_List::where('event_id', '=', $id)->get();
-            $data['ev_count'] = \App\Event_List::where('event_id', '=', $id)->count();
-            $data['pay_count'] = \App\Event_List::where('event_id', '=', $id)
+            $data['events'] = \App\Event_list::where('event_id', '=', $id)->get();
+            $data['ev_count'] = \App\Event_list::where('event_id', '=', $id)->count();
+            $data['pay_count'] = \App\Event_list::where('event_id', '=', $id)
                 ->where('payment_status', 'verified')->count();
-            $data['ver_reg'] = \App\Event_List::where('event_id', '=', $id)
+            $data['ver_reg'] = \App\Event_list::where('event_id', '=', $id)
                 ->where('reg_status', 'verified')->count();
             $data['total'] = \App\Payment::where('payment_description', '=', $id)
                 ->where('status', 'verified')->sum('payment_amount');
 
-            if (!\App\Event_List::where('event_id', '=', $id)->exists()) {
+            if (!\App\Event_list::where('event_id', '=', $id)->exists()) {
                 return view('admin/admin_error');
             }
 
@@ -187,7 +187,7 @@ Route::group(
         Route::get('admin/start_list/{id}', function ($id) {
             $data['events'] = \App\Event::find($id);
 
-            $data['events_list'] = \App\Event_List::where('event_id', $id)
+            $data['events_list'] = \App\Event_list::where('event_id', $id)
                 ->where('reg_status', 'verified')->get();
 
             return view('admin/start_list', $data);
@@ -416,7 +416,7 @@ Route::group(
 
         //myeventlist
         Route::get('user/myevents', function () {
-            $data['event_lists'] = \App\Event_List::where('prbi_id', '=', Auth::guard('user')->user()->prbi_id)->get();
+            $data['event_lists'] = \App\Event_list::where('prbi_id', '=', Auth::guard('user')->user()->prbi_id)->get();
             return view('user/user_myevents', $data);
         });
 

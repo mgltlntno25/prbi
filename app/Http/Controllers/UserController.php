@@ -21,6 +21,14 @@ use App\User_AuditTrail;
 class UserController extends Controller
 {
 
+    public function registerEvent()
+    {
+        $reg['type'] = 'EventName registration';
+        $reg['price'] = '300';
+        $reg['description'] = 'Registration fee to EventName';
+        $reg['redirect'] = url('/status/event/' . 'asdfasdfasdfas');
+        return redirect()->route('payment', $reg);
+    }
 
     public function UserLogin(Request $request)
     {
@@ -398,14 +406,7 @@ class UserController extends Controller
     }
 
 
-    public function registerEvent()
-    {
-        $reg['type'] = 'EventName registration';
-        $reg['price'] = '300';
-        $reg['description'] = 'Registration fee to EventName';
-        $reg['redirect'] = url('/status/event/' . 'asdfasdfasdfas');
-        return redirect()->route('payment', $reg);
-    }
+    
 
 
     public function UploadDonation(Request $request)

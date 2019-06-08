@@ -47,7 +47,7 @@
 
           </p>
           <br>
-          @if(\App\Event_List::where('prbi_id','=',Auth::guard('user')->user()->prbi_id)
+          @if(\App\Event_list::where('prbi_id','=',Auth::guard('user')->user()->prbi_id)
           ->where('event_id','=', $event->id)
           ->exists())
           <p> You have already submitted your registration. </p>
