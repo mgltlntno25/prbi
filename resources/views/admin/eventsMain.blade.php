@@ -69,7 +69,7 @@
                             <td>
 
                                 <button type="button" class="btn btn-info"   data-placement="top" title="View Event" data-toggle="modal" data-target="#view-modal{{$event->id}}"><i class="fa fa-eye"></i></button>
-                                @if(!App\Event_List::whereNull(1))
+                                @if(!App\Event_list::whereNull(1))
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'" disabled><i class="fa fa-list"> </i> </button>
                                 @else
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'"><i class="fa fa-list"> </i> </button>

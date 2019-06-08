@@ -51,6 +51,10 @@
                         <button type="button"  onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
                         @endif
 
+                        @if(App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->where('application_status', '=','verified')->first())
+                        <button type="button"  onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
+                        @endif
+
                        
                         
 
