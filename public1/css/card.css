@@ -1,0 +1,79 @@
+@media screen {
+    body {
+        font-family: 'verdana';
+    }
+    .id-card {
+        background-image: url("/img/member_card/test1.png");
+        background-repeat: no-repeat;
+        background-size: 453.53px 254px;
+        padding: 1px;
+        border-radius: 10px;
+        height: 254px;
+    }
+    .photo img {
+        width: 140px;
+        border-style: solid;
+        border-color: yellow;
+        border-width: 2px;
+        margin-top: 80px;
+        margin-left: 25px;
+        border-radius: 50%;
+        float: left;
+    }
+    .text {
+        width: 150px;
+        float: left;
+        margin-top: 80px;
+        margin-left: 10px;
+        margin-left: 10px;
+        color: white;
+    }
+    .mobile {
+        width: 150px;
+        float: left;
+        margin-left: 10px;
+        color: white;
+    }
+    .bday {
+        width: 150px;
+        float: left;
+        margin-left: 10px;
+        color: white;
+    }
+    .emname {
+        width: 150px;
+        float: left;
+        margin-left: 10px;
+        color: white;
+    }
+    .emcontact {
+        width: 200px;
+        float: left;
+        margin-left: 10px;
+        color: white;
+    }
+    .address {
+        width: 200px;
+        float: left;
+        margin-left: 10px;
+        color: white;
+    }
+    h2 {
+        font-size: 15px;
+        margin: 5px 0;
+    }
+    h3 {
+        font-size: 12px;
+        margin: 2.5px 0;
+        font-weight: 300;
+    }
+    .qr-code img {
+        width: 70px;
+        margin: 1px;
+        float: right;
+    }
+    p {
+        font-size: 5px;
+        margin: 2px;
+    }
+}
