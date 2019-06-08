@@ -56,7 +56,7 @@
           @endif
         </div>
 
-      </div><!-- /.content-box -->
+      </div><!-- /.content-boex -->
       @endif
       @endforeach
     </div>
