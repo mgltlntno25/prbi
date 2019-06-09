@@ -77,6 +77,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <a href="{{ url('/user/dashboard/') }}"> return to dashboard</a>.
 
+                                        @elseif(!Auth::guard('sysad')->check())
+
+                                        <a href="{{ url('/syad/dashboard/') }}"> return to dashboard</a>.
+
+                                        @elseif(!Auth::guard('affiliatedstore')->check())
+
+                                        <a href="{{ url('/affiliatedstore/search/') }}"> return to dashboard</a>.
+
                                         @endif
 
 

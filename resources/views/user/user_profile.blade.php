@@ -48,15 +48,15 @@
                         @endif
 
                         @if(App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->where('application_status', '=','submitted')->first())
-                        <button type="button"  onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
+                        <button type="button" onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
                         @endif
 
                         @if(App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->where('application_status', '=','verified')->first())
-                        <button type="button"  onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
+                        <button type="button" onclick="window.location='{{url("user/myapplication")}}'" class="btn btn-primary mb-2"><i class="fa fa-user-eye"></i> View Application </button>
                         @endif
 
-                       
-                        
+
+
 
 
                         <button type="button" data-toggle="modal" data-target="#profile_image" class="btn btn-warning mb-2"><i class="fa fa-edit"></i> Change Profile Image </button>
@@ -81,9 +81,27 @@
                             <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                                 <div class="container">
                                     <h2>{{Auth::guard('user')->user()->first_name}} {{Auth::guard('user')->user()->last_name}}</h2>
-                                    <p>an <b> {{Str::upper(Auth::guard('user')->user()->role)}}</b></p>
+
+
+                                    @if(Auth::guard('user')->user()->isPremium == 0 )
+
+                                    <p>a <b>
+                                            REGULAR MEMBER
+
+                                            @elseif(Auth::guard('user')->user()->isPremium == 1 && Auth::guard('user')->user()->isInsured == 0)
+                                            <p>a <b>
+                                                    PREMIUM MEMBER
+
+                                            @elseif(Auth::guard('user')->user()->isPremium == 1 && Auth::guard('user')->user()->isInsured == 1)
+                                                    <p>an <b>
+                                                            INSURED MEMBER
+
+                                            @endif
+
+                                        </b></p>
+
                                 </div>
-                                <hr>
+
                                 <ul class="container details">
                                     <li>
                                         <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{Auth::guard('user')->user()->email}}</p>

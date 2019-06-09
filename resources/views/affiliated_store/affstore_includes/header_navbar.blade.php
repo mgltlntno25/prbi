@@ -17,27 +17,22 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{asset("/img/userdp/". Auth::guard('user')->user()->profile_image)}}" class="user-image" alt="User Image">
+              <img src="{{asset("/img/userdp/". Auth::guard('affiliatedstore')->user()->image)}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{Auth::guard('user')->user()->first_name}} {{Auth::guard('user')->user()->last_name}} </span>
+              <span class="hidden-xs">{{Auth::guard('affiliatedstore')->user()->store_name}} </span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{asset("/img/userdp/". Auth::guard('user')->user()->profile_image)}}" class="img-circle" alt="User Image">
+                <img src="{{asset("/img/userdp/". Auth::guard('affiliatedstore')->user()->image)}}" class="img-circle" alt="User Image">
 
                 <p>
-                  {{Auth::guard('user')->user()->first_name}} {{Auth::guard('user')->user()->last_name}} -
-                  @if(Auth::guard('user')->user()->isPremium == 0)
-                  Regular Member
-                  @elseif(Auth::guard('user')->user()->isPremium == 1 && (Auth::guard('user')->user()->isInsured == 0))
-                  Premium Member
-                  @elseif(Auth::guard('user')->user()->isPremium == 1 && (Auth::guard('user')->user()->isInsured == 1))
-                  Insured Member
-                  @endif
-                  <small>Member since {{Auth::guard('user')->user()->created_at->format('m/d/Y')}}</small>
+                  {{Auth::guard('affiliatedstore')->user()->store_name}}  <br>
+                  Store Owner: {{Auth::guard('affiliatedstore')->user()->store_owner}}
+                  <small>Member since {{Auth::guard('affiliatedstore')->user()->created_at->format('m/d/Y')}}</small>
                 </p>
               </li>
+              
               <!-- Menu Body -->
               <!-- <li class="user-body">
                 <div class="row">
@@ -64,6 +59,7 @@
           </li>
         </ul>
         </li>
+
         <!-- Control Sidebar Toggle Button -->
 
         </ul>
@@ -71,3 +67,4 @@
       </div>
     </nav>
     </header>
+    

@@ -796,7 +796,7 @@ class AdminController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'store_name' => 'required|max:255|alpregex:/^[\pL\s\s-]+$/uha',
+            'store_name' => 'required|max:255|regex:/^[\pL\s\s-]+$/u',
             'store_owner' => 'required|max:255|regex:/^[\pL\s\s-]+$/u',
             'address' => 'required|max:255',
             'email' => 'required|email|unique:affiliated_stores,email',
@@ -817,6 +817,7 @@ class AdminController extends Controller
         $affiliatedstores->address = $request->address;
         $affiliatedstores->email = $request->email;
         $affiliatedstores->contact = $request->contact;
+        $affiliatedstores->password = Bcrypt('prbi123');
         $affiliatedstores->save();
 
         $aaudit = new AdminAuditTrail;

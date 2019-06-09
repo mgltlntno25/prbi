@@ -4,6 +4,7 @@ use App\Http\Controllers\SysAdminController;
 use App\Http\Controllers\AdminController;
 use App\FAQ;
 use App\Admin;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,13 @@ Route::get('/timer/{id}', function ($id) {
     return view('timer', $data);
 });
 
-Route::get('/error', function () {
-    return view('admin/admin_error');
-});
+
 
 Route::get('logout', function () {
     auth('admin')->logout();
     auth('user')->logout();
     auth('sysad')->logout();
+    auth('affiliatedstore')->logout();
 
     return redirect('/');
 })->name('logout');
@@ -75,6 +75,7 @@ Route::group(
         Route::get('/error', function () {
             return view('admin/admin_error');
         });
+
 
         Route::get('/adminsss', function () {
             return Auth::guard('admin')->user()->email;
@@ -148,6 +149,7 @@ Route::group(
         //events
         Route::get('admin/events', function () {
             $data['events'] = \App\Event::all();
+            $data['events_list'] = \App\Event_list::all();
             return view('admin/eventsMain', $data);
         });
         Route::post('admin/doaddevent', 'AdminController@AddEvents');
@@ -398,6 +400,7 @@ Route::group(
 
         Route::get('user/events', function () {
             $data['events'] = \App\Event::all();
+            $data['past_events'] = \App\Event::where('status', '=', 'done')->get();
             return view('user/user_events', $data);
         });
 
@@ -476,17 +479,26 @@ Route::group(
 );
 
 
+
 //affiliatedstoregroup
 Route::group(
     ['middleware' => ['auth:affiliatedstore']],
     function () {
 
 
+        Route::any('affiliatedstore/search', function (Request $request) {
+            $q = $request->q;
+            $user = App\User::where('prbi_id', '=', $q)->get();
+            if (count($user) > 0)
+                return view('affiliated_store/search')->withDetails($user)->withQuery($q);
+            else
+                return view('affiliated_store/search')->withMessage('No Details found. Try to search again !');
+        });
         //affiliated store route
-        Route::get('affiliatedStore', function () {
+        Route::get('affiliatedstore', function () {
             return view('affiliated_store/search');
         });
-        Route::get('affiliatedStore/search/{id}', function ($id) {
+        Route::get('affiliatedstore/search/{id}', function ($id) {
             $data['users'] = \App\User::find($id);
             return view('affiliated_store/findmember', $data);
         });
@@ -534,6 +546,3 @@ Route::group(
         Route::post('affiliatedstore/dologin', 'AffiliatedStoreController@ASlogin');
     }
 );
-
-
-

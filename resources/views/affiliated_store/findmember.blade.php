@@ -1,11 +1,56 @@
+@include('affiliated_store.affstore_includes.header')
+@include('affiliated_store.affstore_includes.header_navbar')
+@include('affiliated_store.affstore_includes.sidebar')
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Blank page
+            <small>it all starts here</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Examples</a></li>
+            <li class="active">Blank page</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Title</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                Start creating your amazing application!
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                Footer
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
-<img src="{{ url("/img/userdp/". $users->profile_image) }}"> <br>
-{{$users->first_name}} <br>
-{{$users->last_name}} <br>
 
-@if($users->isPremium == 0)
-NOT A PREMIUM MEMBER <br>
-@else
-PREMIUM MEMBER
-@endif
+
+
+
+@include('affiliated_store.affstore_includes.footer')

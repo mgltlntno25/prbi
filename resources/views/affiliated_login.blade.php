@@ -1,64 +1,75 @@
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" type="image/x-icon" href="{{asset("/img/islaw.png")}}"/>
-  <title>Pinoy Road Biker Inc.</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset("/img/islaw.png")}}" />
+    <title>Pinoy Road Biker Inc.</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{asset("bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset("bower_components/font-awesome/css/font-awesome.min.css")}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset("bower_components/Ionicons/css/ionicons.min.css")}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset("/css/AdminLTE.min.css")}}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{asset("plugins/iCheck/square/blue.css")}}">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AdminLTE 2 | Log in</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="{{asset("bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{asset("bower_components/font-awesome/css/font-awesome.min.css")}}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{asset("bower_components/Ionicons/css/ionicons.min.css")}}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{asset("/css/AdminLTE.min.css")}}">
+        <!-- iCheck -->
+        <link rel="stylesheet" href="{{asset("plugins/iCheck/square/blue.css")}}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <!-- <style>
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <!-- <style>
         body {
             
             background-image: url("{{asset('/img/bg.png')}}");
         }
     </style> -->
 
-</head>
+    </head>
 
 <body class="">
     <div class="login-box">
+
         <div class="login-logo">
             <img src="{{asset('/img/islaw.png')}}" height="150" width="150">
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
 
+            <p class="login-box-msg">Sign in to start your session</p>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                ERROR!
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="/affiliatedstore/dologin" method="post">
-            {{ csrf_field() }}
+                {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <input type="email" class="form-control" name="email" placeholder="Email">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

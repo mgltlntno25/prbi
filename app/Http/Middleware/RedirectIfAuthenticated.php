@@ -25,6 +25,13 @@ class RedirectIfAuthenticated
             return redirect('user/events');
         }
 
+        if (Auth::guard('sysad')->check()) {
+            return redirect('sysad/dashboard');
+        }
+
+        if (Auth::guard('affiliatedstore')->check()) {
+            return redirect('affiliatedstore/search');
+        }
         return $next($request);
     }
 }

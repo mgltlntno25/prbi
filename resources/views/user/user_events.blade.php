@@ -34,12 +34,12 @@
 
     <div class="wrapperGrid">
       @foreach($events as $event)
-      @if($event->status != 'inactive')
+      @if($event->status != 'inactive' && $event->status != 'done')
       <div class="grid-item content-box">
         <div class="inner">
-          <img class="content-box-thumb" src="{{ url("/img/events_thumb/". $event->event_image) }}" />
+          <img class="content-box-thumb" src="{{ url("/img/events_banner/". $event->event_image) }}" />
 
-          <h1 class="content-box-header">
+          <center> <h1 class="content-box-header">
             <b> {{$event->event_name}} </b>
           </h1>
           <br>
@@ -55,12 +55,37 @@
           <button type="button" class="btn btn-info" onclick="window.location='{{url("user/events/viewevent/" . $event->id)}}'"><i class="fa fa-eye"></i> View </button>
           @endif
         </div>
+        </center>
 
       </div><!-- /.content-box -->
       @endif
       @endforeach
     </div>
 
+    <hr>
+    PAST EVENTS
+    <div class="wrapperGrid">
+      @foreach($past_events as $event)
+      @if($event->status != 'inactive')
+      <div class="grid-item content-box">
+        <div class="inner">
+          <img class="content-box-thumb" src="{{ url("/img/events_thumb/". $event->event_image) }}" />
+
+          <h1 class="content-box-header">
+            <b> {{$event->event_name}} </b>
+          </h1>
+          <br>
+          <p class="content-box-blurb">
+
+          </p>
+          <br>
+          <p> Event Done. </p>
+        </div>
+
+      </div><!-- /.content-box -->
+      @endif
+      @endforeach
+    </div>
 
 
 

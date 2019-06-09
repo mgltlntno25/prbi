@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;;
 
-class AffiliatedStore extends Model
+class AffiliatedStore extends Authenticatable
 {
     //
     protected $fillable = ['image', 'store_name','store_owner',
