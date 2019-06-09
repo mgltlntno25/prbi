@@ -52,7 +52,7 @@
           ->exists())
           <p> You have already submitted your registration. </p>
           @else
-          <button type="button" class="btn btn-info btn-lg" onclick="window.location='{{url("user/events/viewevent/" . $event->id)}}'"> REGISTER </button>
+          <button type="button" class="btn btn-primary btn-block" onclick="window.location='{{url("user/events/viewevent/" . $event->id)}}'"> REGISTER </button>
           @endif
         </div>
         </center>
