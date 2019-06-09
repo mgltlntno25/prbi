@@ -30,9 +30,6 @@ class AffiliatedStoreController extends Controller
         return redirect()->back()->withErrors(['Credentials' => 'Worong credentials or the account is not activated.'])->withInput($request->all());
     }
 
-    public function FunctionName(Reques $request)
-    {
-        
-    }
+    
 }
 
