@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="/admin/dologin">
+                        <form method="POST" action="/affiliatedstore/dologin">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
