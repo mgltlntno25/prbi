@@ -184,7 +184,7 @@
         },
         {
           label: "Insured Members",
-          value: {{$d_insured}}
+          value: {{$d_insured}},
         }
       ],
       hideHover: 'auto'
