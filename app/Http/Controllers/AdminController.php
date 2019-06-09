@@ -21,12 +21,16 @@ use App\AdminLoginSession;
 use App\FAQ;
 use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
+use Calendar;
 
 // use PayPal\Api\Notification;
 
 class AdminController extends Controller
 {
     //
+    
+
+
     public function AdminLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -266,7 +270,7 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Banner successfully updated.');
     }
 
-    public function UpdateBannerImage(Request $request,$id)
+    public function UpdateBannerImage(Request $request, $id)
     {
 
         $banners = Banner::find($id);
@@ -421,7 +425,7 @@ class AdminController extends Controller
             'event_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'event_name' => 'required|max:255',
             'location' => 'required|max:255',
-            'event_date' => 'required|date|after:'. $month . ',' ,
+            'event_date' => 'required|date|after:' . $month . ',',
             'start_reg' => 'required|date|before:event_date|after:tomorrow',
             'end_reg' => 'required|date|after_or_equal:start_reg|before:event_date',
         ]);

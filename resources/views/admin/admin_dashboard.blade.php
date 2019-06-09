@@ -1,6 +1,8 @@
 @include('admin.admin_includes.header')
 @include('admin.admin_includes.header_navbar')
 @include('admin.admin_includes.sidebar')
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -93,11 +95,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Monthly Payments and Donation</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              
             </div>
             <div class="box-body chart-responsive">
               <div class="chart" id="bar-chart" style="height: 300px;"></div>
@@ -111,11 +109,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Users Classifications</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              
             </div>
             <div class="box-body chart-responsive">
               <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
@@ -128,6 +122,22 @@
 
         <!-- /.box -->
       </div>
+
+      <div class="row">
+          <div class="col-md-8">
+            <div class="box box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title">Events Calendar</h3>
+                <div class="panel-body">
+                    {!! $calendar->calendar() !!}
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+
+
+          </div>
+        </div>
       <!-- /.row -->
   </section>
   <!-- /.content -->
@@ -135,6 +145,10 @@
 <!-- /.content-wrapper -->
 
 @include('admin.admin_includes.footer')
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+{!! $calendar->script() !!}
 <script>
   $(function() {
     "use strict";

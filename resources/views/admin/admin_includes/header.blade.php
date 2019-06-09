@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset("bower_components/Ionicons/css/ionicons.min.css")}}">
   <!-- Morris charts -->
   <link rel="stylesheet" href="{{asset("bower_components/morris.js/morris.css")}}">
-
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -74,3 +74,4 @@ desired effect
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><img src="{{asset("img/prbi_logo2.png")}}" height="30" width="210"></span>
       </a>
+      

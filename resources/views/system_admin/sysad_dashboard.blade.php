@@ -1,6 +1,9 @@
 @include('system_admin.sysAd_includes.header')
 @include('system_admin.sysAd_includes.header_navbar')
 @include('system_admin.sysAd_includes.sidebar')
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -123,11 +126,22 @@
             <!-- /.box-body -->
           </div>
         </div>
-        <!-- /.box -->
-        <!-- /.box-body -->
 
-        <!-- /.box -->
-      </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="box box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title">Events Calendar</h3>
+                <div class="panel-body">
+                    {!! $calendar->calendar() !!}
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+
+
+          </div>
+        </div>
       <!-- /.row -->
   </section>
   <!-- /.content -->
@@ -135,6 +149,10 @@
 <!-- /.content-wrapper -->
 
 @include('system_admin.sysAd_includes.footer')
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+{!! $calendar->script() !!}
 
 <script>
   $(function() {

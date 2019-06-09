@@ -47,6 +47,40 @@ Route::group(
     function () {
 
         Route::get('sysad/dashboard', function () {
+
+            function random_color_part1()
+            {
+                return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
+            }
+
+            function random_color1()
+            {
+                return random_color_part1() . random_color_part1() . random_color_part1();
+            }
+
+
+            $events = [];
+            $data = App\Event::all();
+            if ($data->count()) {
+                foreach ($data as $key => $value) {
+                    $events[] = Calendar::event(
+                        $value->event_name,
+                        true,
+                        new \DateTime($value->start_reg),
+                        new \DateTime($value->event_date . ' +1 day'),
+                        null,
+                        // Add color and link on event
+                        [
+                            'color' => "#".random_color1(),
+
+                        ]
+                    );
+                }
+            }
+            $data['calendar'] = Calendar::addEvents($events);
+
+            
+
             $data['total_payment'] = App\Payment::where('status', 'verified')->sum('payment_amount');
             // $data['total_donations'] = App\Payment::where('status','verified')->sum('payment_amount');
             $now = Carbon::now();
@@ -66,7 +100,7 @@ Route::group(
             $data['d_insured'] = App\User::where('status', 'active')
                 ->where('isPremium', 1)->where('isInsured', 1)
                 ->count();
-                
+
             return view('system_admin/sysad_dashboard', $data);
         });
 
@@ -127,6 +161,41 @@ Route::group(
 
         Route::get('admin/dashboard', function () {
 
+
+
+
+            function random_color_part()
+            {
+                return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
+            }
+
+            function random_color()
+            {
+                return random_color_part() . random_color_part() . random_color_part();
+            }
+
+
+            $events = [];
+            $data = App\Event::all();
+            if ($data->count()) {
+                foreach ($data as $key => $value) {
+                    $events[] = Calendar::event(
+                        $value->event_name,
+                        true,
+                        new \DateTime($value->start_reg),
+                        new \DateTime($value->event_date . ' +1 day'),
+                        null,
+                        // Add color and link on event
+                        [
+                            'color' => "#".random_color(),
+
+                        ]
+                    );
+                }
+            }
+            $data['calendar'] = Calendar::addEvents($events);
+
+
             $data['total_payment'] = App\Payment::where('status', 'verified')->sum('payment_amount');
             // $data['total_donations'] = App\Payment::where('status','verified')->sum('payment_amount');
             $now = Carbon::now();
@@ -148,8 +217,13 @@ Route::group(
                 ->where('isPremium', 1)->where('isInsured', 1)
                 ->count();
 
+
             return view('admin/admin_dashboard', $data);
         });
+
+
+
+
         //banners
         Route::get('admin/banners', function () {
             $data['banners'] = \App\Banner::all();
