@@ -39,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
 
                     <div class="signin-form">
-                        <h3 class="form-title">Log In : Admin</h3>
+                        <h3 class="form-title">Log In : Sytem Admin</h3>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                             ERROR!
