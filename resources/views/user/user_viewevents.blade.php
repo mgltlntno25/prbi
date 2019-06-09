@@ -104,7 +104,7 @@
               @endif
               <p align="right">
                 <button type="submit" class="btn btn-success">Register</button>
-                <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#donation" onclick="window.location='{{url("user/events")}}'"><i class="fa fa-close"></i> Back</button>
+                <button type="button" class="btn btn-primary mb-2"  onclick="window.location='{{url("user/events")}}'"><i class="fa fa-close"></i> Back</button>
 
               </p>
 
