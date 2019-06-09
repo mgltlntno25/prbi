@@ -22,7 +22,12 @@ Route::get('/timer/{id}', function ($id) {
     return view('timer', $data);
 });
 
+Route::get('member/{id}', function($id){
 
+    $data['user'] = \App\User::find($id);
+
+    return view('search_user',$data);
+});
 
 Route::get('logout', function () {
     auth('admin')->logout();

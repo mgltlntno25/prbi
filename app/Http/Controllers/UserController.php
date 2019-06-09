@@ -102,7 +102,7 @@ class UserController extends Controller
 
         QrCode::size(720)
             ->format('png')
-            ->generate(url('/routemo' . $user->id), public_path('img/qrcode/' . $filename));
+            ->generate(url('/member/' . $user->id), public_path('img/qrcode/' . $filename));
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
     }
 
