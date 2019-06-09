@@ -79,17 +79,11 @@
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+
+    </section>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

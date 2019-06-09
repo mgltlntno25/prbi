@@ -62,7 +62,7 @@
               <td>{{$donation->status}}</td>
               <td>
                 @if($donation->status == 'inactive')
-                <button type="button" class="btn btn-success"  data-placement="top" title="Verify Donation" data-toggle="modal" data-target="#statusModal{{ $donation->id }}"><i class="fa fa-check"></i>
+                <button type="button" class="btn btn-success" data-placement="top" title="Verify Donation" data-toggle="modal" data-target="#statusModal{{ $donation->id }}"><i class="fa fa-check"></i>
                 </button>
                 @endif
                 @if($donation->status == 'inactive')
@@ -153,17 +153,11 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')

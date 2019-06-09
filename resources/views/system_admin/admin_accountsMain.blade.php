@@ -108,7 +108,7 @@
                             <td>{{ $admin->contact }}</td>
                             <td>{{ $admin->status }}</td>
                             <td>
-                                <button type="button" class="btn btn-info"  data-placement="top" title="View Admin" data-toggle="modal" data-target="#view-modal{{$admin->id}}"><i class="fa fa-eye"></i></button>
+                                <button type="button" class="btn btn-info" data-placement="top" title="View Admin" data-toggle="modal" data-target="#view-modal{{$admin->id}}"><i class="fa fa-eye"></i></button>
                                 @if($admin->status == 'active')
                                 <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate Admin" data-toggle="modal" data-target="#statusModal{{ $admin->id }}"><i class="fa fa-close"></i>
                                 </button>

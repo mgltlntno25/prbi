@@ -69,7 +69,7 @@
                             <td>{{$event->status}}</td>
                             <td>
 
-                                <button type="button" class="btn btn-info"   data-placement="top" title="View Event" data-toggle="modal" data-target="#view-modal{{$event->id}}"><i class="fa fa-eye"></i></button>
+                                <button type="button" class="btn btn-info" data-placement="top" title="View Event" data-toggle="modal" data-target="#view-modal{{$event->id}}"><i class="fa fa-eye"></i></button>
                                 @if($event_list->event_name != $event->event_name)
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'" disabled><i class="fa fa-list"> </i> </button>
                                 @else
@@ -77,10 +77,10 @@
                                 @endif
                                 <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Update Event" onclick="window.location='{{url("admin/events/" . $event->id)}}'"><i class="fa fa-edit"> </i> </button>
                                 @if($event->status == 'active')
-                                <button type="button" class="btn btn-danger"  data-placement="top" title="Deactivate Event" data-toggle="modal" data-target="#statusModal{{ $event->id }}"><i class="fa fa-close"></i>
+                                <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate Event" data-toggle="modal" data-target="#statusModal{{ $event->id }}"><i class="fa fa-close"></i>
                                 </button>
                                 @elseif($event->status == 'inactive')
-                                <button type="button" class="btn btn-success"  data-placement="top" title="Activate Event" data-toggle="modal" data-target="#statusModal{{ $event->id }}"><i class="fa fa-check"></i>
+                                <button type="button" class="btn btn-success" data-placement="top" title="Activate Event" data-toggle="modal" data-target="#statusModal{{ $event->id }}"><i class="fa fa-check"></i>
                                 </button>
                                 @endif
 
@@ -238,17 +238,11 @@
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+
+    </section>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')

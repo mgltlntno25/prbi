@@ -68,7 +68,7 @@
 
                 <button type="button" class="btn btn-info" data-placement="top" title="View Announcement" data-toggle="modal" data-target="#view-modal{{$announcement->id}}"><i class="fa fa-eye"></i> </button>
                 <!-- <button type="button" class="btn btn-warning"><i class="fa fa-edit" onclick="window.location='{{url("admin/announcements/" . $announcement->id)}}'"></i></button> -->
-                <button type="button" class="btn btn-warning"  data-toggle="tooltip" data-placement="top" title="Edit Announcement" onclick="window.location='{{url("admin/announcements/" . $announcement->id)}}'"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Announcement" onclick="window.location='{{url("admin/announcements/" . $announcement->id)}}'"><i class="fa fa-edit"></i></button>
                 @if($announcement->status == 'active')
                 <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate Announcement" data-toggle="modal" data-target="#statusModal{{ $announcement->id }}"><i class="fa fa-close"></i>
                 </button>
@@ -183,17 +183,10 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')

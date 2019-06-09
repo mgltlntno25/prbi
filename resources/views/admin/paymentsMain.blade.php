@@ -65,11 +65,11 @@
               <td>{{$payment->status}}</td>
               <td>
                 @if($payment->status == 'submitted')
-                <button type="button" class="btn btn-success"  data-placement="top" title="Verify Payment" data-toggle="modal" data-target="#statusModal{{ $payment->id }}"><i class="fa fa-check"></i>
+                <button type="button" class="btn btn-success" data-placement="top" title="Verify Payment" data-toggle="modal" data-target="#statusModal{{ $payment->id }}"><i class="fa fa-check"></i>
                 </button>
                 @endif
                 @if($payment->status == 'submitted')
-                <button type="button" class="btn btn-warning"  data-placement="top" title="Reject Payment" data-toggle="modal" data-target="#rejectModal{{ $payment->id }}"><i class="fa fa-close"></i>
+                <button type="button" class="btn btn-warning" data-placement="top" title="Reject Payment" data-toggle="modal" data-target="#rejectModal{{ $payment->id }}"><i class="fa fa-close"></i>
                 </button>
                 @endif
 
@@ -174,17 +174,10 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')

@@ -72,7 +72,7 @@
                             <td>{{$affiliatedstore->contact}}</td>
                             <td>{{$affiliatedstore->status}}</td>
                             <td>
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#view-modal{{$affiliatedstore->id}}">  <i class="fa fa-eye"></i></button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#view-modal{{$affiliatedstore->id}}"> <i class="fa fa-eye"></i></button>
                                 @if($affiliatedstore->status == 'active')
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#statusModal{{ $affiliatedstore->id }}"><i class="fa fa-close"></i>
                                 </button>
@@ -211,10 +211,10 @@
             <!-- /.box -->
         </div>
         <!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
+
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 </div>
 
 

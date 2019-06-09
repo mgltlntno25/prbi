@@ -8,6 +8,9 @@
   <section class="content-header">
     <h1>
       Dashboard
+
+
+
       <small>REPORTS</small>
     </h1>
     <ol class="breadcrumb">
@@ -82,13 +85,95 @@
         <!-- /.info-box -->
       </div>
       <!-- /.col -->
-    </div>
-    <!-- /.row -->
 
-  
+      <!-- BAR CHART -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Monthly Payments and Donation</h3>
 
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart" style="height: 300px;"></div>
+            </div>
+
+            <!-- DONUT CHART -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Users Classifications</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+        <!-- /.box -->
+        <!-- /.box-body -->
+
+        <!-- /.box -->
+      </div>
+      <!-- /.row -->
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @include('admin.admin_includes.footer')
+<script>
+  $(function() {
+    "use strict";
+    //BAR CHART
+    var bar = new Morris.Bar({
+      element: 'bar-chart',
+      resize: true,
+      data: [{
+
+        y: 'June',
+        a: 30333,
+        b: 20000
+      }, ],
+      barColors: ['#00a65a', '#f56954'],
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['Payments', 'Donations'],
+      hideHover: 'auto'
+    });
+
+    //DONUT CHART
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#e74c3c", "#3498db", "#f1c40f"],
+      data: [{
+          label: "Regular Members",
+          value: {{$d_regular}}
+        },
+        {
+          label: "Premium Members",
+          value: {{$d_premium}}
+        },
+        {
+          label: "Insured Members",
+          value: {{$d_insured}}
+        }
+      ],
+      hideHover: 'auto'
+    });
+  });
+</script>

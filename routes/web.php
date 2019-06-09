@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\FAQ;
 use App\Admin;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,11 @@ Route::get('/timer/{id}', function ($id) {
     return view('timer', $data);
 });
 
-Route::get('member/{id}', function($id){
+Route::get('member/{id}', function ($id) {
 
     $data['user'] = \App\User::find($id);
 
-    return view('search_user',$data);
+    return view('search_user', $data);
 });
 
 Route::get('logout', function () {
@@ -44,8 +45,29 @@ Route::get('logout', function () {
 Route::group(
     ['middleware' => ['auth:sysad']],
     function () {
+
         Route::get('sysad/dashboard', function () {
-            return view('system_admin/sysad_dashboard');
+            $data['total_payment'] = App\Payment::where('status', 'verified')->sum('payment_amount');
+            // $data['total_donations'] = App\Payment::where('status','verified')->sum('payment_amount');
+            $now = Carbon::now();
+
+            $data['active_users'] = App\User::where('status', 'active')->count();
+            $data['active_events'] = App\Event::where('status', 'active')->count();
+            $data['total_donations'] = App\Donation::where('status', 'verified')->sum('amount');
+
+            $data['d_regular'] = App\User::where('status', 'active')
+                ->where('isPremium', 0)
+                ->count();
+
+            $data['d_premium'] = App\User::where('status', 'active')
+                ->where('isPremium', 1)->where('isInsured', 0)
+                ->count();
+
+            $data['d_insured'] = App\User::where('status', 'active')
+                ->where('isPremium', 1)->where('isInsured', 1)
+                ->count();
+                
+            return view('system_admin/sysad_dashboard', $data);
         });
 
         Route::get('sysad/adminaccMain', function () {
@@ -107,9 +129,24 @@ Route::group(
 
             $data['total_payment'] = App\Payment::where('status', 'verified')->sum('payment_amount');
             // $data['total_donations'] = App\Payment::where('status','verified')->sum('payment_amount');
+            $now = Carbon::now();
+
             $data['active_users'] = App\User::where('status', 'active')->count();
             $data['active_events'] = App\Event::where('status', 'active')->count();
             $data['total_donations'] = App\Donation::where('status', 'verified')->sum('amount');
+
+
+            $data['d_regular'] = App\User::where('status', 'active')
+                ->where('isPremium', 0)
+                ->count();
+
+            $data['d_premium'] = App\User::where('status', 'active')
+                ->where('isPremium', 1)->where('isInsured', 0)
+                ->count();
+
+            $data['d_insured'] = App\User::where('status', 'active')
+                ->where('isPremium', 1)->where('isInsured', 1)
+                ->count();
 
             return view('admin/admin_dashboard', $data);
         });
@@ -339,7 +376,6 @@ Route::group(
             $data['admin_auds'] = App\UserLoginSession::all();
             return view('admin/user_log', $data);
         });
-
     }
 );
 

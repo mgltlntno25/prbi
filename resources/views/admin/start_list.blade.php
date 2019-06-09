@@ -39,10 +39,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <tr>
                 <td>
                 </td>
-            </tr><tr>
+            </tr>
+            <tr>
                 <td>
                 </td>
-            </tr><tr>
+            </tr>
+            <tr>
                 <td>
                 </td>
             </tr>

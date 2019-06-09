@@ -72,7 +72,7 @@
 
                 <button type="button" class="btn btn-info" data-placement="top" title="View FAQs" data-toggle="modal" data-target="#view-modal{{$faq->id}}"><i class="fa fa-eye"></i> </button>
                 <!-- <button type="button" class="btn btn-warning"><i class="fa fa-edit" onclick="window.location='{{url("admin/faqs/" . $faq->id)}}'"></i></button> -->
-                <button type="button" class="btn btn-warning"  data-toggle="tooltip" data-placement="top" title="Edit FAQs" onclick="window.location='{{url("admin/faqs/" . $faq->id)}}'"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit FAQs" onclick="window.location='{{url("admin/faqs/" . $faq->id)}}'"><i class="fa fa-edit"></i></button>
                 @if($faq->status == 'active')
                 <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate FAQS" data-toggle="modal" data-target="#statusModal{{ $faq->id }}"><i class="fa fa-close"></i>
                 </button>
@@ -187,17 +187,10 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
 
 
-</section>
-<!-- /.content -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')
