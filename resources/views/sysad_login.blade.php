@@ -1,121 +1,79 @@
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset("/img/islaw.png")}}"/>
+  <title>Pinoy Road Biker Inc.</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset("/img/islaw.png")}}" />
-    <title>Pinoy Road Biker Inc.</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Log in</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="{{asset("bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{asset("bower_components/font-awesome/css/font-awesome.min.css")}}">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="{{asset("bower_components/Ionicons/css/ionicons.min.css")}}">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{asset("/css/AdminLTE.min.css")}}">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="{{asset("plugins/iCheck/square/blue.css")}}">
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{asset("login_reg/css/style.css")}}">
+</head>
 
-        <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <!-- <style>
-        body {
-            
-            background-image: url("{{asset('/img/bg.png')}}");
-        }
-    </style> -->
+<body>
 
-    </head>
+    <div class="main">
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{{asset("login_reg/images/islaw.png")}}"></figure>
+                    </div>
 
-<body class="">
-    <div class="login-box">
-        <div class="login-logo">
-            <img src="{{asset('/img/islaw.png')}}" height="150" width="150">
-        </div>
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                ERROR!
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-            <form action="/sysad/dologin" method="post">
-                {{ csrf_field() }}
-                <div class="form-group has-feedback">
-                    <input type="email" class="form-control" name="email" placeholder="Email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
+                    <div class="signin-form">
+                        <h3 class="form-title">Log In : Admin</h3>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            ERROR!
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
+                        @endif
+                        <form method="POST" action="/admin/dologin">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="your_name" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Password" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" id="signin" class="form-submit" value="Log in" />
+                            </div>
+                        </form>
                     </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                    </div>
-                    <!-- /.col -->
                 </div>
-            </form>
+            </div>
+        </section>
 
-            <a href="#">I forgot my password</a><br>
-            <a href="register.html" class="text-center">Register a new membership</a>
-
-        </div>
-        <!-- /.login-box-body -->
     </div>
-    <!-- /.login-box -->
 
-    <!-- jQuery 3 -->
-    <script src="{{asset("bower_components/jquery/dist/jquery.min.js")}}"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="{{asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-    <!-- iCheck -->
-    <script src="{{asset("plugins/iCheck/icheck.min.js")}}"></script>
-    <script>
-        $(function() {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' /* optional */
-            });
-        });
-    </script>
-</body>
+    <!-- JS -->
+    <script src="{{asset("login_reg/vendor/jquery/jquery.min.js")}}"></script>
+    <script src="{{asset("login_reg/js/main.js")}}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
