@@ -328,6 +328,18 @@ Route::group(
             return view('admin/faqs_update', $data);
         });
         Route::post('admin/doupdatefaq/{id}', 'AdminController@UpdateFAQs');
+
+
+        Route::get('admin/user_audit', function () {
+            $data['admin_auds'] = App\User_AuditTrail::all();
+            return view('admin/user_aud', $data);
+        });
+
+        Route::get('admin/user_login', function () {
+            $data['admin_auds'] = App\UserLoginSession::all();
+            return view('admin/user_log', $data);
+        });
+
     }
 );
 

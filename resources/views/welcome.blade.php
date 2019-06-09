@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-	<!--
-New Event
-http://www.templatemo.com/tm-486-new-event
--->
-	<title>New Event - Responsive HTML Template</title>
+	
+	<title>Pinoy Road Bikers Inc.</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta charset="UTF-8">

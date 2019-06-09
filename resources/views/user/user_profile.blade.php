@@ -43,6 +43,9 @@
                         @if(!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->exists())
                         <button type="button" data-toggle="modal" data-target="#upgrade" class="btn btn-success mb-2"><i class="fa fa-user-plus"></i> Upgrade Profile </button>
                         @endif
+                        @if(!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->where('application_status','=','inactive'))
+                        <button type="button" data-toggle="modal" data-target="#upgrade" class="btn btn-success mb-2"><i class="fa fa-user-plus"></i> Upgrade Profile </button>
+                        @endif
                         @if(App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->where('application_status', '=','rejected')->first())
                         <button type="button" data-toggle="modal" data-target="#upgrade" class="btn btn-success mb-2"><i class="fa fa-user-plus"></i> Upgrade Profile </button>
                         @endif

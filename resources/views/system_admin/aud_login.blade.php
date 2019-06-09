@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Login Sessions
+        User Login Sessions
         <small>Dashboard</small>
       </h1>
       <ol class="breadcrumb">
@@ -72,8 +72,5 @@
   </div>
 
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+  
   @include('system_admin.sysAd_includes.footer')

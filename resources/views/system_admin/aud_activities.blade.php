@@ -7,8 +7,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Activities Sessions
-        <small>Dashboard</small>
+         Admin Activities 
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-user"></i> Activities</a></li>

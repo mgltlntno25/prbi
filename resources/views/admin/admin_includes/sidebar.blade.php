@@ -228,34 +228,46 @@
        <li><a href="{{url("admin/affiliatedstore")}}"><i class="fa fa-handshake-o"></i> <span>Affiliated Store Accounts</span></a></li>
        @endif
 
-       @if(\Request::is('admin/aud_login*'))
+
+       @if(\Request::is('admin/user_login'))
        <li class="active treeview">
-         <a href="#"><i class="fa fa-history"></i> <span>Audit Trails</span>
+         <a href="#"><i class="fa fa-history"></i> <span>User Audit Trails</span>
            <span class="pull-right-container">
              <i class="fa fa-angle-left pull-right"></i>
            </span>
          </a>
          <ul class="treeview-menu">
-           <li class="active"><a href="{{url("admin/aud_login")}}"><i class="fa fa-circle-o"></i> Login Sessions</a></li>
-           <li><a href="{{url("admin/aud_activities")}}"><i class="fa fa-circle-o"></i>Activities</a></li>
+           <li class="active"><a href="{{url("admin/user_login")}}"><i class="fa fa-circle-o"></i>Login Sessions</a></li>
+           <li><a href="{{url("admin/user_audit")}}"><i class="fa fa-circle-o"></i> Activities</a></li>
          </ul>
        </li>
-     </ul>
-     @elseif(\Request::is('admin/aud_activities*'))
-     <li class="active treeview">
-       <a href="#"><i class="fa fa-history"></i> <span>Audit Trails</span>
-         <span class="pull-right-container">
-           <i class="fa fa-angle-left pull-right"></i>
-         </span>
-       </a>
-       <ul class="treeview-menu">
-         <li><a href="{{url("admin/aud_login")}}"><i class="fa fa-circle-o"></i> Login Sessions</a></li>
-         <li class="active"><a href="{{url("admin/aud_activities")}}"><i class="fa fa-circle-o"></i>Activities</a></li>
-       </ul>
-     </li>
-     </ul>
-     @endif
-     <!-- /.sidebar-menu -->
+       @elseif(\Request::is('admin/user_audit'))
+       <li class="active treeview">
+         <a href="#"><i class="fa fa-history"></i> <span>User Audit Trails</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li><a href="{{url("admin/user_login")}}"><i class="fa fa-circle-o"></i>Login Sessions</a></li>
+           <li class="active"><a href="{{url("admin/user_audit")}}"><i class="fa fa-circle-o"></i> Activities</a></li>
+         </ul>
+       </li>
+       @else
+       <li class="treeview">
+         <a href="#"><i class="fa fa-history"></i> <span>User Audit Trails</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li><a href="{{url("admin/user_login")}}"><i class="fa fa-circle-o"></i>Login Sessions</a></li>
+           <li><a href="{{url("admin/user_audit")}}"><i class="fa fa-circle-o"></i> Activities</a></li>
+         </ul>
+       </li>
+
+       @endif
+       <!-- /.sidebar-menu -->
    </section>
    <!-- /.sidebar -->
  </aside>
