@@ -450,6 +450,15 @@ Route::group(
             $data['admin_auds'] = App\UserLoginSession::all();
             return view('admin/user_log', $data);
         });
+
+        Route::get('admin/sponsors',function(){
+
+            $data['sponsors'] = App\Sponsor::all();
+            return view('admin/sponsor',$data);
+
+        });
+
+        route::post('admin/doaddsponsor', 'AdminController@AddSponsor');
     }
 );
 
@@ -644,6 +653,7 @@ Route::group(
             $data['events_count'] = \App\Event::where('status', '=', 'active')->count();
             $data['afs_count'] = \App\AffiliatedStore::where('status', '=', 'active')->count();
             $data['faqs'] = \App\FAQ::all();
+            $data['sponsors'] = \App\Sponsor::all();
             return view('welcome', $data);
         });
 

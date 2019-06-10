@@ -22,6 +22,7 @@ use App\FAQ;
 use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use Calendar;
+use App\Sponsor;
 
 // use PayPal\Api\Notification;
 
@@ -307,6 +308,106 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Banner Image successfully updated.');
     }
 
+
+    public function AddSponsor(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'sponsor_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
+            'name' => 'required|max:255',
+           
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if ($request->hasFile('sponsor_image')) {
+            $image = $request->file('sponsor_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/sponsor/' . $filename);
+            // $thumbnail = public_path('img/banners_thumb/' . $filename);
+            Image::make($image)->save($location);
+            // Image::make($image)->resize(150, 50)->save($thumbnail);
+        }
+
+        $sponsor = new Sponsor;
+        $sponsor->sponsor_name = $request->name;
+        $sponsor->sponsor_image = $filename;
+        $sponsor->status = 'inactive';
+        $sponsor->save();
+
+        $aaudit = new AdminAuditTrail;
+        $aaudit->user_id = Auth::guard('admin')->user()->id;
+        $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+        $aaudit->user_email = Auth::guard('admin')->user()->email;
+        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Added Sponsor. ";
+        $aaudit->save();
+
+        return redirect()->back()->with('success', 'Banner successfully added.');
+    }
+
+    public function ChangeStatusSponsor($id)
+    {
+        $banners = Banner::find($id);
+
+        if ($banners->status == 'active') {
+            $banners->status = 'inactive';
+            $banners->save();
+            $aaudit = new AdminAuditTrail;
+            $aaudit->user_id = Auth::guard('admin')->user()->id;
+            $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+            $aaudit->user_email = Auth::guard('admin')->user()->email;
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Deactivated Banner. ";
+            $aaudit->save();
+            return redirect()->back()->with('success', 'Banner successfully deactivated.');
+        }
+
+        if ($banners->status == 'inactive') {
+            $banners->status = 'active';
+            $banners->save();
+            $aaudit = new AdminAuditTrail;
+            $aaudit->user_id = Auth::guard('admin')->user()->id;
+            $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+            $aaudit->user_email = Auth::guard('admin')->user()->email;
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Activated Banner. ";
+            $aaudit->save();
+            return redirect()->back()->with('success', 'Banner successfully activated.');
+        }
+    }
+
+    public function UpdateSponsor(Request $request, $id)
+    {
+        $banners = Banner::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $banners->title = $request->title;
+        $banners->description = $request->description;
+        $banners->save();
+        $aaudit = new AdminAuditTrail;
+        $aaudit->user_id = Auth::guard('admin')->user()->id;
+        $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+        $aaudit->user_email = Auth::guard('admin')->user()->email;
+        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Banner. ";
+        $aaudit->save();
+
+        return redirect()->back()->with('success', 'Banner successfully updated.');
+    }
 
     public function AddAnnouncements(Request $request)
     {

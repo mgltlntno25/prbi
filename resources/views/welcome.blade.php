@@ -564,21 +564,17 @@
 					</div>
 				</div>
 
+				
+				@foreach ($sponsors as $sponsor)
 				<div class="wow fadeInUp col-md-3 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-					<img src="{{asset("homepage/images/sponsor-img1.jpg")}}" class="img-responsive" alt="sponsors">
+					<img src="{{asset("img/sponsor/" . $sponsor->sponsor_image)}}"  width="150" heigh="100" class="img-responsive" alt="sponsors">
 				</div>
 
-				<div class="wow fadeInUp col-md-3 col-sm-6 col-xs-6" data-wow-delay="0.6s">
-					<img src="{{asset("homepage/images/sponsor-img2.jpg")}}" class="img-responsive" alt="sponsors">
-				</div>
 
-				<div class="wow fadeInUp col-md-3 col-sm-6 col-xs-6" data-wow-delay="0.9s">
-					<img src="images/sponsor-img3.jpg" class="img-responsive" alt="sponsors">
-				</div>
 
-				<div class="wow fadeInUp col-md-3 col-sm-6 col-xs-6" data-wow-delay="1s">
-					<img src="images/sponsor-img4.jpg" class="img-responsive" alt="sponsors">
-				</div>
+
+				@endforeach
+				
 
 			</div>
 		</div>
