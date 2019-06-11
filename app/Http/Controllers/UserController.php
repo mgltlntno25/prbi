@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use App\UserLoginSession;
 use App\User_AuditTrail;
-
+use App\Rules\Captcha;
 class UserController extends Controller
 {
 
@@ -70,6 +70,7 @@ class UserController extends Controller
             'emergency_contact' => 'required|numeric|digits:11',
             'birthday' => 'required|date|before:15 years ago',
             'gender' => 'required',
+            'g-recaptcha-response' => new Captcha(), 
         ]);
 
         if ($validator->fails()) {
