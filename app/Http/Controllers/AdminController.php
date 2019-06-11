@@ -521,7 +521,7 @@ class AdminController extends Controller
 
     public function AddEvents(Request $request)
     {
-        $month =  Carbon::now()->addMonths(1)->format('m-d-Y');
+        $month =  Carbon::now()->addMonths(1)->format('Y-m-d');
         $validator = Validator::make($request->all(), [
             'event_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'event_name' => 'required|max:255',
@@ -565,7 +565,7 @@ class AdminController extends Controller
 
         $events->save();
 
-        return redirect()->back()->with('success', 'Event successfully added.');
+        return $events;
     }
 
     public function UpdateEvent(Request $request, $id)

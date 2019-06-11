@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                         @foreach($events as $event)
-                        @foreach($events_list as $event_list)
+                        
                         <tr>
                             <td>{{$event->id}}</td>
                             <td><img src="{{ url("/img/events_thumb/". $event->event_image) }}" height="50" width="150"></td>
@@ -70,8 +70,8 @@
                             <td>
 
                                 <button type="button" class="btn btn-info" data-placement="top" title="View Event" data-toggle="modal" data-target="#view-modal{{$event->id}}"><i class="fa fa-eye"></i></button>
-                                @if($event_list->event_name != $event->event_name)
-                                <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'" disabled><i class="fa fa-list"> </i> </button>
+                                @if(!App\Event_list::where('event_id',$event->id)->exists())
+                                <button type="button" data-toggle="tooltip" data-placement="top" title="No registrations in this event" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'" disabled><i class="fa fa-list"> </i> </button>
                                 @else
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'"><i class="fa fa-list"> </i> </button>
                                 @endif
@@ -172,7 +172,7 @@
                             <!-- /.modal-dialog -->
                         </div>
                         <!-- /.modal -->
-                        @endforeach
+                        
                         @endforeach
                     </tbody>
                     <tfoot>

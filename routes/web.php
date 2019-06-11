@@ -264,6 +264,12 @@ Route::group(
 
         //events
         Route::get('admin/events', function () {
+            $event = \App\Event::select(
+                'events.event_name',
+                'event_lists.event_name as list_name'
+            )->join('event_lists','events.id','event_lists.id')->get();
+
+            
             $data['events'] = \App\Event::all();
             $data['events_list'] = \App\Event_list::all();
             return view('admin/eventsMain', $data);

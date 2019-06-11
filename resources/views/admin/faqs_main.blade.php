@@ -52,7 +52,6 @@
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>Description</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -63,10 +62,7 @@
               <td>{{$faq->id}}</td>
               <td>
                 {{$faq->title}}
-              </td>
-              <td>
-                {{$faq->description}}
-              </td>
+              </td>            
               <td>{{$faq->status}}</td>
               <td>
 
