@@ -110,12 +110,12 @@
                     <h4 class="modal-title"><b>{{$sponsor->sponsor_name}}</b></h4>
                   </div>
                   <div class="modal-body">
-                    <img src="{{ url("/img/sponsor/". $sponsor->sponsor_image) }}" height="400" width="570">
+                    <center><img src="{{ url("/img/sponsor/". $sponsor->sponsor_image) }}" height="400" width="500"></center>
                     <br>
                     <br>
                     <div class="form-group">
                       <label for="formGroupExampleInput">Sponsor Name</label>
-                      <input type="text" class="form-control" name="name" placeholder="Title" value="{{$sponsor->sponsor_name}}">
+                      <input type="text" class="form-control" name="name" placeholder="Title" disabled value="{{$sponsor->sponsor_name}}">
                     </div>
                   <div class="modal-footer">
                     <p align="right">

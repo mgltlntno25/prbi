@@ -17,7 +17,7 @@
       <small>REPORTS</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="{{url('sysad/dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="active">Here</li>
     </ol>
   </section>
@@ -190,6 +190,10 @@
         {
           label: "Insured Members",
           value: {{$d_insured}}
+        },
+        {
+          label: "Admins",
+          value: {{$admin}}
         }
       ],
       hideHover: 'auto'

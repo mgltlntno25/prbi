@@ -50,7 +50,7 @@
            <li class="active"><a href="{{url("admin/banners")}}"><i class="fa fa-circle-o"></i><i class="fa fa-image"></i> <span>Banners</span></a></li>
            <li><a href="{{url("admin/faqs")}}"><i class="fa fa-circle-o"></i><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
            <li><a href="{{url("admin/sponsors")}}"><i class="fa fa-circle-o"></i><i class="fa fa-users"></i> <span>Sponsors</span></a></li>
-           <li><a href="{{url("admin/apkFilesMain")}}"><i class="fa fa-circle-o"></i><i class="fa fa-file"></i> <span>APK Files</span></a></li>
+           
 
          </ul>
        </li>
@@ -65,7 +65,6 @@
            <li><a href="{{url("admin/banners")}}"><i class="fa fa-circle-o"></i><i class="fa fa-image"></i> <span>Banners</span></a></li>
            <li class="active"><a href="{{url("admin/faqs")}}"><i class="fa fa-circle-o"></i><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
            <li><a href="{{url("admin/sponsors")}}"><i class="fa fa-circle-o"></i><i class="fa fa-users"></i> <span>Sponsors</span></a></li>
-           <li><a href="{{url("admin/apkFilesMain")}}"><i class="fa fa-circle-o"></i><i class="fa fa-file"></i> <span>APK Files</span></a></li>
 
          </ul>
        </li>
@@ -80,7 +79,6 @@
            <li><a href="{{url("admin/banners")}}"><i class="fa fa-circle-o"></i><i class="fa fa-image"></i> <span>Banners</span></a></li>
            <li><a href="{{url("admin/faqs")}}"><i class="fa fa-circle-o"></i><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
            <li class="active"><a href="{{url("admin/sponsors")}}"><i class="fa fa-circle-o"></i><i class="fa fa-users"></i> <span>Sponsors</span></a></li>
-           <li><a href="{{url("admin/apkFilesMain")}}"><i class="fa fa-circle-o"></i><i class="fa fa-file"></i> <span>APK Files</span></a></li>
 
          </ul>
        </li>
@@ -95,7 +93,6 @@
            <li><a href="{{url("admin/banners")}}"><i class="fa fa-circle-o"></i><i class="fa fa-image"></i> <span>Banners</span></a></li>
            <li><a href="{{url("admin/faqs")}}"><i class="fa fa-circle-o"></i><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
            <li><a href="{{url("admin/sponsors")}}"><i class="fa fa-circle-o"></i><i class="fa fa-users"></i> <span>Sponsors</span></a></li>
-           <li class="active"><a href="{{url("admin/apkFilesMain")}}"><i class="fa fa-circle-o"></i><i class="fa fa-file"></i> <span>APK Files</span></a></li>
 
          </ul>
        </li>
@@ -110,7 +107,6 @@
            <li><a href="{{url("admin/banners")}}"><i class="fa fa-circle-o"></i><i class="fa fa-image"></i> <span>Banners</span></a></li>
            <li><a href="{{url("admin/faqs")}}"><i class="fa fa-circle-o"></i><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
            <li><a href="{{url("admin/sponsors")}}"><i class="fa fa-circle-o"></i><i class="fa fa-users"></i> <span>Sponsors</span></a></li>
-           <li><a href="{{url("admin/apkFilesMain")}}"><i class="fa fa-circle-o"></i><i class="fa fa-file"></i> <span>APK Files</span></a></li>
 
          </ul>
        </li>

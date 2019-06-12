@@ -41,26 +41,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 
 <body class="hold-transition skin-yellow sidebar-mini">
   <div class="wrapper">
@@ -88,7 +68,7 @@ desired effect
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{url('/admin/faqs')}}"><i class="fa fa-image>"></i> FAQs</a></li>
-            <li class="active">Update</li>
+            <li class="active">Update FAQs {{$faqs->id}}</li>
           </ol>
         </section>
 
@@ -136,7 +116,7 @@ desired effect
 
                 <p align="right">
                   <button type="button" data-toggle="modal" data-target="#updateModal" class="btn btn-warning mb-2"><i class="fa fa-edit"></i> Update </button>
-                  <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("admin/announcements/")}}'"><i class="fa fa-close"></i>
+                  <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("admin/faqs/")}}'"><i class="fa fa-close"></i>
                     Back
                   </button>
                 </p>

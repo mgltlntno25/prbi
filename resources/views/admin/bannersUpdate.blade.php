@@ -13,7 +13,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{url('/admin/banners')}}"><i class="fa <fa-image></fa-image>"></i> Banners</a></li>
-      <li class="active">Update</li>
+      <li class="active">Update Banner {{$banners->id}}</li>
     </ol>
   </section>
 
@@ -29,27 +29,28 @@
     <div class="box">
       <div class="box-header">
 
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>{{ $message }}</strong>
+
+        <!-- /.box-header -->
+        <div class="box-body">
+          <img src="{{ url("/img/banners/". $banners->banner_image) }}" height="350" width="100%">
+          <br>
+          <br>
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+          </div>
+          @endif
         </div>
-        @endif
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <img src="{{ url("/img/banners/". $banners->banner_image) }}" height="350" width="100%">
-        <br>
-        <br>
-        @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-        @endif
         <form action="{{url('admin/doupdatebanner/' . $banners->id )}}" method='post' enctype='multipart/form-data'>
           {{ csrf_field() }}
           <div class="form-group">

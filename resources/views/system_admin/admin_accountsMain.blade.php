@@ -12,8 +12,8 @@
         </h1>
 
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-users"></i> Admin Accounts</a></li>
-            <li class="active">Main</li>
+            <li><a href="{{url('sysad/adminaccMain')}}"><i class="fa fa-users"></i> Admin Accounts</a></li>
+            <li class="active">Here</li>
         </ol>
 
     </section>
@@ -235,19 +235,19 @@
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" placeholder="First name" value="{{ old('fname') }}">
+                                        <input type="text" class="form-control" name="first_name" placeholder="First name" value="{{ old('first_name') }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last name" value="{{ old('lname') }}">
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last name" value="{{ old('last_name') }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Description" value="{{ old('email') }}">
+                                        <input type="email" class="form-control" name="email" placeholder="E.g. islaw@prbi.com" value="{{ old('email') }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Contact</label>
-                                        <input type="number" class="form-control" name="contact" placeholder="Contact" value="{{ old('contact') }}">
+                                        <input type="number" class="form-control" name="contact" placeholder="E.g. 09192832711" value="{{ old('contact') }}">
                                     </div>
 
 

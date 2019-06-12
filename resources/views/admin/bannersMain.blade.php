@@ -11,7 +11,7 @@
       <small>Dashboard</small>
     </h1>
     <ol class="breadcrumb">
-      <li><i class="fa <fa-image></fa-image>"></i> Banners</li>
+      <li><i class="fa fa-image>"></i> Banners</li>
       <li class="active">Main</li>
     </ol>
   </section>
@@ -53,7 +53,6 @@
               <th>ID</th>
               <th>Image</th>
               <th>Title</th>
-              <th>Description</th>
               <th> Status </th>
               <th>Actions</th>
             </tr>
@@ -64,7 +63,6 @@
               <td>{{$banner->id}} </td>
               <td><img src="{{ url("/img/banners_thumb/". $banner->banner_image) }}"></td>
               <td>{{$banner->title}} </td>
-              <td>{{$banner->description}} </td>
               <td>{{$banner->status}} </td>
               <td>
                 <button type="button" class="btn btn-info"  data-placement="top" title="View Banner" data-toggle="modal" data-target="#view-modal{{$banner->id}}"><i class="fa fa-eye"></i></button>
@@ -115,14 +113,9 @@
                     <img src="{{ url("/img/banners/". $banner->banner_image) }}" height="250" width="570">
                     <br>
                     <br>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">Title</label>
-                      <input type="text" class="form-control" name="title" placeholder="Title" value="{{$banner->title}}">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Description</label>
-                      <textarea class="form-control" name="description">{{$banner->description}}</textarea>
-                    </div>
+                    <h4><strong> Title: </strong> {{$banner->title}} </h4>
+                    <h4><strong> Description: </strong> </h4>
+                    <p> {{$banner->description}} </p>
                   </div>
                   <div class="modal-footer">
                     <p align="right">

@@ -38,7 +38,7 @@ class SysAdminController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:255|alpha',
             'last_name' => 'required|max:255|alpha',
-            'email' => 'required|email|unique:admins,email',
+            'email' => 'required|email|unique:users,email|unique:admins,email|unique:affiliated_stores,email',
             'contact' => 'required|numeric|digits:11',
         ]);
 

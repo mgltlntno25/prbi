@@ -100,6 +100,8 @@ Route::group(
             $data['d_insured'] = App\User::where('status', 'active')
                 ->where('isPremium', 1)->where('isInsured', 1)
                 ->count();
+                $data['admin'] = App\Admin::where('status', 'active')
+                ->count();
 
             return view('system_admin/sysad_dashboard', $data);
         });
@@ -465,6 +467,10 @@ Route::group(
         });
 
         route::post('admin/doaddsponsor', 'AdminController@AddSponsor');
+        Route::get('admin/sponsors/{id}', function($id){
+            $data['sponsors'] = App\Sponsor::find($id);
+            return view('admin/update_sponsor',$data);
+        });
     }
 );
 

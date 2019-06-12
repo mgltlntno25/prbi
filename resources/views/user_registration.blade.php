@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+    {!! NoCaptcha::renderJs() !!}
 </head>
 
 <body class="hold-transition skin-black layout-top-nav">
@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.box-header -->
                             <!-- form start -->
                             <form action="/user/doregister" method="post">
-                                {{ csrf_field() }}
+
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">First Name</label>
@@ -253,11 +253,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <h3 class="box-title">reCAPTCHA</h3>
                                 </div>
                                 <div class="box-body">
-                                    <script src='https://www.google.com/recaptcha/api.js'></script>
-                                    <div class="g-recaptcha" data-sitekey="6LchfagUAAAAAD8nbbe5FBRYzPP3hM_SsT_6_lUQ"></div>
-                                    @if($errors->has('g-recaptcha-response'))
-                                    <span class="invalid-feedback" style="display:block">
-                                        <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}
+
+                                    @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -268,6 +268,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <h3 class="box-title">Submit Registration</h3>
                             </div>
                             <div class="box-body">
+                                {{ csrf_field() }}
                                 <button type="submit" class="btn btn-block btn-success btn-lg"> Submit </button>
                             </div>
                         </div>

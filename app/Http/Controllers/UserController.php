@@ -71,15 +71,15 @@ class UserController extends Controller
             'emergency_contact' => 'required|numeric|digits:11',
             'birthday' => 'required|date|before:15 years ago',
             'gender' => 'required',
-            'g-recaptcha-response' => new Captcha(),
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()
+        //         ->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
 
         $filename = 'qr' . time() . '.png';
         $user = new User;
@@ -98,7 +98,7 @@ class UserController extends Controller
         $user->qrcode = $filename;
         $user->status = 'active';
         $token = $request->input('g-recaptcha-response');
-        // dd($token);
+        dd($token);
         $user->save();
 
         User::where('id', $user->id)
