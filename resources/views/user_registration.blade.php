@@ -271,7 +271,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <h3 class="box-title">reCAPTCHA</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div class="g-recaptcha" data-sitekey="6LfaK6gUAAAAAH2tl4aI1spP4Ipe45e6g26l5keJ"></div>
+                                    <div class="g-recaptcha" data-sitekey="6LfaK6gUAAAAAN4Xl6icim890J9encTXTRETX5u65e"></div>
                                     @if($errors->has('g-recaptcha-response'))
 
                                     <span class="invalid-feedback" style="display:block">
