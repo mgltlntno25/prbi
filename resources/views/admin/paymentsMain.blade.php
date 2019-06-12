@@ -60,8 +60,11 @@
 
 
 
-
+              @if($payment->deposit_image != "paypal")
               <td><button type="button" class="btn btn-info" data-placement="top" title="View Image" data-toggle="modal" data-target="#view-modal{{$payment->id}}"><i class="fa fa-eye"></i> </td>
+              @else
+              <td> VIA PAYPAL </td>
+              @endif
               <td>{{$payment->status}}</td>
               <td>
                 @if($payment->status == 'submitted')

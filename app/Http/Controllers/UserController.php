@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
 use App\UserLoginSession;
 use App\User_AuditTrail;
 use App\Rules\Captcha;
+
 class UserController extends Controller
 {
 
@@ -70,7 +71,7 @@ class UserController extends Controller
             'emergency_contact' => 'required|numeric|digits:11',
             'birthday' => 'required|date|before:15 years ago',
             'gender' => 'required',
-            'g-recaptcha-response' => new Captcha(), 
+            'g-recaptcha-response' => new Captcha(),
         ]);
 
         if ($validator->fails()) {
@@ -96,6 +97,8 @@ class UserController extends Controller
         $user->blood_type = $request->bloodtype;
         $user->qrcode = $filename;
         $user->status = 'active';
+        $token = $request->input('g-recaptcha-response');
+        dd($token);
         $user->save();
 
         User::where('id', $user->id)
@@ -251,7 +254,7 @@ class UserController extends Controller
             return redirect('user/upgrade/step2')->with('success', 'step1 complete .');
         } else
 
-        $application_list = new Application_List;
+            $application_list = new Application_List;
         $application_list->user_id = Auth::guard('user')->user()->prbi_id;
         $application_list->user_name = Auth::guard('user')->user()->first_name . " " . Auth::guard('user')->user()->last_name;
         $application_list->user_email = Auth::guard('user')->user()->email;
@@ -407,7 +410,7 @@ class UserController extends Controller
     }
 
 
-    
+
 
 
     public function UploadDonation(Request $request)
@@ -487,6 +490,31 @@ class UserController extends Controller
         return redirect('user/events')->with('success', 'Event successfully registered.');
     }
 
+    public function Paypal($id)
+    {
+        $events = \App\Event::find($id);
+        $ev_l = \App\Event_list::where('prbi_id', '=', Auth::guard('user')->user()->prbi_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
+
+        $payments = new Payment;
+
+        $payments->user_id = Auth::guard('user')->user()->prbi_id;
+        $payments->user_name = Auth::guard('user')->user()->first_name . " " . Auth::guard('user')->user()->last_name;
+        $payments->user_email = Auth::guard('user')->user()->email;
+        $payments->payment_description = $events->id;
+        $payments->payment_amount = $events->amount;
+        $payments->trans_number = "VIA PAYPAL";
+        $payments->deposit_image = "paypal";
+        $payments->status = 'submitted';
+        $payments->bank_date = Carbon::now()->format('Y-m-d');
+        $payments->save();
+
+        return redirect('user/myevents')->with('success', 'Event successfully registered.');
+
+
+        
+    }
 
     public function BankDeposit(Request $request, $id)
     {

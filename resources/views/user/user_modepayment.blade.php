@@ -18,6 +18,7 @@
 
     }
 </style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -56,8 +57,9 @@
                             <br>
                             <hr>
                             <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("user/bankdeposit/" . $events->id)}}'"><i class="fa fa-bank"></i> Bank Deposit</button>
-                            <button type="button" class="btn btn-primary mb-2"><i class="fa fa-paypal"></i> PayPal</button>
+                            <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("user/paypal/" . $events->id)}}'"><i class="fa fa-paypal"></i> PayPal</button>
 
+                            
                         </div>
 
                     </div>

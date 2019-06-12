@@ -580,7 +580,12 @@ Route::group(
             return view('user/user_modepayment', $data);
         });
 
+        Route::get('user/paypal/{id}', function($id){
+            $data['events'] = \App\Event::find($id);
+            return view('user/user_paypalpayment', $data);
+        });
 
+        Route::get('user/dopaypal/{id}', 'UserController@Paypal');
 
 
 
@@ -689,3 +694,7 @@ Route::group(
         Route::post('affiliatedstore/dologin', 'AffiliatedStoreController@ASlogin');
     }
 );
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

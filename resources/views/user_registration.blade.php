@@ -24,7 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="{{asset("/css/skins/skin-black.css")}}">
     <link rel="stylesheet" href="{{asset("bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,6 +33,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 
 <body class="hold-transition skin-black layout-top-nav">
@@ -78,8 +79,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-user"></i>
+
                                             </div>
                                             <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name') }}">
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -263,22 +266,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-md-4">
 
                         <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">reCAPTHCA</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
-                            <div class="box-body">
-                                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"> </div>
-                                @if($errors->has('g-recaptcha-response'))
+                            <div class="form-group">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">reCAPTCHA</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="g-recaptcha" data-sitekey="6LfaK6gUAAAAAH2tl4aI1spP4Ipe45e6g26l5keJ"></div>
+                                    @if($errors->has('g-recaptcha-response'))
 
                                     <span class="invalid-feedback" style="display:block">
                                         <strong>{{$errors->first('g-recaptcha-response')}}</strong>
 
                                     </span>
 
-                                @endif
+                                    @endif
+                                </div>
                             </div>
+
                         </div>
 
                         <div class="box box-success">
@@ -297,6 +301,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </section>
 
         </div>
+
 
 
 

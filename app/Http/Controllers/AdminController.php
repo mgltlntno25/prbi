@@ -24,6 +24,8 @@ use Carbon\Carbon;
 use Calendar;
 use App\Sponsor;
 
+
+
 // use PayPal\Api\Notification;
 
 class AdminController extends Controller
@@ -37,6 +39,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => 'required|string',
             'email' => 'required|string',
+            
         ]);
 
         if ($validator->fails()) {
