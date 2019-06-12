@@ -98,7 +98,7 @@ class UserController extends Controller
         $user->qrcode = $filename;
         $user->status = 'active';
         $token = $request->input('g-recaptcha-response');
-        dd($token);
+        // dd($token);
         $user->save();
 
         User::where('id', $user->id)

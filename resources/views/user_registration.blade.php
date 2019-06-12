@@ -33,7 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
@@ -50,10 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </nav>
         </header>
         <div class="content-wrapper">
-
-
             <section class="content">
-
                 <div class="row">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -119,15 +115,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     </div>
-
                     <div class="col-md-4">
-
                         <div class="box box-passive">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Login Information</h3>
                             </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Email</label>
@@ -147,7 +139,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Confirm Password</label>
                                     <div class="input-group">
@@ -162,18 +153,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <br>
                                 <br>
                             </div>
-                            <!-- /.box-body -->
                         </div>
                     </div>
-
                     <div class="col-md-4">
-
                         <div class="box box-passive">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Other Information</h3>
                             </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Birthday</label>
@@ -233,13 +219,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-
                         <div class="box box-passive">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Emergency Contact Information</h3>
                             </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Emergency Contact Person</label>
@@ -264,33 +247,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                     <div class="col-md-4">
-
                         <div class="box box-success">
                             <div class="form-group">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">reCAPTCHA</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div class="g-recaptcha" data-sitekey="6LfaK6gUAAAAAN4Xl6icim890J9encTXTRETX5u6"></div>
+                                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                                    <div class="g-recaptcha" data-sitekey="6LchfagUAAAAAD8nbbe5FBRYzPP3hM_SsT_6_lUQ"></div>
                                     @if($errors->has('g-recaptcha-response'))
-
                                     <span class="invalid-feedback" style="display:block">
                                         <strong>{{$errors->first('g-recaptcha-response')}}</strong>
-
                                     </span>
-
                                     @endif
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="box box-success">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Submit Registration</h3>
                             </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
                             <div class="box-body">
                                 <button type="submit" class="btn btn-block btn-success btn-lg"> Submit </button>
                             </div>
@@ -299,28 +275,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 </form>
             </section>
-
         </div>
+    </div>
 
 
 
 
 
 
-        <script src="{{asset("bower_components/jquery/dist/jquery.min.js")}}"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="{{asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-        <script src="{{asset("bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-        <script src="{{asset("bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
-        <!-- SlimScroll -->
-        <script src="{{asset("bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
-        <!-- FastClick -->
-        <script src="{{asset("bower_components/fastclick/lib/fastclick.js")}}"></script>
-        <!-- AdminLTE App -->
-        <script src="{{asset("/js/adminlte.min.js")}}"></script>
+    <script src="{{asset("bower_components/jquery/dist/jquery.min.js")}}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="{{asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+    <!-- SlimScroll -->
+    <script src="{{asset("bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
+    <!-- FastClick -->
+    <script src="{{asset("bower_components/fastclick/lib/fastclick.js")}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset("/js/adminlte.min.js")}}"></script>
 
 
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
 </body>
