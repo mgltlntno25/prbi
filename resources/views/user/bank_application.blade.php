@@ -79,7 +79,7 @@
                                                 <br>
 
                                                 @if(!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
-                                                ->where('application_status', '=','submitted')->where('application_description','insured')->first()
+                                                ->where('application_status', '=','verified')->where('application_description','insured')->first()
                                                 )
                                                 <p style="font-size: 25px; font-weight: bold;">Amount to be paid:&nbsp;
                                                     220 PHP</p>

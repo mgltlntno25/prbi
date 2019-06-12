@@ -382,9 +382,9 @@ class UserController extends Controller
         $payments->user_email = Auth::guard('user')->user()->email;
         $payments->payment_description = $al->application_description;
         if (Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
-            ->where('application_status', '=', 'submitted')->where('application_description', 'premium')->first()
+            ->where('application_status', '=', 'verified')->where('application_description', 'premium')->first()
         ) {
-            $payments->payment_amount = 200;
+            $payments->payment_amount = 220;
         } else
             $payments->payment_amount = 500;
 
@@ -397,17 +397,10 @@ class UserController extends Controller
         $aaudit->user_email = Auth::guard('user')->user()->email;
         $aaudit->action = " Member " . Auth::guard('user')->user()->prbi_id . "  Submitted Upgrade Application Payment. ";
         $aaudit->save();
-
-
-
-
-
         $payments->save();
-
-
-
         return redirect('user/myapplication')->with('success', 'Payment successfully submitted.');
     }
+
 
 
 
@@ -509,11 +502,53 @@ class UserController extends Controller
         $payments->status = 'submitted';
         $payments->bank_date = Carbon::now()->format('Y-m-d');
         $payments->save();
+        $aaudit = new User_AuditTrail;
+        $aaudit->user_id = Auth::guard('user')->user()->prbi_id;
+        $aaudit->user_name = Auth::guard('user')->user()->first_name . ' ' . Auth::guard('user')->user()->last_name;
+        $aaudit->user_email = Auth::guard('user')->user()->email;
+        $aaudit->action = " Member " . Auth::guard('user')->user()->prbi_id . "  Paid via PayPal. ";
+        $aaudit->save();
 
         return redirect('user/myevents')->with('success', 'Event successfully registered.');
+    }
+
+    public function PayPal_application()
+    {
+        $al = Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)->first();
+
+        $ev_l = \App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
+            ->where('application_description', '=', $al->application_description)
+            ->update(['payment_status' => 'submitted']);
+        $payments = new Payment;
+
+        $payments->user_id = Auth::guard('user')->user()->prbi_id;
+        $payments->user_name = Auth::guard('user')->user()->first_name . " " . Auth::guard('user')->user()->last_name;
+        $payments->user_email = Auth::guard('user')->user()->email;
+        $payments->payment_description = $al->application_description;
+        if (Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
+            ->where('application_status', '=', 'verified')->where('application_description', 'premium')->first()
+        ) {
+            $payments->payment_amount = 220;
+        } else
+            $payments->payment_amount = 500;
+
+        $payments->trans_number = "VIA PAYPAL";
+        $payments->deposit_image = "paypal";
+        $payments->status = 'submitted';
+        $payments->bank_date = Carbon::now()->format('Y-m-d');
+        $payments->save();
 
 
-        
+
+        $aaudit = new User_AuditTrail;
+        $aaudit->user_id = Auth::guard('user')->user()->prbi_id;
+        $aaudit->user_name = Auth::guard('user')->user()->first_name . ' ' . Auth::guard('user')->user()->last_name;
+        $aaudit->user_email = Auth::guard('user')->user()->email;
+        $aaudit->action = " Member " . Auth::guard('user')->user()->prbi_id . "  Paid via PayPal. ";
+        $aaudit->save();
+
+        return redirect('user/events')->with('success', 'Profile successfully upgraded.');
+
     }
 
     public function BankDeposit(Request $request, $id)

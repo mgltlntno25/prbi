@@ -586,6 +586,7 @@ Route::group(
         });
 
         Route::get('user/dopaypal/{id}', 'UserController@Paypal');
+        Route::get('user/dopaypal','UserController@PayPal_application');
 
 
 
@@ -596,6 +597,16 @@ Route::group(
         });
 
         Route::post('user/dobankdeposit/{id}', 'UserController@BankDeposit');
+
+        Route::get('user/application_paypal/', function(){
+            if(!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
+            ->where('application_status', '=','submitted')->where('application_description','insured')->first()){
+                
+                
+            }
+            return view('user/modepayment_paypal');
+
+        });
 
 
 
@@ -618,9 +629,9 @@ Route::group(
         Route::post('user/doadddonation', 'UserController@UploadDonation');
 
         //Payment routes
-        Route::get('/payment', 'Payments@payWithpaypal')->name('payment');
-        Route::get('/status/upgrade/{key}', 'Payments@getPaymentStatusUpgrade');
-        Route::get('/status/event/{key}', 'Payments@getPaymentStatusEvent');
+        // Route::get('/payment', 'Payments@payWithpaypal')->name('payment');
+        // Route::get('/status/upgrade/{key}', 'Payments@getPaymentStatusUpgrade');
+        // Route::get('/status/event/{key}', 'Payments@getPaymentStatusEvent');
     }
 
 );
