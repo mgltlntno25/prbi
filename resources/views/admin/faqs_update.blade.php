@@ -67,7 +67,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             Update FAQs
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{url('/admin/faqs')}}"><i class="fa fa-image>"></i> FAQs</a></li>
+            <li><a href="{{url('/admin/faqs')}}"><i class="fa fa-question-circle"></i> FAQs</a></li>
+            <li>Main </li>
             <li class="active">Update FAQs {{$faqs->id}}</li>
           </ol>
         </section>

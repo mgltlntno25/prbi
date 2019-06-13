@@ -11,7 +11,7 @@
       <small>Members</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Regular Members</a></li>
+      <li><a href="#"><i class="fa fa-users"></i> Regular Members</a></li>
       <li class="active">Main</li>
     </ol>
   </section>

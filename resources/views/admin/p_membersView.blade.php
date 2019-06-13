@@ -7,11 +7,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Members
+      Premium Members
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-image>"></i> Announcements</a></li>
-      <li class="active">Update</li>
+      <li><a href="#"><i class="fa fa-user"></i> Premium Members</a></li>
+      <li>Main</li>
+      <li class="active">{{$member->first_name . ' ' . $member->last_name}}</li>
     </ol>
   </section>
 

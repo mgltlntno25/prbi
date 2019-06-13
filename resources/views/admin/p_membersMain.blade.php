@@ -12,7 +12,7 @@
       <small>Members</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Premium Members</a></li>
+      <li><a href="#"><i class="fa fa-users"></i> Premium Members</a></li>
       <li class="active">Main</li>
     </ol>
   </section>
@@ -61,8 +61,9 @@
               <td>{{$member->first_name}} {{$member->last_name}}</td>
               <td>{{$member->email}}</td>
               <td>{{$member->contact}}</td>
-              <td>{{$member->status}}</td>
               <td><img src="{{ url("img/qrcode/". $member->qrcode) }}" height="80" width="80"></td>
+              <td>{{$member->status}}</td>
+
               <td><button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="View Member" onclick="window.location='{{url("admin/premium_members/" . $member->id)}}'"><i class="fa fa-eye"></i> </button>
                 @if($member->status == 'active')
                 <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate Account" data-toggle="modal" data-target="#statusModal{{ $member->id }}"><i class="fa fa-close"></i>

@@ -61,17 +61,18 @@
             @foreach($sponsors as $sponsor)
             <tr>
               <td>{{$sponsor->id}} </td>
-              <td><img src="{{ url("/img/sponsor/". $sponsor->sponsor_image) }}" width="80" height="80"></td>
+              <td><img src="{{ url("/img/sponsor/". $sponsor->sponsor_image) }}" width="100" height="80"></td>
               <td>{{$sponsor->sponsor_name}} </td>
               <td>{{$sponsor->status}} </td>
               <td>
-                <button type="button" class="btn btn-info"  data-placement="top" title="View Sponsor" data-toggle="modal" data-target="#view-modal{{$sponsor->id}}"><i class="fa fa-eye"></i></button>
-                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Update Sponsor" onclick="window.location='{{url("admin/sponsor/" . $sponsor->id)}}'"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-info" data-placement="top" title="View Sponsor" data-toggle="modal" data-target="#view-modal{{$sponsor->id}}"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-warning" data-placement="top" title="Update Sponsor" data-toggle="modal" data-target="#name-modal{{$sponsor->id}}"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-warning" data-placement="top" title="Update Sponsor Image" data-toggle="modal" data-target="#image-modal{{$sponsor->id}}"><i class="fa fa-image"></i></button>
                 @if($sponsor->status == 'active')
-                <button type="button" class="btn btn-danger" data-toggle="modal"  data-placement="top" title="Deactive Sponsor" data-target="#statusModal{{ $sponsor->id }}"><i class="fa fa-close"></i>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-placement="top" title="Deactive Sponsor" data-target="#statusModal{{ $sponsor->id }}"><i class="fa fa-close"></i>
                 </button>
                 @elseif($sponsor->status == 'inactive')
-                <button type="button" class="btn btn-success" data-toggle="modal"  data-placement="top" title="Activate Sponsor" data-target="#statusModal{{ $sponsor->id }}"><i class="fa fa-check"></i>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-placement="top" title="Activate Sponsor" data-target="#statusModal{{ $sponsor->id }}"><i class="fa fa-check"></i>
                 </button>
                 @endif
 
@@ -117,18 +118,94 @@
                       <label for="formGroupExampleInput">Sponsor Name</label>
                       <input type="text" class="form-control" name="name" placeholder="Title" disabled value="{{$sponsor->sponsor_name}}">
                     </div>
-                  <div class="modal-footer">
-                    <p align="right">
-                      <button type="button" class="btn btn-primary mb-2" data-dismiss="modal"><i class="fa fa-close"></i>
-                        Back
-                      </button>
-                    </p>
+                    <div class="modal-footer">
+                      <p align="right">
+                        <button type="button" class="btn btn-primary mb-2" data-dismiss="modal"><i class="fa fa-close"></i>
+                          Back
+                        </button>
+                      </p>
+                    </div>
                   </div>
-                  </form>
+                  <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-content -->
+                <!-- /.modal-dialog -->
               </div>
-              <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+
+
+            <!-- modal  image-->
+            <div class="modal fade" id="image-modal{{ $sponsor->id }}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><b>{{$sponsor->sponsor_name}}</b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <form action="{{ url('admin/doupdatesponsorimage/' . $sponsor->id) }}" method='post' enctype='multipart/form-data'>
+                        {{ csrf_field() }}
+                        <label for="formGroupExampleInput">Sponsor Image</label>
+                        <input type="file" class="form-control" name="sponsor_image">
+                    </div>
+                    <div class="modal-footer">
+                      <p align="right">
+                        <button type="submit" class="btn btn-warning mb-2"><i class="fa fa-edit"></i>
+                          Update
+                        </button>
+                        </form>
+                        <button type="button" class="btn btn-primary mb-2" data-dismiss="modal"><i class="fa fa-close"></i>
+                          Back
+                        </button>
+
+                      </p>
+
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+            </div>
+            <!-- /.modal -->
+
+            <!-- modal  name-->
+            <div class="modal fade" id="name-modal{{ $sponsor->id }}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><b>{{$sponsor->sponsor_name}}</b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <form action="{{ url('admin/doupdatesponsor/' . $sponsor->id) }}" method='post'>
+                        {{ csrf_field() }}
+                        <label for="formGroupExampleInput">Sponsor Name</label>
+                        <input type="text" class="form-control" name="name" value="{{$sponsor->sponsor_name}}">
+                    </div>
+                    <div class="modal-footer">
+                      <p align="right">
+                        <button type="submit" class="btn btn-warning mb-2"><i class="fa fa-edit"></i>
+                          Update
+                        </button>
+                        </form>
+                        <button type="button" class="btn btn-primary mb-2" data-dismiss="modal"><i class="fa fa-close"></i>
+                          Back
+                        </button>
+
+                      </p>
+
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
             </div>
             <!-- /.modal -->
             @endforeach

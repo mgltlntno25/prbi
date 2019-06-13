@@ -33,7 +33,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+
     {!! NoCaptcha::renderJs() !!}
+
 </head>
 
 <body class="hold-transition skin-black layout-top-nav">
@@ -96,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="input-group-addon">
                                                 <i class="fa fa-mobile"></i>
                                             </div>
-                                            <input type="number" class="form-control" name="contact" placeholder="Contact" value="{{ old('contact') }}">
+                                            <input type="number" class="form-control" name="contact" placeholder="E.g. 09273647321" value="{{ old('contact') }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -127,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </div>
-                                        <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
+                                        <input type="email" class="form-control" name="email" placeholder="E.g. islaw@prbi.com" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -239,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="input-group-addon">
                                             <i class="fa fa-mobile"></i>
                                         </div>
-                                        <input type="number" class="form-control" name="emergency_contact" placeholder="Emergency Contact Number" value="{{ old('emergency_contact') }}">
+                                        <input type="number" class="form-control" name="emergency_contact" placeholder="E.g. 09274392834" value="{{ old('emergency_contact') }}">
                                     </div>
                                 </div>
                                 <!-- /.box-body -->

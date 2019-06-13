@@ -87,8 +87,9 @@ desired effect
             Update Events
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Events</a></li>
-            <li class="active">Update</li>
+            <li><a href="#"><i class="fa fa-calendar"></i> Events</a></li>
+            <li>Main</li>
+            <li class="active">Update  {{$events->event_name}}</li>
           </ol>
         </section>
 
@@ -124,24 +125,24 @@ desired effect
             <!-- /.box-header -->
             <div class="box-body">
               <img src="{{ url("/img/events_banner/". $events->event_image) }}" height="350" width="100%">
-
-              <form action="{{url('/admin/doupdateevents/'. $events->id)}}" method='post' enctype='multipart/form-data'>
-                {{ csrf_field() }}
+              <br>
+              <br>
+              <br>
+              <div class="col-md-12">
                 <div class="form-group">
-                  <input type="hidden" class="form-control" name="event_id" value="{{$events->id}}" disabled>
+                  <button type="button" class="btn btn-warning mb-2" data-toggle="modal" data-target="#modal-image"><i class="fa fa-image"></i> Update Event Image </button>
                 </div>
-                <br>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="formGroupExampleInput">Event Image</label>
-                    <input type="file" class="form-control" name="event_image" placeholder="Name">
-                  </div>
-                </div>
-                <br>
-                <br>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
+              </div>
+              <br>
+              <br>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <form action="{{url('/admin/doupdateevents/'. $events->id)}}" method='post' enctype='multipart/form-data'>
+                      {{ csrf_field() }}
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" name="event_id" value="{{$events->id}}" disabled>
+                      </div>
                       <div class="form-group">
                         <label for="formGroupExampleInput">Event Name</label>
                         <input type="text" class="form-control" name="event_name" value="{{$events->event_name}}">
@@ -157,60 +158,60 @@ desired effect
                           <input type="text" class="form-control" name="location" value="{{$events->location}}">
                         </div>
                       </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Event Date</label>
+                      <input type="date" class="form-control" name="event_date" value="{{$events->event_date}}">
                     </div>
-                    <div class="col-md-5">
-                      <div class="form-group">
-                        <label for="formGroupExampleInput2">Event Date</label>
-                        <input type="date" class="form-control" name="event_date" value="{{$events->event_date}}">
-                      </div>
-                      <div class="form-group">
-                        <label for="formGroupExampleInput2">End of Registration</label>
-                        <input type="date" class="form-control" name="end_reg" value="{{$events->end_reg}}">
-                      </div>
-                      @if($events->amount == null)
-                      <div class="form-group">
-                        <label for="formGroupExampleInput2">Ammount</label>
-                        <input type="number" name="amount" class="form-control" value="{{old('amount')}}">
-                      </div>
-                      @else
-                      <div class="form-group">
-                        <label for="formGroupExampleInput2">Ammount</label>
-                        <input type="number" name="amount" class="form-control" value="{{$events->amount}}">
-                      </div>
-                      @endif
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">End of Registration</label>
+                      <input type="date" class="form-control" name="end_reg" value="{{$events->end_reg}}">
                     </div>
+                    @if($events->amount == null)
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Ammount</label>
+                      <input type="number" name="amount" class="form-control" value="{{old('amount')}}">
+                    </div>
+                    @else
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Ammount</label>
+                      <input type="number" name="amount" class="form-control" value="{{$events->amount}}">
+                    </div>
+                    @endif
                   </div>
                 </div>
-                <br>
-                <br>
-                <br>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-11">
-                      <label> Additional Information </label>
-                      <hr>
-                      @if($events->description == null)
-                      <div class="form-group">
-                        <label> Description </label>
-                        <textarea class="form-control summernote" name="description">{{old('description')}}</textarea>
-                      </div>
-                      @else
-                      <div class="form-group">
-                        <label> Description </label>
-                        <textarea class="form-control summernote" name="description">{{$events->description}}</textarea>
-                      </div>
-                      @endif
-                      <br>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-11">
+                    <label> Additional Information </label>
+                    <hr>
+                    @if($events->description == null)
+                    <div class="form-group">
+                      <label> Description </label>
+                      <textarea class="form-control summernote" name="description">{{old('description')}}</textarea>
                     </div>
+                    @else
+                    <div class="form-group">
+                      <label> Description </label>
+                      <textarea class="form-control summernote" name="description">{{$events->description}}</textarea>
+                    </div>
+                    @endif
+                    <br>
                   </div>
                 </div>
+              </div>
 
-                <hr>
+              <hr>
 
-                <p align=" right">
-                  <button type="submit" class="btn btn-warning mb-2"><i class="fa fa-edit"></i> Update </button>
-                  <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("admin/events")}}'"><i class="fa fa-close"></i> Back</button>
-                </p>
+              <p align=" right">
+                <button type="submit" class="btn btn-warning mb-2"><i class="fa fa-edit"></i> Update </button>
+                <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url("admin/events")}}'"><i class="fa fa-close"></i> Back</button>
+              </p>
 
               </form>
             </div>
@@ -218,81 +219,110 @@ desired effect
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+
+          <!-- /.col -->
+          <!-- /.row -->
+        </section>
+        <!-- /.content -->
       </div>
-      <!-- /.col -->
-  </div>
-  <!-- /.row -->
-  </section>
-  <!-- /.content -->
-  </div>
+
+      <div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change Banner Image</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{{url('admin/doupdateeventsimage/' . $events->id )}}" method='post' enctype='multipart/form-data'>
+                {{ csrf_field() }}
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Image</label><br>
+                  <input type="file" class="form-control" name="event_image" placeholder="Name">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning">Update </button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+              </button>
+
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 
 
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
 
-    </div>
-    <!-- Default to the left -->
-    <center><strong>Copyright &copy; 2019 <a href="#">LUCKY ACES</a>.</strong> All rights reserved.</center>
-  </footer>
 
-  <!-- Control Sidebar -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+          <!-- To the right -->
+          <div class="pull-right hidden-xs">
 
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
+          </div>
+          <!-- Default to the left -->
+          <center><strong>Copyright &copy; 2019 <a href="#">LUCKY ACES</a>.</strong> All rights reserved.</center>
+        </footer>
+
+        <!-- Control Sidebar -->
+
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-  </div>
-  <!-- ./wrapper -->
+        <div class="control-sidebar-bg"></div>
+      </div>
+      <!-- ./wrapper -->
 
-  <!-- REQUIRED JS SCRIPTS -->
-
-
-  <!-- jQuery 3 -->
-  <script src="{{asset("bower_components/jquery/dist/jquery.min.js")}}"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="{{asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-  <script src="{{asset("bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-  <script src="{{asset("bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
-  <!-- SlimScroll -->
-  <script src="{{asset("bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
-  <!-- FastClick -->
-  <script src="{{asset("bower_components/fastclick/lib/fastclick.js")}}"></script>
-  <!-- AdminLTE App -->
-  <script src="{{asset("/js/adminlte.min.js")}}"></script>
+      <!-- REQUIRED JS SCRIPTS -->
 
 
+      <!-- jQuery 3 -->
+      
+      <!-- Bootstrap 3.3.7 -->
+      <script src="{{asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
+      <script src="{{asset("bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+      <script src="{{asset("bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+      <!-- SlimScroll -->
+      <script src="{{asset("bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
+      <!-- FastClick -->
+      <script src="{{asset("bower_components/fastclick/lib/fastclick.js")}}"></script>
+      <!-- AdminLTE App -->
+      <script src="{{asset("/js/adminlte.min.js")}}"></script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
-
-  <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 
-  <script>
-    $(function() {
-      $('#example1').DataTable()
-      $('#example2').DataTable({
-        'paging': true,
-        'lengthChange': false,
-        'searching': false,
-        'ordering': true,
-        'info': true,
-        'autoWidth': false
-      })
-    })
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.summernote').summernote({
-        height: 450,
-      });
-    });
-  </script>
-  <!-- Optionally, you can add Slimscroll and FastClick plugins.
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+      <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+
+      <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+      <script>
+        $(function() {
+          $('#example1').DataTable()
+          $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+          })
+        })
+      </script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.summernote').summernote({
+            height: 450,
+          });
+        });
+      </script>
+      <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
 </body>

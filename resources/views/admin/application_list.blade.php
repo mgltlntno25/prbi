@@ -7,11 +7,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Application
+            Application List
             <small>Dashboard</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Application</a></li>
+            <li><a href="#"><i class="fa fa-list"></i> Application List</a></li>
             <li class="active">Main</li>
         </ol>
     </section>
@@ -58,7 +58,7 @@
                             <td>{{$application_list->user_id}}</td>
                             <td>{{$application_list->user_name}}</td>
                             <td>{{$application_list->user_email}}</td>
-                            <td><button type="button" class="btn btn-primary"  data-placement="top" title="View Valid ID" data-toggle="modal" data-target="#view-modal{{ $application_list->id }}"><i class="fa fa-eye"></i>
+                            <td><button type="button" class="btn btn-primary" data-placement="top" title="View Valid ID" data-toggle="modal" data-target="#view-modal{{ $application_list->id }}"><i class="fa fa-eye"></i>
                                 </button></td>
                             <td>{{$application_list->application_description}}</td>
                             <td>{{$application_list->payment_status}}</td>
@@ -67,7 +67,7 @@
                                 @if($application_list->application_status == 'submitted')
                                 <button type="button" class="btn btn-success" data-placement="top" title="Verfify Application" data-toggle="modal" data-target="#verify{{ $application_list->id }}"><i class="fa fa-check"></i>
                                 </button>
-                                <button type="button" class="btn btn-warning"  data-placement="top" title="Reject Application" data-toggle="modal" data-target="#reject{{ $application_list->id }}"><i class="fa fa-close"></i>
+                                <button type="button" class="btn btn-warning" data-placement="top" title="Reject Application" data-toggle="modal" data-target="#reject{{ $application_list->id }}"><i class="fa fa-close"></i>
                                 </button>
                                 @endif
                                 @if($application_list->application_status == 'verified' || $application_list->application_status == 'rejected')

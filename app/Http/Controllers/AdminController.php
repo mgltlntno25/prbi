@@ -31,7 +31,7 @@ use App\Sponsor;
 class AdminController extends Controller
 {
     //
-    
+
 
 
     public function AdminLogin(Request $request)
@@ -39,7 +39,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => 'required|string',
             'email' => 'required|string',
-            
+
         ]);
 
         if ($validator->fails()) {
@@ -317,7 +317,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'sponsor_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'name' => 'required|max:255',
-           
+
 
         ]);
 
@@ -350,45 +350,44 @@ class AdminController extends Controller
         $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Added Sponsor. ";
         $aaudit->save();
 
-        return redirect()->back()->with('success', 'Banner successfully added.');
+        return redirect()->back()->with('success', 'Sponsor successfully added.');
     }
 
     public function ChangeStatusSponsor($id)
     {
-        $banners = Banner::find($id);
+        $sponsor = Sponsor::find($id);
 
-        if ($banners->status == 'active') {
-            $banners->status = 'inactive';
-            $banners->save();
+        if ($sponsor->status == 'active') {
+            $sponsor->status = 'inactive';
+            $sponsor->save();
             $aaudit = new AdminAuditTrail;
             $aaudit->user_id = Auth::guard('admin')->user()->id;
             $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
             $aaudit->user_email = Auth::guard('admin')->user()->email;
-            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Deactivated Banner. ";
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Deactivated Sponsor. ";
             $aaudit->save();
-            return redirect()->back()->with('success', 'Banner successfully deactivated.');
+            return redirect()->back()->with('success', 'Sponsor successfully deactivated.');
         }
 
-        if ($banners->status == 'inactive') {
-            $banners->status = 'active';
-            $banners->save();
+        if ($sponsor->status == 'inactive') {
+            $sponsor->status = 'active';
+            $sponsor->save();
             $aaudit = new AdminAuditTrail;
             $aaudit->user_id = Auth::guard('admin')->user()->id;
             $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
             $aaudit->user_email = Auth::guard('admin')->user()->email;
-            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Activated Banner. ";
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Activated Sponsor. ";
             $aaudit->save();
-            return redirect()->back()->with('success', 'Banner successfully activated.');
+            return redirect()->back()->with('success', 'Sponsor successfully activated.');
         }
     }
 
     public function UpdateSponsor(Request $request, $id)
     {
-        $banners = Banner::find($id);
-
+        $sponsor = Sponsor::find($id);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
+            'name' => 'required|max:255',
+
 
         ]);
 
@@ -399,24 +398,60 @@ class AdminController extends Controller
                 ->withInput();
         }
 
-        $banners->title = $request->title;
-        $banners->description = $request->description;
-        $banners->save();
+        $sponsor->sponsor_name = $request->name;
+        $sponsor->save();
         $aaudit = new AdminAuditTrail;
         $aaudit->user_id = Auth::guard('admin')->user()->id;
         $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
         $aaudit->user_email = Auth::guard('admin')->user()->email;
-        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Banner. ";
+        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Sponsor Name. ";
         $aaudit->save();
 
-        return redirect()->back()->with('success', 'Banner successfully updated.');
+        return redirect()->back()->with('success', 'Sponsor Name successfully updated.');
+    }
+
+    public function UpdateSponsorImage(Request $request, $id)
+    {
+
+        $sponsor = Sponsor::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'sponsor_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if ($request->hasFile('sponsor_image')) {
+            $image = $request->file('sponsor_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/sponsor/' . $filename);
+            //$thumbnail = public_path('img/banners_thumb/' . $filename);
+            Image::make($image)->save($location);
+            //Image::make($image)->resize(150, 50)->save($thumbnail);
+        }
+
+        $sponsor->sponsor_image = $filename;
+        $sponsor->save();
+        $aaudit = new AdminAuditTrail;
+        $aaudit->user_id = Auth::guard('admin')->user()->id;
+        $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+        $aaudit->user_email = Auth::guard('admin')->user()->email;
+        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Sponsor Image. ";
+        $aaudit->save();
+
+        return redirect()->back()->with('success', 'Sponsor Image successfully updated.');
     }
 
     public function AddAnnouncements(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
 
         ]);
 
@@ -529,7 +564,7 @@ class AdminController extends Controller
             'event_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'event_name' => 'required|max:255',
             'location' => 'required|max:255',
-            'event_date' => 'required|date|after:' . $month . ',',
+            'event_date' => 'required|date|unique:events,event_date|after:' . $month . ',',
             'start_reg' => 'required|date|before:event_date|after:tomorrow',
             'end_reg' => 'required|date|after_or_equal:start_reg|before:event_date',
         ]);
@@ -568,7 +603,7 @@ class AdminController extends Controller
 
         $events->save();
 
-        return $events;
+        return redirect()->back()->with('success', 'Event successfully added.');
     }
 
     public function UpdateEvent(Request $request, $id)
@@ -576,14 +611,13 @@ class AdminController extends Controller
         $events = \App\Event::find($id);
 
         $validator = Validator::make($request->all(), [
-            'event_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'event_name' => 'required|max:255',
             'location' => 'required|max:255',
             'event_date' => 'required|date',
             'start_reg' => 'required|date|before:event_date',
             'end_reg' => 'required|date|after_or_equal:start_reg|before:event_date',
             'description' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|min:50',
         ]);
 
         if ($validator->fails()) {
@@ -595,14 +629,14 @@ class AdminController extends Controller
 
 
 
-        if ($request->hasFile('event_image')) {
-            $image = $request->file('event_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('img/events_banner/' . $filename);
-            $thumbnail = public_path('img/events_thumb/' . $filename);
-            Image::make($image)->save($location);
-            Image::make($image)->resize(315, 200)->save($thumbnail);
-        }
+        // if ($request->hasFile('event_image')) {
+        //     $image = $request->file('event_image');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $location = public_path('img/events_banner/' . $filename);
+        //     $thumbnail = public_path('img/events_thumb/' . $filename);
+        //     Image::make($image)->save($location);
+        //     Image::make($image)->resize(315, 200)->save($thumbnail);
+        // }
 
         $dom = new \DomDocument();
         $dom->loadHtml($request->description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -627,7 +661,6 @@ class AdminController extends Controller
         $events->location = $request->location;
         $events->event_date = $request->event_date;
         $events->start_reg = $request->start_reg;
-        $events->event_image = $filename;
         $events->end_reg = $request->end_reg;
         $events->description = $request->description;
         $events->amount = $request->amount;
@@ -639,8 +672,45 @@ class AdminController extends Controller
         $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Event. ";
         $aaudit->save();
 
-        return redirect()->back()->with('success', 'Event successfully added.');
+        return redirect()->back()->with('success', 'Event successfully updated.');
     }
+    public function UpdateEventsImage(Request $request, $id)
+    {
+
+        $events = Event::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'event_image' => 'required|image|mimes:jpeg,bmp,png,jpg',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if ($request->hasFile('event_image')) {
+            $image = $request->file('event_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/events_banner/' . $filename);
+            $thumbnail = public_path('img/events_thumb/' . $filename);
+            Image::make($image)->save($location);
+            Image::make($image)->resize(150, 50)->save($thumbnail);
+        }
+
+        $events->event_image = $filename;
+        $events->save();
+        $aaudit = new AdminAuditTrail;
+        $aaudit->user_id = Auth::guard('admin')->user()->id;
+        $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+        $aaudit->user_email = Auth::guard('admin')->user()->email;
+        $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Updated Banner Image. ";
+        $aaudit->save();
+
+        return redirect()->back()->with('success', 'Banner Image successfully updated.');
+    }
+
 
 
     public function ChangeStatusEvents($id)

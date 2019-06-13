@@ -69,7 +69,7 @@
                             <td>{{$event->status}}</td>
                             <td>
 
-                                <button type="button" class="btn btn-info" data-placement="top" title="View Event" data-toggle="modal" data-target="#view-modal{{$event->id}}"><i class="fa fa-eye"></i></button>
+                                <button type="button" class="btn btn-info" data-placement="top" data-toggle="tootltip" title="View Event" onclick="window.location='{{url("admin/view_event/" . $event->id)}}'"><i class="fa fa-eye"></i></button>
                                 @if(!App\Event_list::where('event_id',$event->id)->exists())
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="No registrations in this event" class="btn btn-info" onclick="window.location='{{url("admin/events/events_lists/" . $event->id)}}'" disabled><i class="fa fa-list"> </i> </button>
                                 @else

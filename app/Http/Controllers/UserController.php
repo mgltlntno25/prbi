@@ -71,15 +71,15 @@ class UserController extends Controller
             'emergency_contact' => 'required|numeric|digits:11',
             'birthday' => 'required|date|before:15 years ago',
             'gender' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()
-        //         ->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $filename = 'qr' . time() . '.png';
         $user = new User;
@@ -94,11 +94,16 @@ class UserController extends Controller
         $user->emergency_contact = $request->emergency_contact;
         $user->birthday = $request->birthday;
         $user->gender = $request->gender;
+        if($request->gender == "male"){
+            $user->profile_image = 'avatar.png';
+        }else{
+            $user->profile_image = 'avatar2.png';
+        }
         $user->blood_type = $request->bloodtype;
         $user->qrcode = $filename;
         $user->status = 'active';
         $token = $request->input('g-recaptcha-response');
-        dd($token);
+        
         $user->save();
 
         User::where('id', $user->id)
@@ -353,7 +358,7 @@ class UserController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            'deposit_image' => 'required|max:255',
+            'deposit_image' => 'required|max:3000',
             'trans_number' => 'required|max:255',
             'bank_date' => 'required|date',
 

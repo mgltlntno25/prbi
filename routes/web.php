@@ -276,8 +276,17 @@ Route::group(
             $data['events_list'] = \App\Event_list::all();
             return view('admin/eventsMain', $data);
         });
+
+        Route::get('admin/view_event/{id}',function($id){
+
+            $data['events'] = App\Event::find($id);
+            return view('admin/event_view',$data);
+
+        });
+
         Route::post('admin/doaddevent', 'AdminController@AddEvents');
         Route::get('admin/dochangestatusevent/{id}', 'AdminController@ChangeStatusEvents');
+        Route::post('admin/doupdateeventsimage/{id}', 'AdminController@UpdateEventsImage');
         Route::get('admin/events/{id}', function ($id) {
             $data['events'] = \App\Event::find($id);
 
@@ -471,6 +480,10 @@ Route::group(
             $data['sponsors'] = App\Sponsor::find($id);
             return view('admin/update_sponsor',$data);
         });
+
+        Route::get('admin/dochangestatussponsor/{id}', 'AdminController@ChangeStatusSponsor');
+        Route::post('admin/doupdatesponsorimage/{id}', 'AdminController@UpdateSponsorImage');
+        Route::post('admin/doupdatesponsor/{id}', 'AdminController@UpdateSponsor');
     }
 );
 
@@ -676,12 +689,13 @@ Route::group(
     ['middleware' => ['guest']],
     function () {
         Route::get('/', function () {
-            $data['admins'] = \App\Admin::where('status', '=', 'active')->get();
+            $data['admins'] = \App\Admin::where('status', '=', 'active')->where('email','!=','test@gmail.com')->get();
             $data['users_count'] = \App\User::where('status', '=', 'active')->count();
             $data['events_count'] = \App\Event::where('status', '=', 'active')->count();
             $data['afs_count'] = \App\AffiliatedStore::where('status', '=', 'active')->count();
-            $data['faqs'] = \App\FAQ::all();
-            $data['sponsors'] = \App\Sponsor::all();
+            $data['faqs'] = \App\FAQ::where('status', '=', 'active')->get();
+            $data['sponsors'] = \App\Sponsor::where('status', '=', 'active')->get();
+            $data['events'] = \App\Event::all();
             return view('welcome', $data);
         });
 
@@ -712,6 +726,5 @@ Route::group(
     }
 );
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

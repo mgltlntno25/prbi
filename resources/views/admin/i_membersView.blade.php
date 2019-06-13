@@ -7,11 +7,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Members
+      Insured Members
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-image>"></i> Announcements</a></li>
-      <li class="active">Update</li>
+      <li><a href="#"><i class="fa fa-user"></i> Insured Members</a></li>
+      <li>Main</li>
+      <li class="active">{{$member->first_name . ' ' . $member->last_name}}</li>
     </ol>
   </section>
 
@@ -39,7 +40,7 @@
                   @elseif($member->isPremium == 1 && $member->isInsured == 0)
                   <p> a <b> Premium Member</b></p>
                   @elseif($member->isPremium == 1 && $member->isInsured == 1)
-                  <p> a <b>Insured Member</b></p>
+                  <p> an <b>Insured Member</b></p>
                   @endif
                   <p> PRBI-ID: <b>{{$member->prbi_id}}</b></p>
                 </div>

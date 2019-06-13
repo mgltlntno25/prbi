@@ -12,7 +12,8 @@
       Update Banner
     </h1>
     <ol class="breadcrumb">
-      <li><a href="{{url('/admin/banners')}}"><i class="fa <fa-image></fa-image>"></i> Banners</a></li>
+      <li><a href="{{url('/admin/banners')}}"><i class="fa fa-image"></i> Banners</a></li>
+      <li>Main</li>
       <li class="active">Update Banner {{$banners->id}}</li>
     </ol>
   </section>
@@ -115,9 +116,10 @@
                 </div>
             </div>
             <div class="modal-footer">
+              <button type="submit" class="btn btn-warning">Update </button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
               </button>
-              <button type="submit" class="btn btn-primary">Save changes</a>
+
             </div>
             </form>
           </div>

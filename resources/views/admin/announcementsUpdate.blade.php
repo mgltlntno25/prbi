@@ -86,7 +86,8 @@ desired effect
             Update Announcements
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{url('admin/announcements')}}"><i class="fa fa-image>"></i> Announcements</a></li>
+            <li><a href="{{url('admin/announcements')}}"><i class="fa fa-microphone"></i> Announcements</a></li>
+            <li>Main </li>
             <li class="active">Update</li>
           </ol>
         </section>
@@ -152,8 +153,9 @@ desired effect
                         Do you really want to update this Announcement?
                       </div>
                       <div class="modal-footer">
+                      <button type="submit" class="btn btn-warning">Save changes</a>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</a>
+                        
                       </div>
                     </div>
                   </div>

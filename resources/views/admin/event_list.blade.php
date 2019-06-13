@@ -11,8 +11,9 @@
             <small>Dashboard</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Events</a></li>
-            <li class="active">Main</li>
+            <li><a href="#"><i class="fa fa-list"></i> Events</a></li>
+            <li> Main </li>
+            <li class="active">Event Lists</li>
         </ol>
     </section>
 

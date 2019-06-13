@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	
+
 	<title>Pinoy Road Bikers Inc.</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -48,7 +48,9 @@
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">Pinoy Road Bikers Inc.</a>
+				<a href="#" class="navbar-brand">
+					<font color="#e74c3c">P</font>inoy <font color="#f1c40f">R</font>oad <font color="#2980b9">B</font>ikers Inc.
+				</a>
 			</div>
 
 			<div class="collapse navbar-collapse">
@@ -113,10 +115,15 @@
 
 				<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
 					<h3>Pinoy Road Bikers Inc.</h3>
-					<p>This is a Bootstrap v3.3.6 layout that is responsive and mobile friendly. You may download and modify this template
-						for your website. Please tell your friends about templatemo.</p>
-					<p>Quisque facilisis scelerisque venenatis. Nam vulputate ultricies luctus. Lorem ipsum dolor sit amet, consectetuer adipiscing
-						elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+					S.E.C Reg.No CN201810967<br><br>
+					<p>Is a non-stock, non-porfit legal entity. 
+					First action as corporation - to enter in a contract
+					an insurance company to provide the group with insurance
+					policy at a reasonable cost.
+					As a corporation, we can now open a bank account for donations, tie up with business establishment to secure 
+					discount and sue on behalf of members.
+					</p>
+					<br> MABUHAY PRBI! #goodvibes
 				</div>
 
 				<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.9s">
@@ -192,11 +199,17 @@
 
 				<div class="wow fadeInUp col-md-6 col-sm-10" data-wow-delay="1.3s">
 					<h2>UPGRADE TO PREMIUM</h2>
-					<h3>Quisque ut libero sapien. Integer tellus nisl, efficitur sed dolor at, vehicula finibus massa. Sed tincidunt metus sed
-						eleifend suscipit.</h3>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
-						magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
-					<p></p>
+					<h3>Enjoy 10% discounts on all of our affiliated stores.</h3>
+					<p>Also avail our insurance and get: </p>
+					<p>
+						<ul>
+							<li>
+								60,000 pesos for accidental death dismemberment</li>
+							<li>12,500 reimbursements for hospitalization expenses</li>
+							<li>5,000 pesos for burial assistance.</li>
+
+						</ul>
+					</p>
 				</div>
 				<div class="wow fadeInUp col-md-6 col-sm-10" data-wow-delay="1.6s">
 					<div class="embed-responsive embed-responsive-16by9">
@@ -233,7 +246,7 @@
 							<img src="{{ url("/img/admindp/". $admin->profile_image)  }}" class="img-responsive" alt="speakers" height="80" width="80">
 							<div class="speakers-thumb">
 								<h3>{{$admin->fname}} {{$admin->lname}} </h3>
-								<h6>{{$admin->email}} </h6>
+
 							</div>
 						</div>
 					</div>
@@ -470,8 +483,8 @@
 				<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
 					<h2>DOWNLOAD OUR MOBILE APPLICATION NOW</h2>
 					<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
-						magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
+					<p align="right"><button type="submit" class="btn btn-success lg-2"><i class="fa fa-download"></i> DOWNLOAD NOW!</button>
+					</p>
 				</div>
 				<div class="wow fadeInUp col-md-5" data-wow-delay="1s">
 					<image src="{{asset("homepage/images/mobile.png")}}" height="500" width="500"></image>
@@ -519,7 +532,7 @@
 							</div>
 						</div>
 						@endforeach
-						
+
 					</div>
 				</div>
 
@@ -564,17 +577,17 @@
 					</div>
 				</div>
 
-				
+
 				@foreach ($sponsors as $sponsor)
 				<div class="wow fadeInUp col-md-3 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-					<img src="{{asset("img/sponsor/" . $sponsor->sponsor_image)}}"  width="150" heigh="100" class="img-responsive" alt="sponsors">
+					<img src="{{asset("img/sponsor/" . $sponsor->sponsor_image)}}" width="150" heigh="100" class="img-responsive" alt="sponsors">
 				</div>
 
 
 
 
 				@endforeach
-				
+
 
 			</div>
 		</div>

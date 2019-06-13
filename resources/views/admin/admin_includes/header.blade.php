@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset("bower_components/Ionicons/css/ionicons.min.css")}}">
   <!-- Morris charts -->
   <link rel="stylesheet" href="{{asset("bower_components/morris.js/morris.css")}}">
-  
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -38,6 +38,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <![endif]-->
 
   <!-- Google Font -->
+  <style>
+    input[type = number]::-webkit - inner - spin - button,
+      input[type = number]::-webkit - outer - spin - button {
+        -webkit - appearance: none;
+        margin: 0;
+      }
+  </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <!--
@@ -74,4 +81,3 @@ desired effect
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><img src="{{asset("img/prbi_logo2.png")}}" height="30" width="210"></span>
       </a>
-      
