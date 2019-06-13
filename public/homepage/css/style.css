@@ -156,7 +156,7 @@ footer {
     Preloader section              
 -----------------------------------------*/
 
-/* .preloader {
+.preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -168,7 +168,7 @@ footer {
     justify-content: center;
     align-items: center;
     background: none repeat scroll 0 0 #ffffff;
-} */
+}
 
 .sk-rotating-plane {
     width: 50px;
