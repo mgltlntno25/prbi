@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset("/img/islaw.png")}}" />
 	<title>Pinoy Road Bikers Inc.</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -116,12 +116,12 @@
 				<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
 					<h3>Pinoy Road Bikers Inc.</h3>
 					S.E.C Reg.No CN201810967<br><br>
-					<p>Is a non-stock, non-porfit legal entity. 
-					First action as corporation - to enter in a contract
-					an insurance company to provide the group with insurance
-					policy at a reasonable cost.
-					As a corporation, we can now open a bank account for donations, tie up with business establishment to secure 
-					discount and sue on behalf of members.
+					<p>Is a non-stock, non-porfit legal entity.
+						First action as corporation - to enter in a contract
+						an insurance company to provide the group with insurance
+						policy at a reasonable cost.
+						As a corporation, we can now open a bank account for donations, tie up with business establishment to secure
+						discount and sue on behalf of members.
 					</p>
 					<br> MABUHAY PRBI! #goodvibes
 				</div>
@@ -167,22 +167,19 @@
 				<div class="wow fadeInLeft col-md-4 col-sm-4" data-wow-delay="0.3s">
 					<i class="fa fa-group"></i>
 					<h3>{{$users_count}} Active Members</h3>
-					<p>Quisque ut libero sapien. Integer tellus nisl, efficitur sed dolor at, vehicula finibus massa. Sed tincidunt metus sed
-						eleifend suscipit.</p>
+					<p>Come and be a part of a wonderful community</p>
 				</div>
 
 				<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
 					<i class="fa fa-calendar"></i>
 					<h3>{{$events_count}} Events</h3>
-					<p>Quisque ut libero sapien. Integer tellus nisl, efficitur sed dolor at, vehicula finibus massa. Sed tincidunt metus sed
-						eleifend suscipit.</p>
+					<p>Join our fun and challenging events! Test your ability and compete with other cyclist</p>
 				</div>
 
 				<div class="wow fadeInRight col-md-4 col-sm-4" data-wow-delay="0.9s">
 					<i class="fa fa-shopping-cart"></i>
 					<h3>{{$afs_count}} Affiliated Stores</h3>
-					<p>Quisque ut libero sapien. Integer tellus nisl, efficitur sed dolor at, vehicula finibus massa. Sed tincidunt metus sed
-						eleifend suscipit.</p>
+					<p>You can avail 10% discounts on all regular prices. Just visit out affiliated stores and present your PRBi-card</p>
 				</div>
 
 			</div>
@@ -232,7 +229,7 @@
 				<div class="col-md-12 col-sm-12 wow bounceIn">
 					<div class="section-title">
 						<h2>Meet our Admins</h2>
-						<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet.</p>
+						<p>The foundation of the Pinoy Road Bikers Inc.</p>
 					</div>
 				</div>
 
@@ -267,208 +264,11 @@
 
 				<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.6s">
 					<div class="section-title">
-						<h2>Our Programs</h2>
-						<p>Quisque ut libero sapien. Integer tellus nisl, efficitur sed dolor at, vehicula finibus massa. Sed tincidunt metus
-							sed eleifend suscipit.</p>
+						
 					</div>
 				</div>
 
-				<div class="wow fadeInUp col-md-10 col-sm-10" data-wow-delay="0.9s">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="active">
-							<a href="#fday" aria-controls="fday" role="tab" data-toggle="tab">FIRST DAY</a>
-						</li>
-						<li>
-							<a href="#sday" aria-controls="sday" role="tab" data-toggle="tab">SECOND DAY</a>
-						</li>
-						<li>
-							<a href="#tday" aria-controls="tday" role="tab" data-toggle="tab">THIRD DAY</a>
-						</li>
-					</ul>
-					<!-- tab panes -->
-					<div class="tab-content">
 
-						<div role="tabpanel" class="tab-pane active" id="fday">
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img1.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 09.00 AM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 240</span>
-								</h6>
-								<h3>Introduction to Design</h3>
-								<h4>By Jenny Green</h4>
-								<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed
-									aliquam fringilla vestibulum.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img2.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 10.00 AM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 360</span>
-								</h6>
-								<h3>Front-End Development</h3>
-								<h4>By Johnathan Mark</h4>
-								<p>Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum. Praesent ullamcorper mauris fermentum
-									turpis scelerisque rutrum eget eget turpis.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img3.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 11.00 AM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 450</span>
-								</h6>
-								<h3>Social Media Marketing</h3>
-								<h4>By Johnathan Doe</h4>
-								<p>Nam pulvinar, elit vitae rhoncus pretium, massa urna bibendum ex, aliquam efficitur lorem odio vitae erat. Integer
-									rutrum viverra magna, nec ultrices risus rutrum nec.</p>
-							</div>
-						</div>
-
-						<div role="tabpanel" class="tab-pane" id="sday">
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img4.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 11.00 AM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 240</span>
-								</h6>
-								<h3>Backend Development</h3>
-								<h4>By Matt Lee</h4>
-								<p>Integer rutrum viverra magna, nec ultrices risus rutrum nec. Pellentesque interdum vel nisi nec tincidunt. Quisque
-									facilisis scelerisque venenatis. Nam vulputate ultricies luctus.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img5.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 01.00 PM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 450</span>
-								</h6>
-								<h3>Web Application Lite</h3>
-								<h4>By David Orlando</h4>
-								<p>Aliquam faucibus lobortis dolor, id pellentesque eros pretium in. Aenean in erat ut quam aliquet commodo. Vivamus
-									aliquam pulvinar ipsum ut sollicitudin. Suspendisse quis sollicitudin mauris.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img6.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 03.00 PM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 650</span>
-								</h6>
-								<h3>Professional UX Design</h3>
-								<h4>By James Lee Mark</h4>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
-									magna aliquam erat volutpat.</p>
-							</div>
-						</div>
-
-						<div role="tabpanel" class="tab-pane" id="tday">
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img7.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 03.00 PM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 750</span>
-								</h6>
-								<h3>Online Shopping Business</h3>
-								<h4>By Michael Walker</h4>
-								<p>Aliquam faucibus lobortis dolor, id pellentesque eros pretium in. Aenean in erat ut quam aliquet commodo. Vivamus
-									aliquam pulvinar ipsum ut sollicitudin. Suspendisse quis sollicitudin mauris.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img8.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 05.00 PM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 850</span>
-								</h6>
-								<h3>Introduction to Mobile App</h3>
-								<h4>By Cherry Stella</h4>
-								<p>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.
-									Mauris justo erat, rhoncus in arcu at, scelerisque tempor erat.</p>
-							</div>
-
-							<!-- program divider -->
-							<div class="program-divider col-md-12 col-sm-12"></div>
-
-							<!-- program speaker here -->
-							<div class="col-md-2 col-sm-2">
-								<img src="images/program-img9.jpg" class="img-responsive" alt="program">
-							</div>
-							<div class="col-md-10 col-sm-10">
-								<h6>
-									<span>
-										<i class="fa fa-clock-o"></i> 07.00 PM</span>
-									<span>
-										<i class="fa fa-map-marker"></i> Room 750</span>
-								</h6>
-								<h3>Bootstrap UI Design</h3>
-								<h4>By John David</h4>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
-									magna aliquam erat volutpat.</p>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
 			</div>
 	</section>
 
@@ -482,8 +282,8 @@
 
 				<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
 					<h2>DOWNLOAD OUR MOBILE APPLICATION NOW</h2>
-					<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
-					<p align="right"><button type="submit" class="btn btn-success lg-2"><i class="fa fa-download"></i> DOWNLOAD NOW!</button>
+					<h3>to get updates when your passing bike shops. Help other cyclist who are in need, take a photo and send it. Save Lives mga ka Islaw!</h3>
+					<p align="right"><a href="https://play.google.com/" type="button" class="btn btn-success lg-2"><i class="fa fa-download"></i> DOWNLOAD NOW!</a>
 					</p>
 				</div>
 				<div class="wow fadeInUp col-md-5" data-wow-delay="1s">
@@ -509,7 +309,7 @@
 				<div class="wow bounceIn col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 text-center">
 					<div class="section-title">
 						<h2>Do you have Questions?</h2>
-						<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet.</p>
+						<p></p>
 					</div>
 				</div>
 
@@ -520,7 +320,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="headingOne">
 								<h4 class="panel-title">
-									<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
 										{{$faq->title}}
 									</a>
 								</h4>
@@ -548,7 +348,7 @@
 		<div class="container">
 			<div class="row">
 
-				<div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
+				<!-- <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
 					<h2>Venue</h2>
 					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
 						magna aliquam erat volutpat.</p>
@@ -556,8 +356,9 @@
 					<h4>120 Market Street, Suite 110</h4>
 					<h4>San Francisco, CA 10110</h4>
 					<h4>Tel: 010-020-0120</h4>
-				</div>
+				</div> -->
 
+				<br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 	</section>
@@ -573,7 +374,7 @@
 				<div class="wow bounceIn col-md-12 col-sm-12">
 					<div class="section-title">
 						<h2>Our Sponsors</h2>
-						<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet.</p>
+						<p>Pinoy Road Bikers Inc. is powered by:</p>
 					</div>
 				</div>
 
@@ -603,21 +404,20 @@
 
 				<div class="wow fadeInUp col-md-offset-1 col-md-5 col-sm-6" data-wow-delay="0.6s">
 					<div class="contact_des">
-						<h3>New Event</h3>
-						<p>Proin sodales convallis urna eu condimentum. Morbi tincidunt augue eros, vitae pretium mi condimentum eget. Suspendisse
-							eu turpis sed elit pretium congue.</p>
-						<p>Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum. Praesent ullamcorper mauris fermentum
-							turpis scelerisque rutrum eget eget turpis.</p>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore
-							magna aliquam erat volutpat. Lorem ipsum dolor.</p>
-						<a href="#" class="btn btn-danger">DOWNLOAD NOW</a>
+						<font color="white">
+							<h3>Contact Us!</h3>
+						</font>
+						<p>
+							<font color="white">Tells us your concerns, suggestions, questions.<br> Email us at islaw.prbi@gmail.com #goodvibes!</font>
+						</p>
+
 					</div>
 				</div>
 
 				<div class="wow fadeInUp col-md-5 col-sm-6" data-wow-delay="0.9s">
 					<div class="contact_detail">
 						<div class="section-title">
-							<h2>Keep in touch</h2>
+							<h2></h2>
 						</div>
 						<form action="#" method="post">
 							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
@@ -643,25 +443,13 @@
 			<div class="row">
 
 				<div class="col-md-12 col-sm-12">
-					<p class="wow fadeInUp" data-wow-delay="0.6s">Copyright &copy; 2016 Your Company | Design:
+					<p class="wow fadeInUp" data-wow-delay="0.6s">Copyright &copy; 2019 LUCKY A.C.E.S | Design:
 						<a rel="nofollow" href="http://www.templatemo.com/page/1" target="_parent">Templatemo</a>
 					</p>
 
 					<ul class="social-icon">
 						<li>
-							<a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a>
-						</li>
-						<li>
-							<a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a>
-						</li>
-						<li>
-							<a href="#" class="fa fa-dribbble wow fadeInUp" data-wow-delay="1.6s"></a>
-						</li>
-						<li>
-							<a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a>
-						</li>
-						<li>
-							<a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="2s"></a>
+							<a href="https://www.facebook.com/groups/PRBInc/" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a>
 						</li>
 					</ul>
 

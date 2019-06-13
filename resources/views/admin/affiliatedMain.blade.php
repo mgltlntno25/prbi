@@ -65,7 +65,7 @@
                         @foreach($affiliatedstores as $affiliatedstore)
                         <tr>
                             <td>{{ $affiliatedstore->id }}</td>
-                            <td><img src="{{ url("/img/affiliateddp_thumb/". $affiliatedstore->image)  }} " width="100" height="100"></td>
+                            <td><img src="{{ url("/img/affiliateddp/". $affiliatedstore->image)  }} " width="130" height="100"></td>
                             <td>{{$affiliatedstore->store_name}}</td>
                             <td>{{$affiliatedstore->store_owner}}</td>
                             <td>{{$affiliatedstore->email}}</td>
@@ -114,10 +114,10 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">Admin Profile</h4>
+                                        <h4 class="modal-title">Affilaited Store Profile</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="{{ url("/img/affiliateddp/". $affiliatedstore->image)  }} ">
+                                        <img src="{{ url("/img/affiliateddp/". $affiliatedstore->image)  }} " width="100%">
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Store Name</label>
                                             <input type="text" class="form-control" name="store_name" placeholder="Store Name" value="{{ $affiliatedstore->store_name }}" disabled>

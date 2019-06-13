@@ -178,7 +178,7 @@
     var donut = new Morris.Donut({
       element: 'sales-chart',
       resize: true,
-      colors: ["#e74c3c", "#3498db", "#f1c40f"],
+      colors: ["#e74c3c", "#3498db", "#f1c40f", "#36d7b7"],
       data: [{
           label: "Regular Members",
           value: {{$d_regular}}

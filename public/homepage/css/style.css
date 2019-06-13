@@ -156,7 +156,7 @@ footer {
     Preloader section              
 -----------------------------------------*/
 
-.preloader {
+/* .preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -168,7 +168,7 @@ footer {
     justify-content: center;
     align-items: center;
     background: none repeat scroll 0 0 #ffffff;
-}
+} */
 
 .sk-rotating-plane {
     width: 50px;
@@ -445,7 +445,7 @@ footer {
 -----------------------------------------*/
 
 #register {
-    background: url('../images/register-bg.jpg') 50% 0 repeat-y fixed;
+    background: url('../images/bg9.jpg') 50% 0 repeat-y fixed;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
@@ -551,7 +551,7 @@ footer {
 -----------------------------------------*/
 
 #venue {
-    background: url('../images/venue-bg.jpg') 50% 0 repeat-y fixed;
+    background: url('../images/bg8.jpg') 50% 0 repeat-y fixed;
     background-size: cover;
     background-position: center center;
     padding-top: 7rem;
@@ -578,7 +578,7 @@ footer {
 -----------------------------------------*/
 
 #contact {
-    background: url('../images/contact-bg.jpg') 50% 0 repeat-y fixed;
+    background: url('../images/bg1.jpg') 50% 0 repeat-y fixed;
     background-size: cover;
     background-position: center center;
 }

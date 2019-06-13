@@ -10,11 +10,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Donations
+            Application List
             <small>Dashboard</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Donations</a></li>
+            <li><a href="#"><i class="fa <fa-image></fa-image>"></i> Application List</a></li>
             <li class="active">Main</li>
         </ol>
     </section>
@@ -40,13 +40,13 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>PRBI ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Category</th>
+                            <th>My ID</th>
                             <th>Payment Status</th>
                             <th>Application Status</th>
                         </tr>
@@ -57,8 +57,8 @@
                             <td>{{$application_list->user_id}}</td>
                             <td>{{$application_list->user_name}}</td>
                             <td>{{$application_list->user_email}}</td>
-                            <td>{{$application_list->valid_id}}</td>
-                            @if($application_list->application_status == 'verified' && $application_list->payment_status == 'inactive')
+                            <td> <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#id"><i class="fa fa-eye"></i></button>
+                                @if($application_list->application_status == 'verified' && $application_list->payment_status == 'inactive')
                             <td> <button type="button" class="btn btn-primary mb-2" onclick="window.location='{{url('user/application_paymentmethod')}}'"> PAY NOW!</button>
                             </td>
                             @elseif($application_list->payment_status == 'rejected' && $application_list->application_status == 'verified')
@@ -70,7 +70,30 @@
 
                             <td>{{$application_list->application_status}}</td>
                         </tr>
-                        @endforeach
+                        <div class="modal fade" id="id">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Valid ID</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput"></label>
+                                            <img src="{{ url("/img/user_validid/". $application_list->valid_id) }}" height="250" width="570">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p align="right">
+                                            <button type="button" class="btn btn-primary mb-2" data-dismiss="modal"><i class="fa fa-close"></i>
+                                                Back
+                                            </button>
+                                        </p>
+                                    </div>
+                                    </form>
+                                </div>
+                                @endforeach
 
                     </tbody>
 

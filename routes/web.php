@@ -679,6 +679,15 @@ Route::group(
             $data['users'] = \App\User::find($id);
             return view('affiliated_store/findmember', $data);
         });
+
+        Route::get('affiliatedstore/profile',function(){
+
+            return view('affiliated_store/profile');
+        });
+
+        Route::post('affiliatedstore/doupdateprofile/','AffiliatedStoreController@UpdateProfile');
+        Route::post('affiliatedstore/doupdateprofileimage/','AffiliatedStoreController@UpdateProfileImage');
+        Route::post('affiliatedstore/doupdatepassword/','AffiliatedStoreController@UpdatePassword');
     }
 );
 

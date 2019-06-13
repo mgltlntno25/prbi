@@ -17,14 +17,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{asset("/img/userdp/". Auth::guard('affiliatedstore')->user()->image)}}" class="user-image" alt="User Image">
+              <img src="{{asset("/img/affiliateddp/". Auth::guard('affiliatedstore')->user()->image)}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{Auth::guard('affiliatedstore')->user()->store_name}} </span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{asset("/img/userdp/". Auth::guard('affiliatedstore')->user()->image)}}" class="img-circle" alt="User Image">
+                <img src="{{asset("/img/affiliateddp/". Auth::guard('affiliatedstore')->user()->image)}}"  class="img-circle" alt="User Image">
 
                 <p>
                   {{Auth::guard('affiliatedstore')->user()->store_name}}  <br>
@@ -51,7 +51,7 @@
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-left">
-              <a href="{{url('user/profile')}}" type="button" class="btn btn-primary mb-2"><i class="fa fa-user"></i> Profile </button></a>
+              <a href="{{url('affiliatedstore/profile')}}" type="button" class="btn btn-primary mb-2"><i class="fa fa-user"></i> Profile </button></a>
             </div>
             <div class="pull-right">
               <a href="{{url('/logout')}}" type="button" class="btn btn-danger mb-2"><i class="fa fa-user"></i> Logout </button></a>

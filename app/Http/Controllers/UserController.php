@@ -445,6 +445,7 @@ class UserController extends Controller
         $donations->trans_number = $request->trans_number;
         $donations->bank_date = $request->bank_date;
         $donations->amount = $request->amount;
+        $donations->status = "submitted";
         $donations->save();
         $aaudit = new User_AuditTrail;
         $aaudit->user_id = Auth::guard('user')->user()->prbi_id;

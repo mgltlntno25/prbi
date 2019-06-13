@@ -939,8 +939,8 @@ class AdminController extends Controller
     public function VerifyDonations($id)
     {
         $donations = Donation::find($id);
-        if ($donations->status == 'inactive') {
-            $donations->status = 'active';
+        if ($donations->status == 'submitted') {
+            $donations->status = 'verified';
 
             $donations->save();
             $aaudit = new AdminAuditTrail;

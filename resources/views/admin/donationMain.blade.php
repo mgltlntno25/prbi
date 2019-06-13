@@ -61,11 +61,11 @@
               <td><button type="button" class="btn btn-info" data-placement="top" title="View Image" data-toggle="modal" data-target="#view-modal{{$donation->id}}"><i class="fa fa-eye"></i> </td>
               <td>{{$donation->status}}</td>
               <td>
-                @if($donation->status == 'inactive')
+                @if($donation->status == 'submitted')
                 <button type="button" class="btn btn-success" data-placement="top" title="Verify Donation" data-toggle="modal" data-target="#statusModal{{ $donation->id }}"><i class="fa fa-check"></i>
                 </button>
                 @endif
-                @if($donation->status == 'inactive')
+                @if($donation->status == 'submitted')
                 <button type="button" class="btn btn-warning" data-placement="top" title="Reject Donation" data-toggle="modal" data-target="#rejectModal{{ $donation->id }}"><i class="fa fa-close"></i>
                 </button>
                 @endif
