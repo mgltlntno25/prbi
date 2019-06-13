@@ -67,7 +67,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">TOTAL DONATIONS</span>
-            <span class="info-box-number">{{$total_donations}}</span>
+            <span class="info-box-number">{{$total_donations}} PHP</span>
           </div>
           <!-- /.info-box-content -->
         </div>
