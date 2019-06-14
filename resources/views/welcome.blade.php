@@ -419,12 +419,12 @@
 						<div class="section-title">
 							<h2></h2>
 						</div>
-						<form action="#" method="post">
+						
 							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
 							<input name="email" type="email" class="form-control" id="email" placeholder="Email">
 							<textarea name="message" rows="5" class="form-control" id="message" placeholder="Message"></textarea>
 							<div class="col-md-6 col-sm-10">
-								<input name="submit" type="submit" class="form-control" id="submit" value="SEND">
+								<input name="#" type="submit" class="form-control" id="submit" value="SEND">
 							</div>
 						</form>
 					</div>
