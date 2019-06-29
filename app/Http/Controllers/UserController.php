@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
 use App\UserLoginSession;
 use App\User_AuditTrail;
 use App\Rules\Captcha;
+use Illuminate\Support\Facades\App;
 
 class UserController extends Controller
 {
@@ -622,4 +623,19 @@ class UserController extends Controller
 
         return redirect('user/myevents')->with('success', 'Event successfully registered.');
     }
+
+
+    //mobile 
+
+    public function m_login(Request $request){
+
+        $data['user'] = \App\User::where('email',$request->email)
+        ->where('password',Bcrypt($request->password))
+        ->where('status','active')
+        ->get();
+
+        return response()->json($data);
+        
+    }
+
 }

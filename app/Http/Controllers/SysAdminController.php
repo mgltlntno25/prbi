@@ -7,6 +7,8 @@ use App\Admin;
 use App\AdminAuditTrail;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use App\SysAdmin;
+use function GuzzleHttp\json_encode;
 
 class SysAdminController extends Controller
 {
@@ -79,4 +81,7 @@ class SysAdminController extends Controller
             return redirect()->back()->with('success', 'Admin successfully activated.');
         }
     }
+
+
+    
 }

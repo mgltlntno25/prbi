@@ -71,7 +71,7 @@ Route::group(
                         null,
                         // Add color and link on event
                         [
-                            'color' => "#".random_color1(),
+                            'color' => "#" . random_color1(),
 
                         ]
                     );
@@ -79,7 +79,7 @@ Route::group(
             }
             $data['calendar'] = Calendar::addEvents($events);
 
-            
+
 
             $data['total_payment'] = App\Payment::where('status', 'verified')->sum('payment_amount');
             // $data['total_donations'] = App\Payment::where('status','verified')->sum('payment_amount');
@@ -100,7 +100,7 @@ Route::group(
             $data['d_insured'] = App\User::where('status', 'active')
                 ->where('isPremium', 1)->where('isInsured', 1)
                 ->count();
-                $data['admin'] = App\Admin::where('status', 'active')
+            $data['admin'] = App\Admin::where('status', 'active')
                 ->count();
 
             return view('system_admin/sysad_dashboard', $data);
@@ -189,7 +189,7 @@ Route::group(
                         null,
                         // Add color and link on event
                         [
-                            'color' => "#".random_color(),
+                            'color' => "#" . random_color(),
 
                         ]
                     );
@@ -269,19 +269,18 @@ Route::group(
             $event = \App\Event::select(
                 'events.event_name',
                 'event_lists.event_name as list_name'
-            )->join('event_lists','events.id','event_lists.id')->get();
+            )->join('event_lists', 'events.id', 'event_lists.id')->get();
 
-            
+
             $data['events'] = \App\Event::all();
             $data['events_list'] = \App\Event_list::all();
             return view('admin/eventsMain', $data);
         });
 
-        Route::get('admin/view_event/{id}',function($id){
+        Route::get('admin/view_event/{id}', function ($id) {
 
             $data['events'] = App\Event::find($id);
-            return view('admin/event_view',$data);
-
+            return view('admin/event_view', $data);
         });
 
         Route::post('admin/doaddevent', 'AdminController@AddEvents');
@@ -468,17 +467,16 @@ Route::group(
             return view('admin/user_log', $data);
         });
 
-        Route::get('admin/sponsors',function(){
+        Route::get('admin/sponsors', function () {
 
             $data['sponsors'] = App\Sponsor::all();
-            return view('admin/sponsor',$data);
-
+            return view('admin/sponsor', $data);
         });
 
         route::post('admin/doaddsponsor', 'AdminController@AddSponsor');
-        Route::get('admin/sponsors/{id}', function($id){
+        Route::get('admin/sponsors/{id}', function ($id) {
             $data['sponsors'] = App\Sponsor::find($id);
-            return view('admin/update_sponsor',$data);
+            return view('admin/update_sponsor', $data);
         });
 
         Route::get('admin/dochangestatussponsor/{id}', 'AdminController@ChangeStatusSponsor');
@@ -599,13 +597,13 @@ Route::group(
             return view('user/user_modepayment', $data);
         });
 
-        Route::get('user/paypal/{id}', function($id){
+        Route::get('user/paypal/{id}', function ($id) {
             $data['events'] = \App\Event::find($id);
             return view('user/user_paypalpayment', $data);
         });
 
         Route::get('user/dopaypal/{id}', 'UserController@Paypal');
-        Route::get('user/dopaypal','UserController@PayPal_application');
+        Route::get('user/dopaypal', 'UserController@PayPal_application');
 
 
 
@@ -617,14 +615,10 @@ Route::group(
 
         Route::post('user/dobankdeposit/{id}', 'UserController@BankDeposit');
 
-        Route::get('user/application_paypal/', function(){
-            if(!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
-            ->where('application_status', '=','submitted')->where('application_description','insured')->first()){
-                
-                
-            }
+        Route::get('user/application_paypal/', function () {
+            if (!App\Application_List::where('user_id', '=', Auth::guard('user')->user()->prbi_id)
+                ->where('application_status', '=', 'submitted')->where('application_description', 'insured')->first()) { }
             return view('user/modepayment_paypal');
-
         });
 
 
@@ -680,14 +674,14 @@ Route::group(
             return view('affiliated_store/findmember', $data);
         });
 
-        Route::get('affiliatedstore/profile',function(){
+        Route::get('affiliatedstore/profile', function () {
 
             return view('affiliated_store/profile');
         });
 
-        Route::post('affiliatedstore/doupdateprofile/','AffiliatedStoreController@UpdateProfile');
-        Route::post('affiliatedstore/doupdateprofileimage/','AffiliatedStoreController@UpdateProfileImage');
-        Route::post('affiliatedstore/doupdatepassword/','AffiliatedStoreController@UpdatePassword');
+        Route::post('affiliatedstore/doupdateprofile/', 'AffiliatedStoreController@UpdateProfile');
+        Route::post('affiliatedstore/doupdateprofileimage/', 'AffiliatedStoreController@UpdateProfileImage');
+        Route::post('affiliatedstore/doupdatepassword/', 'AffiliatedStoreController@UpdatePassword');
     }
 );
 
@@ -698,7 +692,7 @@ Route::group(
     ['middleware' => ['guest']],
     function () {
         Route::get('/', function () {
-            $data['admins'] = \App\Admin::where('status', '=', 'active')->where('email','!=','test@gmail.com')->get();
+            $data['admins'] = \App\Admin::where('status', '=', 'active')->where('email', '!=', 'test@gmail.com')->get();
             $data['users_count'] = \App\User::where('status', '=', 'active')->count();
             $data['events_count'] = \App\Event::where('status', '=', 'active')->count();
             $data['afs_count'] = \App\AffiliatedStore::where('status', '=', 'active')->count();
@@ -735,5 +729,25 @@ Route::group(
     }
 );
 
+Route::get('/map',function(){
+    return view('admin/map');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+// mobile routes
+
+//user
+
+Route::prefix('api')->group(
+    function () {
+        route::post('/login', 'APIController@login');
+
+        route::post('/profile', 'APIController@profile');
+
+        route::post('/update/profile', 'APIController@update');
+
+        Route::get('/register', function () {
+            $data['events'] = \App\Event::all();
+            return response()->json($data);
+        });
+    }
+);
