@@ -15,6 +15,17 @@ class CreateIncidentReportsTable extends Migration
     {
         Schema::create('incident_reports', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('user_id');
+            $table->string('user_name');
+            $table->string('user_email');
+            $table->string('user_contact');
+            $table->string('report_image');
+            $table->longText('report_detail');
+            $table->string('longitude');
+            $table->string('latitude');
+            $table->string('status')->default('inactive');
+
+            
             $table->timestamps();
         });
     }

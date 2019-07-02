@@ -7,6 +7,8 @@ use Validator;
 use Symfony\Component\HttpFoundation\Response;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Image;
+use Illuminate\Support\Facades\App;
 
 class APIController extends Controller
 {
@@ -68,6 +70,48 @@ class APIController extends Controller
         'last_name' => $request->last_name,
         'email' => $request->email,
         'contact' => $request->contact]);
+
+
+    }
+
+
+    public function report_incident (Request $request){
+        $validator = Validator::make($request->all(), [
+            'report_image' => 'required',
+            'report_detail' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $data['error'] = true;
+            $data['message'] = 'Fill all required fields';
+            return response()->json($data);
+        }
+
+
+        if ($request->hasFile('report_image')) {
+            $image = $request->file('report_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/incident_report/' . $filename);
+            //$thumbnail = public_path('img/admindp_thumb/' . $filename);
+            Image::make($image)->save($location);
+            //Image::make($image)->resize(150, 50)->save($thumbnail);
+
+        }
+
+        $ir = new \App\IncidentReport;
+        $ir->user_id = $request->user_id;
+        $ir->user_name = $request->user_name;
+        $ir->user_email = $request->user_email;
+        $ir->user_contact = $request->user_contact;
+        $ir->report_detail = $request->report_detail;
+        $ir->latitude = $request->latitude;
+        $ir->longitude = $request->longitude;
+        $ir->status = "inactive";
+
+
+        return $ir;
+
+        
 
 
     }

@@ -1150,6 +1150,38 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'FAQ successfully updated.');
     }
 
+
+    public function ChangeStatusIncidentReport($id){
+    
+        $ir = \App\IncidentReport::find($id);
+
+        if ($ir->status == 'active') {
+            $ir->status = 'inactive';
+            $ir->save();
+
+            $aaudit = new AdminAuditTrail;
+            $aaudit->user_id = Auth::guard('admin')->user()->id;
+            $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+            $aaudit->user_email = Auth::guard('admin')->user()->email;
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Denier Incident Report. ";
+            $aaudit->save();
+            return redirect()->back()->with('success', 'Incident Report successfully denied.');
+        }
+
+        if ($ir->status == 'inactive') {
+            $ir->status = 'active';
+            $ir->save();
+
+            $aaudit = new AdminAuditTrail;
+            $aaudit->user_id = Auth::guard('admin')->user()->id;
+            $aaudit->user_name = Auth::guard('admin')->user()->fname . ' ' . Auth::guard('admin')->user()->lname;
+            $aaudit->user_email = Auth::guard('admin')->user()->email;
+            $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Verified Incident Report. ";
+            $aaudit->save();
+            return redirect()->back()->with('success', 'Incident Report successfully verified.');
+        }
+    }
+
     // if($request->hasFile('image')){
     //     $image = $request->file('image');
     //     $filename = time() . '.' . $image->getClientOriginalExtension();

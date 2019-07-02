@@ -427,8 +427,11 @@ Route::group(
             return view('admin/incidentsMain', $data);
         });
 
-        Route::get('admin/incidentsView', function () {
-            return view('admin/incidentsView');
+        Route::get('admin/incidents/dochangestatusreport/{id}', 'AdminController@ChangeStatusIncidentReport');
+
+        Route::get('admin/report/{id}', function ($id) {
+            $data['ireports'] = \App\IncidentReport::find($id);
+            return view('admin/incidentsView', $data);
         });
 
 
@@ -482,6 +485,9 @@ Route::group(
         Route::get('admin/dochangestatussponsor/{id}', 'AdminController@ChangeStatusSponsor');
         Route::post('admin/doupdatesponsorimage/{id}', 'AdminController@UpdateSponsorImage');
         Route::post('admin/doupdatesponsor/{id}', 'AdminController@UpdateSponsor');
+
+
+        
     }
 );
 
@@ -726,6 +732,7 @@ Route::group(
         Route::post('user/dologin', 'UserController@UserLogin');
         Route::post('sysad/dologin', 'SysAdminController@SysAdLogin');
         Route::post('affiliatedstore/dologin', 'AffiliatedStoreController@ASlogin');
+
     }
 );
 
@@ -749,5 +756,7 @@ Route::prefix('api')->group(
             $data['events'] = \App\Event::all();
             return response()->json($data);
         });
+
+        route::post('/report/doreport','APIController@report_incident');
     }
 );

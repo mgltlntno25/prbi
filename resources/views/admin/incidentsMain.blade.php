@@ -34,10 +34,10 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Sender Email</th>
-              <th>Contact No.</th>
-              <th>Incident Details</th>
+              <th>User ID </th>
+              <th>User Name</th>
+              <th>User Email</th>
+              <th>User Contact No.</th>
               <th>Date</th>
               <th>Status</th>
               <th>Action</th>
@@ -45,24 +45,55 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Juan Dela Cruz</td>
-              <td>jdc@gmail.com
-              </td>
-              <td>09274028293</td>
-              <td>Bike Crash CRITICAL</td>
-              <td>2/14/19</td>
-              <td>Waiting</td>
+              @foreach($ireports as $ireport)
+              <td>{{$ireport->id}}</td>
+              <td>{{$ireport->user_id}}</td>
+              <td>{{$ireport->user_name}}</td>
+              <td>{{$ireport->user_email}}</td>
+              <td>{{$ireport->user_contact}}</td>
+              <td>{{$ireport->created_at}}</td>
+              <td>{{$ireport->status}}</td>
               <td>
-                <button type="button" class="btn btn-info" onclick="window.location='{{url("admin/incidentsView")}}'"><i class="fa fa-eye"></i> View </button>
-                <button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Cancel </button>
+                <button type="button" class="btn btn-info" data-placement="top" data-toggle="tootltip" title="View Incident Report" onclick="window.location='{{url("admin/report/" . $ireport->id)}}'"><i class="fa fa-eye"></i></button>
+                @if($ireport->status == 'active')
+                <button type="button" class="btn btn-danger" data-placement="top" title="Deactivate Event" data-toggle="modal" data-target="#statusModal{{ $ireport->id }}"><i class="fa fa-close"></i>
+                </button>
+                @elseif($ireport->status == 'inactive')
+                <button type="button" class="btn btn-success" data-placement="top" title="Activate Event" data-toggle="modal" data-target="#statusModal{{ $ireport->id }}"><i class="fa fa-check"></i>
+                </button>
+                @endif
 
               </td>
+
             </tr>
           </tbody>
           <tfoot>
           </tfoot>
         </table>
+        <!-- Modal -->
+        <div class="modal fade" id="statusModal{{ $ireport->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Do you really want to change the status of Incident Report No.
+                <b>{{ $ireport->id }} </b>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <a type="button" href="{{ url('/admin/incidents/dochangestatusreport/'. $ireport->id) }}" class="btn btn-primary">Save changes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
         <br>
       </div>
       <!-- /.box-body -->
