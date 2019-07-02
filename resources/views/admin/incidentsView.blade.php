@@ -113,7 +113,7 @@ L.tileLayer(
     }).addTo(mymap);
 
 L.marker([{{$ireports->longitude}}, {{$ireports->latitude}}]).addTo(mymap)
-    .bindPopup("<b>INCIDENT!</b><br />{{$ireports->report_details}}").openPopup();
+    .bindPopup("<b>INCIDENT!</b><br />{{$ireports->report_details}} <br /> {{$ireports->longitude}}, {{$ireports->latitude}}").openPopup();
 
 var popup = L.popup();
 
