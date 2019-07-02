@@ -86,7 +86,7 @@
                     <p align="right"> <button type="submit" class="btn btn-success mb-2"><i class="fa fa-check"></i>
                             Verify</button>
                         <button type="button" class="btn btn-primary mb-2"
-                            onclick="window.location='{{url("admin/incidentsMain")}}'"><i class="fa fa-close"></i>
+                            onclick="window.location='{{url("admin/incidents")}}'"><i class="fa fa-close"></i>
                             Back</button></p>
                     </p>
                 </form>
