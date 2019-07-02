@@ -40,7 +40,7 @@ class APIController extends Controller
                 $aaudit->user_id = $user->prbi_id;
                 $aaudit->user_name = $user->first_name . ' ' . $user->last_name;
                 $aaudit->user_email = $user->email;
-                $aaudit->action = " Member " . $user->prbi_id . " Logged in. ";
+                $aaudit->action = " Member " . $user->prbi_id . " Logged in using Mobile App. ";
                 $aaudit->save();
                 
             }
