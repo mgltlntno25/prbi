@@ -434,6 +434,10 @@ Route::group(
             return view('admin/incidentsView', $data);
         });
 
+        Route::get('admin/report/doreject/{id}', 'AdminController@RejectReport');
+        Route::get('admin/report/doverify/{id}', 'AdminController@VerifyReport');
+    
+
 
         //affiliated store
         Route::get('admin/affiliatedstore', function () {

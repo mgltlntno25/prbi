@@ -26,9 +26,23 @@
     <!-- Main content -->
     <section class="content container-fluid">
 
-        <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+          
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            
 
 
         <!-- Info boxes -->
@@ -82,14 +96,80 @@
                     </div>
 
 
+                    <br>
 
-                    <p align="right"> <button type="submit" class="btn btn-success mb-2"><i class="fa fa-check"></i>
-                            Verify</button>
-                        <button type="button" class="btn btn-primary mb-2"
+                    <p align="right"> 
+                    @if($ireports->status == 'rejected')
+
+                    <button type="button" class="btn btn-primary mb-2"
                             onclick="window.location='{{url("admin/incidents")}}'"><i class="fa fa-close"></i>
                             Back</button></p>
+                    @elseif($ireports->status == 'verified')
+
+                    <button type="button" class="btn btn-primary mb-2"
+                            onclick="window.location='{{url("admin/incidents")}}'"><i class="fa fa-close"></i>
+                            Back</button></p>
+
+                    @else
+                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal" data-target="#reject"><i class="fa fa-close"></i> Reject</button>
+                      <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#verify"><i class="fa fa-check"></i> Verify</button>
+                      <button type="button" class="btn btn-primary mb-2"
+                            onclick="window.location='{{url("admin/incidents")}}'"><i class="fa fa-close"></i>
+                            Back</button></p>
+                  
+                    @endif
+                    
+
+                        
                     </p>
                 </form>
+
+                <!-- modal reject -->
+                <div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Reject Report</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Do you really want to reject this Incident Report No.
+                        <b>{{ $ireports->id }} </b>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <a type="button" href="{{ url('/admin/report/doreject/'. $ireports->id) }}" class="btn btn-danger">Reject</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- modal verifiy -->
+
+                <div class="modal fade" id="verify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Verify Report</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Do you really want to verify this Incident Report No.
+                        <b>{{ $ireports->id }} </b>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <a type="button" href="{{ url('/admin/report/doverify/'. $ireports->id) }}" class="btn btn-success">Verify</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
             </div>
             <!-- /.box-body -->
