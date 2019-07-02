@@ -41,7 +41,7 @@ class APIController extends Controller
                 $aaudit->user_name = $user->first_name . ' ' . $user->last_name;
                 $aaudit->user_email = $user->email;
                 $aaudit->action = " Member " . $user->prbi_id . " Logged in using Mobile App. ";
-                dd($aaudit);
+                $aaudit->save();
 
                 return response()->json($data);
 
