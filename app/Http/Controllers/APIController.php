@@ -34,14 +34,18 @@ class APIController extends Controller
                 $data['error'] = false;
                 $data['message'] = 'Login Successful';
                 $data['data']['id'] = $user->id;
-                return response()->json($data);
+
 
                 $aaudit = new \App\UserLoginSession;
                 $aaudit->user_id = $user->prbi_id;
                 $aaudit->user_name = $user->first_name . ' ' . $user->last_name;
                 $aaudit->user_email = $user->email;
                 $aaudit->action = " Member " . $user->prbi_id . " Logged in using Mobile App. ";
-                $aaudit->save();
+                dd($aaudit);
+
+                return response()->json($data);
+
+                
                 
             }
             if (!(Hash::check($request->password, $user->password))) {
