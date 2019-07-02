@@ -745,7 +745,7 @@ Route::prefix('api')->group(
 
         route::post('/update/profile', 'APIController@update');
 
-        Route::get('/register', function () {
+        Route::get('/events', function () {
             $data['events'] = \App\Event::all();
             return response()->json($data);
         });
