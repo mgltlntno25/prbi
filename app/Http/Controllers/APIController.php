@@ -87,22 +87,26 @@ class APIController extends Controller
             return response()->json($data);
         }
 
+        $encode_string = $request->report_image;
+        $decode_string = base64_decode($encode_string);
 
-        if ($request->hasFile('report_image')) {
-            $image = $request->file('report_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+        if (!empty($decode_string)) {
+            $image = $decode_string;
+            $filename = time() . '.' . "png";
             $location = public_path('img/incident_report/' . $filename);
-            //$thumbnail = public_path('img/admindp_thumb/' . $filename);
             Image::make($image)->save($location);
-            //Image::make($image)->resize(150, 50)->save($thumbnail);
+
+             $filename;
 
         }
+        
 
         $ir = new \App\IncidentReport;
         $ir->user_id = $request->user_id;
         $ir->user_name = $request->user_name;
         $ir->user_email = $request->user_email;
         $ir->user_contact = $request->user_contact;
+        $ir->report_image = $filename;
         $ir->report_detail = $request->report_detail;
         $ir->latitude = $request->latitude;
         $ir->longitude = $request->longitude;
@@ -110,8 +114,6 @@ class APIController extends Controller
 
 
         return $ir;
-
-        
 
 
     }
