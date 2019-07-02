@@ -50,9 +50,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="index2.html" class="logo">
+      <a href="#" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>P</b>RBi</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><img src="{{asset("img/prbi_logo2.png")}}" height="30" width="210"></span>
-      </a>
+  </a>

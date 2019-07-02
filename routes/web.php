@@ -430,7 +430,11 @@ Route::group(
         Route::get('admin/incidents/dochangestatusreport/{id}', 'AdminController@ChangeStatusIncidentReport');
 
         Route::get('admin/report/{id}', function ($id) {
+
             $data['ireports'] = \App\IncidentReport::find($id);
+            if (!App\IncidentReport::where('id', '=', $id)->exists()) {
+                return view('admin/admin_error');
+            }else
             return view('admin/incidentsView', $data);
         });
 
