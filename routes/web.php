@@ -760,11 +760,16 @@ Route::prefix('api')->group(
 
         route::post('/update/profile', 'APIController@update');
 
-        Route::get('/events', function () {
+        Route::post('/events', function () {
             $data['events'] = \App\Event::all();
             return response()->json($data);
         });
 
-        route::post('/report/doreport','APIController@report_incident');
+        Route::post('/reports', function () {
+            $data['reports'] = \App\IncidentReport::all();
+            return response()->json($data);
+        });
+
+        route::post('/reports/doreport','APIController@report_incident');
     }
 );

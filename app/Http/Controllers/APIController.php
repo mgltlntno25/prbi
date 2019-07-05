@@ -46,9 +46,6 @@ class APIController extends Controller
                 $aaudit->save();
 
                 return response()->json($data);
-
-                
-                
             }
             if (!(Hash::check($request->password, $user->password))) {
                 $data['error'] = true;
@@ -59,26 +56,29 @@ class APIController extends Controller
     }
 
     public function profile(Request $request)
-    { 
+    {
         $data['data'] = User::find($request->user_id);
         return response()->json($data);
     }
 
     public function update(Request $request)
-    { 
-        User::where('id', $request->user_id)->update(['first_name' => $request->first_name,
-        'last_name' => $request->last_name,
-        'email' => $request->email,
-        'contact' => $request->contact]);
-
-
+    {
+        User::where('id', $request->user_id)->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'contact' => $request->contact
+        ]);
     }
 
 
-    public function report_incident (Request $request){
+    public function report_incident(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'report_image' => 'required',
             'report_detail' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -96,10 +96,9 @@ class APIController extends Controller
             $location = public_path('img/incident_report/' . $filename);
             Image::make($image)->save($location);
 
-             $filename;
-
+            $filename;
         }
-        
+
 
         $ir = new \App\IncidentReport;
         $ir->user_id = $request->user_id;
@@ -113,10 +112,18 @@ class APIController extends Controller
         $ir->status = "inactive";
 
 
-        return $ir;
+        $aaudit = new \App\User_AuditTrail();
+        $aaudit->user_id ='PRBI-'.$request->user_id;
+        $aaudit->user_name = $request->user_name;
+        $aaudit->user_email = $request->user_email;
+        $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Reported an Incident/Accident using Mobile App. ";
+        $aaudit->save();
 
+
+        $data['error'] = false;
+        $data['message'] = 'Report Submitted!';
+        return response()->json($data);
 
     }
 
-    
 }
