@@ -76,7 +76,7 @@ class APIController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'report_image' => 'required',
-            'report_detail' => 'required',
+            'report_details' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
         ]);
@@ -106,10 +106,11 @@ class APIController extends Controller
         $ir->user_email = $request->user_email;
         $ir->user_contact = $request->user_contact;
         $ir->report_image = $filename;
-        $ir->report_detail = $request->report_detail;
+        $ir->report_details = $request->report_details;
         $ir->latitude = $request->latitude;
         $ir->longitude = $request->longitude;
         $ir->status = "inactive";
+        $ir->save();
 
 
         $aaudit = new \App\User_AuditTrail();
