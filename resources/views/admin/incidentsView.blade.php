@@ -181,7 +181,7 @@
 <!-- /.content-wrapper -->
 @include('admin.admin_includes.footer')
 <script>
-var mymap = L.map('mapid').setView([{{$ireports->longitude}}, {{$ireports->latitude}}], 13);
+var mymap = L.map('mapid').setView([{{$ireports->latitude}}, {{$ireports->longitude}}], 13);
 
 L.tileLayer(
     'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -192,7 +192,7 @@ L.tileLayer(
         id: 'mapbox.streets'
     }).addTo(mymap);
 
-L.marker([{{$ireports->longitude}}, {{$ireports->latitude}}]).addTo(mymap)
+L.marker([{{$ireports->latitude}}, {{$ireports->longitude}}]).addTo(mymap)
     .bindPopup("<b>INCIDENT!</b><br />{{$ireports->report_details}} <br /> {{$ireports->longitude}}, {{$ireports->latitude}}").openPopup();
 
 var popup = L.popup();
