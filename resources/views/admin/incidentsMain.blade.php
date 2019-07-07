@@ -53,8 +53,9 @@
                 <td>
                   <button type="button" class="btn btn-info" data-placement="top" data-toggle="tootltip" title="View Incident Report" onclick="window.location='{{url("admin/report/" . $ireport->id)}}'"><i class="fa fa-eye"></i></button>
                 </td>
-                @endforeach
+                
               </tr>
+              @endforeach
             </tbody>
             <tfoot>
             </tfoot>
