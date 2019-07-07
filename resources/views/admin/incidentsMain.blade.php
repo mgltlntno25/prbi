@@ -44,7 +44,7 @@
               <tr>
                 @foreach($ireports as $ireport)
                 <td>{{$ireport->id}}</td>
-                <td>{{$ireport->user_id}}</td>
+                <td>PRBI-{{$ireport->user_id}}</td>
                 <td>{{$ireport->user_name}}</td>
                 <td>{{$ireport->user_email}}</td>
                 <td>{{$ireport->user_contact}}</td>
