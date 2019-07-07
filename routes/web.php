@@ -765,7 +765,7 @@ Route::prefix('api')->group(
             return response()->json($data);
         });
 
-        Route::post('/reports', function () {
+        Route::get('/reports', function () {
             $data['reports'] = \App\IncidentReport::where('status','verified')->get();
             return response()->json($data);
         });
