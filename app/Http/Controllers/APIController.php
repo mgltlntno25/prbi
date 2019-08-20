@@ -127,4 +127,59 @@ class APIController extends Controller
 
     }
 
+
+
+    public function doDonate(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'deposit_image' => 'required',
+            'trans_number' => 'required|max:255',
+            'bank_date' => 'required|date',
+            'amount' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            $data['error'] = true;
+            $data['message'] = 'Fill all required fields';
+            return response()->json($data);
+        }
+
+        $encode_string = $request->deposit_image;
+        $decode_string = base64_decode($encode_string);
+
+        if (!empty($decode_string)) {
+            $image = $decode_string;
+            $filename = time() . '.' . "png";
+            $location = public_path('img/donation/' . $filename);
+            Image::make($image)->save($location);
+
+            $filename;
+        }
+
+        $donations = new \App\Donation;
+        $donations->deposit_image = $filename;
+        $donations->prbi_id =  'PRBI-'.$request->user_id;
+        $donations->user_name =  $request->user_name;
+        $donations->user_email =  $request->user_email;
+        $donations->trans_number = $request->trans_number;
+        $donations->bank_date = $request->bank_date;
+        $donations->amount = $request->amount;
+        $donations->status = "submitted";
+        $donations->save();
+
+
+
+        $aaudit = new \App\User_AuditTrail();
+        $aaudit->user_id ='PRBI-'.$request->user_id;
+        $aaudit->user_name = $request->user_name;
+        $aaudit->user_email = $request->user_email;
+        $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Donated using Mobile App. ";
+        $aaudit->save();
+
+
+        $data['error'] = false;
+        $data['message'] = 'Report Submitted!';
+        return response()->json($data);
+    }
+
 }

@@ -771,5 +771,6 @@ Route::prefix('api')->group(
         });
 
         route::post('/reports/doreport','APIController@report_incident');
+        route::post('/donation/dodonate','APIController@doDonate');
     }
 );
