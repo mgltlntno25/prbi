@@ -182,4 +182,53 @@ class APIController extends Controller
         return response()->json($data);
     }
 
+
+    public function doRegisterEvent(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'event_id' => 'required',
+            'event_name' => 'max:255',
+            'prbi_id' => 'date',
+            'user_email' => 'numeric',
+        ]);
+
+        if ($validator->fails()) {
+            $data['error'] = true;
+            $data['message'] = 'Something went wrong!';
+            return response()->json($data);
+        }
+
+
+        $event_list = new \App\Event_list();
+        $event_list->event_id = $request->id;
+        $event_list->event_name = $request->event_name;
+        $event_list->event_date = $request->event_date;
+        $event_list->prbi_id = 'PRBI-'.$request->user_id;
+        $event_list->user_name = $request->first_name . " " . $request->last_name;
+        $event_list->user_email = $request->email;
+        $age = Carbon::parse($request->birthday)->age;
+        $event_list->user_age = $age;
+        $event_list->category = "Amatuer";
+        $event_list->save();
+
+
+        $aaudit = new \App\User_AuditTrail();
+        $aaudit->user_id ='PRBI-'.$request->user_id;
+        $aaudit->user_name = $request->user_name;
+        $aaudit->user_email = $request->user_email;
+        $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Register in an Event using Mobile App. ";
+        $aaudit->save();
+
+
+        $data['error'] = false;
+        $data['message'] = 'Event Registered Succesfully!';
+        return response()->json($data);
+
+
+        // $data['error'] = true;
+        // $data['message'] = 'Something went wrong!';
+        // return response()->json($data);
+    }
+
 }
