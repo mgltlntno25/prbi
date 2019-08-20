@@ -761,7 +761,7 @@ Route::prefix('api')->group(
         route::post('/update/profile', 'APIController@update');
 
         Route::post('/events', function () {
-            $data['events'] = \App\Event::all();
+            $data['events'] = \App\Event::where('status','active')->get();
             return response()->json($data);
         });
 
