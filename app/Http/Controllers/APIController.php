@@ -188,9 +188,9 @@ class APIController extends Controller
 
         $validator = Validator::make($request->all(), [
             'event_id' => 'required',
-            'event_name' => 'max:255',
-            'prbi_id' => 'date',
-            'user_email' => 'numeric',
+            'event_name' => 'required',
+            'prbi_id' => 'required',
+            'user_email' => 'required',
         ]);
 
         if ($validator->fails()) {
