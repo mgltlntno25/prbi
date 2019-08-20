@@ -178,7 +178,7 @@ class APIController extends Controller
 
 
         $data['error'] = false;
-        $data['message'] = 'Report Submitted!';
+        $data['message'] = 'Donation Submitted!';
         return response()->json($data);
     }
 
@@ -189,7 +189,11 @@ class APIController extends Controller
         $validator = Validator::make($request->all(), [
             'event_id' => 'required',
             'event_name' => 'required',
+            'event_date' => 'required',
             'prbi_id' => 'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'birthday'=>'required',
             'user_email' => 'required',
         ]);
 
