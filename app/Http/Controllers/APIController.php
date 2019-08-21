@@ -237,14 +237,14 @@ class APIController extends Controller
 
     public function myEvents(Request $request)
     {
-        $data['myEvents'] = \App\Event_list::where('prbi_id', '=', $request->user_id)->get();
+        $data['myEvents'] = \App\Event_list::all();
         return response()->json($data);
     }
 
 
     public function myDonations(Request $request)
     {
-        $data['myDonations'] = \App\Donation::where('prbi_id', '=', $request->user_id)->get();
+        $data['myDonations'] = \App\Donation::all();
         return response()->json($data);
     }
 
