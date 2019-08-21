@@ -194,7 +194,7 @@ class APIController extends Controller
             'user_id' => 'required',
             'user_name'=>'required',
             'birthday'=>'required',
-            'email' => 'required',
+            'user_email' => 'required',
         ]);
 
         if ($validator->fails()) {
