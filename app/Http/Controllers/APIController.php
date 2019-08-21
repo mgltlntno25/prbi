@@ -192,8 +192,7 @@ class APIController extends Controller
             'event_name' => 'required',
             'event_date' => 'required',
             'user_id' => 'required',
-            'first_name'=>'required',
-            'last_name'=>'required',
+            'user_name'=>'required',
             'birthday'=>'required',
             'email' => 'required',
         ]);
@@ -210,7 +209,7 @@ class APIController extends Controller
         $event_list->event_name = $request->event_name;
         $event_list->event_date = $request->event_date;
         $event_list->prbi_id = 'PRBI-'.$request->user_id;
-        $event_list->user_name = $request->first_name . " " . $request->last_name;
+        $event_list->user_name = $request->user_name;
         $event_list->user_email = $request->email;
         $age = Carbon::parse($request->birthday)->age;
         $event_list->user_age = $age;
