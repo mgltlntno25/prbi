@@ -213,7 +213,6 @@ class APIController extends Controller
         $event_list->user_email = $request->user_email;
         $age = Carbon::parse($request->birthday)->age;
         $event_list->user_age = $age;
-        $event_list->category = "Amatuer";
         $event_list->save();
 
 
@@ -233,6 +232,20 @@ class APIController extends Controller
         // $data['error'] = true;
         // $data['message'] = 'Something went wrong!';
         // return response()->json($data);
+    }
+
+
+    public function myEvents(Request $request)
+    {
+        $data['myEvents'] = \App\Event_list::where('id', '=', $request->user_id)->get();
+        return response()->json($data);
+    }
+
+
+    public function myDonations(Request $request)
+    {
+        $data['myDonations'] = \App\Donation::where('id', '=', $request->user_id)->get();
+        return response()->json($data);
     }
 
 }

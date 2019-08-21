@@ -772,8 +772,9 @@ Route::prefix('api')->group(
 
         route::post('/reports/doreport','APIController@report_incident');
         route::post('/donation/dodonate','APIController@doDonate');
-
         route::post('/events/register','APIController@doRegisterEvent');
+        route::post('/events/myevents','APIController@myEvents');
+        route::post('/donation/mydonations', 'APIController@myDonations');
         
     }
 );
