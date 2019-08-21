@@ -191,7 +191,7 @@ class APIController extends Controller
             'event_id' => 'required',
             'event_name' => 'required',
             'event_date' => 'required',
-            'prbi_id' => 'required',
+            'user_id' => 'required',
             'first_name'=>'required',
             'last_name'=>'required',
             'birthday'=>'required',
