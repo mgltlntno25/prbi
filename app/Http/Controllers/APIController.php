@@ -188,7 +188,7 @@ class APIController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'event_id' => 'required',
+            'id' => 'required',
             'event_name' => 'required',
             'event_date' => 'required',
             'user_id' => 'required',
