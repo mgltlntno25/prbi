@@ -778,6 +778,6 @@ Route::prefix('api')->group(
         
         Route::post("events/myevents/id", 'APIController@eventFind');
             
-        
+    }
     
 );
