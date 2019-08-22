@@ -256,4 +256,9 @@ class APIController extends Controller
     //             ->where('event_id','=', $events->id)
     //             ->exists())
 
+    public function eventFind(Request $request)
+    {
+        $data['events'] = \App\Event::find($request->event_id);
+        return response()->json($data);
+    }
 }

@@ -776,8 +776,8 @@ Route::prefix('api')->group(
         route::post('/events/myevents','APIController@myEvents');
         route::post('/donation/mydonations', 'APIController@myDonations');
         
-        Route::post("events/myevents/id", function(Request $request){
-            $data['events'] = \App\Event::find($request->event_id);
-            return response()->json($data);
-    }
+        Route::post("events/myevents/id", 'APIController@eventFind');
+            
+        
+    
 );
