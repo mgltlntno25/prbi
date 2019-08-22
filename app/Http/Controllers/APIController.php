@@ -213,6 +213,7 @@ class APIController extends Controller
         $event_list->user_email = $request->user_email;
         $age = Carbon::parse($request->birthday)->age;
         $event_list->user_age = $age;
+        $event_list->category = "Ammateur";
         $event_list->save();
 
 
