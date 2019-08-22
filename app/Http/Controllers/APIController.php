@@ -251,4 +251,9 @@ class APIController extends Controller
         return response()->json($data);
     }
 
+    //event if registered
+    // if(!\App\Event_list::where('prbi_id','=',Auth::guard('user')->user()->prbi_id)
+    //             ->where('event_id','=', $events->id)
+    //             ->exists())
+
 }
