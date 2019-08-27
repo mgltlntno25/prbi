@@ -9,6 +9,7 @@
 
     <body>
 
+    <font face="Century Gothic">
          <h3>PAYMENT SUMMARY</h3> <br>
 
         <h4> <strong>Base Fee: </strong> 100 PHP </h4>
@@ -17,6 +18,7 @@
         <br>
         <strong> Note: After payment do not close the paypal page until you will be redirected to your dashboard in order to save the payment information. </strong>
         <br>
+    </font>
         <script src="https://www.paypal.com/sdk/js?client-id=AbGnKOw7mQdj4DBfBvyzBuzyMKnpwbT5CBGjAi5gYphRGllGuJDd0aeRwcOHZrsc5BSibAn3qDYPmHIz&currency=PHP">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
