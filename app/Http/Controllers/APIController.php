@@ -208,7 +208,7 @@ class APIController extends Controller
         $event_list->event_id = $request->id;
         $event_list->event_name = $request->event_name;
         $event_list->event_date = $request->event_date;
-        $event_list->prbi_id = 'PRBI-'.$request->user_id;
+        $event_list->prbi_id = 'PRBI-' . $request->user_id;
         $event_list->user_name = $request->user_name;
         $event_list->user_email = $request->user_email;
         $age = Carbon::parse($request->birthday)->age;
