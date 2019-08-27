@@ -19,6 +19,7 @@
         <strong> Note: After payment do not close the paypal page until you will be redirected to your dashboard in order to save the payment information. </strong>
         <br>
     </font>
+    <br>
         <script src="https://www.paypal.com/sdk/js?client-id=AbGnKOw7mQdj4DBfBvyzBuzyMKnpwbT5CBGjAi5gYphRGllGuJDd0aeRwcOHZrsc5BSibAn3qDYPmHIz&currency=PHP">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
