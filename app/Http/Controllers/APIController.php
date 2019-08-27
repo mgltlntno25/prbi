@@ -262,4 +262,9 @@ class APIController extends Controller
         $data['events'] = \App\Event::find($request->event_id);
         return response()->json($data);
     }
+
+    public function payment_paypal(Request $request){
+        $data['events'] = \App\Event::find($request->event_id);
+        return view('user/mobile_paypal', $data);
+    }
 }

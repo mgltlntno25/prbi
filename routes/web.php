@@ -779,10 +779,12 @@ Route::prefix('api')->group(
         Route::post("events/myevents/id", 'APIController@eventFind');
 
 
-        Route::get('/paypal',function(){
-            return view('user/mobile_paypal');
+        Route::get('/paypal/{id}', function ($id) {
+            $data['events'] = \App\Event::find($id);
+            return view('user/mobile_paypal', $data);
         });
 
+        // Route::get('user/dopaypal/{id}', 'UserController@Paypal');
 
         
             
