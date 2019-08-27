@@ -40,7 +40,7 @@
             return actions.order.capture().then(function(details) {
 
                 Swal.fire('Success!', 'Your Payment has been submitted! Please wait for your payment to be verified. Thank You!', 'success');
-                location.href = "{{url('/user/dopaypal/'. $events->id)}}"
+                location.href = "asd"
 
                 // Call your server to save the transaction
 
