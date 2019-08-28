@@ -115,17 +115,22 @@ class UserController extends Controller
         QrCode::size(720)
             ->format('png')
             ->generate(url('/member/' . $user->id), public_path('img/qrcode/' . $filename));
+
+
+            $data  = array(
+
+                'email' => $request->email
+    
+            );
+    
+            Mail::to($request->email)->send(new EmailVerification($data));
+
+
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
 
 
 
-        $data  = array(
-
-            'email' => $request->email
-
-        );
-
-        Mail::to($request->email)->send(new EmailVerification($data));
+        
 
 
     }
