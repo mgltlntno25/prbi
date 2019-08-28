@@ -777,6 +777,7 @@ Route::prefix('api')->group(
         route::post('/donation/mydonations', 'APIController@myDonations');
         
         Route::post("events/myevents/id", 'APIController@eventFind');
+        
 
 
         Route::get('/paypal/{id}', function ($id) {

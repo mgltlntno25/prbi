@@ -19,6 +19,8 @@ use App\UserLoginSession;
 use App\User_AuditTrail;
 use App\Rules\Captcha;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailVerification;
 
 class UserController extends Controller
 {
@@ -114,6 +116,18 @@ class UserController extends Controller
             ->format('png')
             ->generate(url('/member/' . $user->id), public_path('img/qrcode/' . $filename));
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
+
+
+
+        $data  = array(
+
+            'email' => $request->email
+
+        );
+
+        Mail::to($request->email)->send(new EmailVerification($data));
+
+
     }
 
     public function UpdateProfile(Request $request, $id)
