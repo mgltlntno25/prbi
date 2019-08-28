@@ -18,7 +18,7 @@
 
 
 
-{{$data['email']}}
+{{ $data['email'] }}
 
 
 
