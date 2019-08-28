@@ -114,7 +114,7 @@ class APIController extends Controller
         $ir->save();
 
 
-        $aaudit = new \App\User_AuditTrail();
+        $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
         $aaudit->user_email = $request->user_email;
@@ -170,7 +170,7 @@ class APIController extends Controller
 
 
 
-        $aaudit = new \App\User_AuditTrail();
+        $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
         $aaudit->user_email = $request->user_email;
@@ -204,7 +204,7 @@ class APIController extends Controller
         }
 
 
-        $event_list = new \App\Event_list();
+        $event_list = new \App\Event_list;
         $event_list->event_id = $request->id;
         $event_list->event_name = $request->event_name;
         $event_list->event_date = $request->event_date;
@@ -217,7 +217,7 @@ class APIController extends Controller
         $event_list->save();
 
 
-        $aaudit = new \App\User_AuditTrail();
+        $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
         $aaudit->user_email = $request->user_email;
@@ -300,7 +300,7 @@ class APIController extends Controller
             $filename;
         }
 
-        $payment = new \App\Payment();
+        $payment = new \App\Payment;
         $payment->deposit_image = $filename;
         $payment->prbi_id =  'PRBI-'.$request->user_id;
         $payment->user_name =  $request->user_name;
@@ -312,7 +312,7 @@ class APIController extends Controller
         $payment->status = "submitted";
         $payment->save();
 
-        $aaudit = new \App\User_AuditTrail();
+        $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
         $aaudit->user_email = $request->user_email;
