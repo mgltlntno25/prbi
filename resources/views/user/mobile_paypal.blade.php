@@ -21,7 +21,7 @@
 
         <br>
         <br>
-        </font>
+        <font>
         <script src="https://www.paypal.com/sdk/js?client-id=AbGnKOw7mQdj4DBfBvyzBuzyMKnpwbT5CBGjAi5gYphRGllGuJDd0aeRwcOHZrsc5BSibAn3qDYPmHIz&currency=PHP">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

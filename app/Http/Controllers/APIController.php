@@ -267,4 +267,62 @@ class APIController extends Controller
         $data['events'] = \App\Event::find($request->event_id);
         return view('user/mobile_paypal', $data);
     }
+
+    public function payment_bank (Request $request,$id){
+
+        $events = \App\Event::find($id);
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
+
+        $validator = Validator::make($request->all(), [
+            'deposit_image' => 'required',
+            'trans_number' => 'required|max:255',
+            'bank_date' => 'required|date',
+            'amount' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            $data['error'] = true;
+            $data['message'] = 'Fill all required fields';
+            return response()->json($data);
+        }
+
+        $encode_string = $request->deposit_image;
+        $decode_string = base64_decode($encode_string);
+
+        if (!empty($decode_string)) {
+            $image = $decode_string;
+            $filename = time() . '.' . "png";
+            $location = public_path('img/payments/' . $filename);
+            Image::make($image)->save($location);
+
+            $filename;
+        }
+
+        $payment = new \App\Payment();
+        $payment->deposit_image = $filename;
+        $payment->prbi_id =  'PRBI-'.$request->user_id;
+        $payment->user_name =  $request->user_name;
+        $payment->user_email =  $request->user_email;
+        $payment->payment_description = $events->id;
+        $payment->trans_number = $request->trans_number;
+        $payment->bank_date = $request->bank_date;
+        $payment->amount = $request->amount;
+        $payment->status = "submitted";
+        $payment->save();
+
+        $aaudit = new \App\User_AuditTrail();
+        $aaudit->user_id ='PRBI-'.$request->user_id;
+        $aaudit->user_name = $request->user_name;
+        $aaudit->user_email = $request->user_email;
+        $aaudit->action = " Member " . 'PRBI-'.$request->user_id . "  Submitted Payment for Event. ";
+        $aaudit->save();
+
+
+        $data['error'] = false;
+        $data['message'] = 'Payment Submitted!';
+        return response()->json($data);
+
+    }
 }

@@ -786,6 +786,9 @@ Route::prefix('api')->group(
 
         // Route::get('user/dopaypal/{id}', 'UserController@Paypal');
 
+        Route::post("/payments/dobank/{id}", 'APIController@payment_bank');
+
+
         
             
     }
