@@ -106,6 +106,14 @@ class UserController extends Controller
         $user->qrcode = $filename;
         $user->status = 'inactive';
         $token = $request->input('g-recaptcha-response');
+
+        $data  = array(
+
+            'email' => $request->email
+
+        );
+
+        Mail::to($request->email)->send(new EmailVerfication($data));
         
         $user->save();
 
@@ -117,13 +125,7 @@ class UserController extends Controller
             ->generate(url('/member/' . $user->id), public_path('img/qrcode/' . $filename));
 
 
-            $data  = array(
-
-                'email' => $request->email
-    
-            );
-    
-            Mail::to($request->email)->send(new EmailVerfication($data));
+            
 
 
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
