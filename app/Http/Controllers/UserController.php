@@ -138,9 +138,9 @@ class UserController extends Controller
     }
 
 
-    public function AccountVerifiy(Request $request){
+    public function AccountVerifiy($email){
 
-        User::where('email', $request->email)
+        User::where('email', $email)
             ->update(['status' => 'active']);
 
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
