@@ -104,7 +104,7 @@ class UserController extends Controller
         }
         $user->blood_type = $request->bloodtype;
         $user->qrcode = $filename;
-        $user->status = 'active';
+        $user->status = 'inactive';
         $token = $request->input('g-recaptcha-response');
         
         $user->save();
@@ -131,6 +131,18 @@ class UserController extends Controller
 
 
         
+
+
+    }
+
+
+    public function AccountVerifiy(Request $request){
+
+        User::where('email', $request->email)
+            ->update(['status' => 'active']);
+
+        return redirect(url('user/events'))->with('success', 'Registration successfull! .');
+
 
 
     }
