@@ -20,7 +20,7 @@ use App\User_AuditTrail;
 use App\Rules\Captcha;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailVerification;
+use App\Mail\EmailVerfication;
 
 class UserController extends Controller
 {
@@ -123,7 +123,7 @@ class UserController extends Controller
     
             );
     
-            Mail::to($request->email)->send(new EmailVerification($data));
+            Mail::to($request->email)->send(new EmailVerfication($data));
 
 
         return redirect(url('user/events'))->with('success', 'Registration successfull! .');
