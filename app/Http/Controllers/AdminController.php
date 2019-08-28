@@ -956,7 +956,7 @@ class AdminController extends Controller
     {
         $donations = Donation::find($id);
 
-        if ($donations->status == 'inactive') {
+        if ($donations->status == 'submitted') {
             $donations->status = 'rejected';
 
             $donations->save();
