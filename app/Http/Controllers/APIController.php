@@ -227,14 +227,12 @@ class APIController extends Controller
 
         $data = array(
             'id' => "1"
-            
-
         );
         Mail::to($request->user_email)->send(new EventRegMail($data));
 
-        $data['error'] = false;
-        $data['message'] = 'Event Registered Succesfully!';
-        return response()->json($data);
+        $data1['error'] = false;
+        $data1['message'] = 'Event Registered Succesfully!';
+        return response()->json($data1);
 
 
         // $data['error'] = true;
