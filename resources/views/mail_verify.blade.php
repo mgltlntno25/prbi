@@ -16,7 +16,7 @@
 </form> -->
 
 
-<center> <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("user/emailVerify/". "{{ $data['email'] }}" )}}'"> Verify Email </button> </center>
+<center> <button type="button" data-toggle="tooltip" data-placement="top" title="Events List" class="btn btn-info" onclick="window.location='{{url("user/emailVerify/" . {{$data['email']}} )}}'"> Verify Email </button> </center>
 
 
 
