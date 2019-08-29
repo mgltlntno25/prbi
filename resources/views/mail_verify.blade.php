@@ -6,17 +6,16 @@
 
 
 
-<!-- <form action="{{url('/user/emailVerify')}}" method="post">
+<form action="{{url('/user/emailVerify')}}" method="post">
     {{ csrf_field() }}
 
         <input type="hidden" class="form-control" name="email"  value="{{ $data['email'] }}">
     
     <p align="center"><button type="submit" class="btn btn-success mb-2"><i class="fa fa-bank"></i> Verify Email</button>
     </p>
-</form> -->
+</form>
 
 
-<a href="{{url("user/emailVerify?email=" . $data['email'] )}}" class="button"> Verify Email </a>
 
 
 
