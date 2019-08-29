@@ -202,7 +202,21 @@ class APIController extends Controller
     public function doRegisterEvent(Request $request)
     {
 
-        
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'event_name' => 'required',
+            'event_date' => 'required',
+            'user_id' => 'required',
+            'user_name'=>'required',
+            'birthday'=>'required',
+            'user_email' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $data['error'] = true;
+            $data['message'] = 'Something went wrong!';
+            return response()->json($data);
+        }
 
 
         $event_list = new \App\Event_list;
@@ -225,14 +239,16 @@ class APIController extends Controller
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Register in an Event using Mobile App. ";
         $aaudit->save();
 
-        $data = array(
+        $data1 = array(
             'id' => "1"
-        );
-        Mail::to($request->user_email)->send(new EventRegMail($data));
+            
 
-        $data1['error'] = false;
-        $data1['message'] = 'Event Registered Succesfully!';
-        return response()->json($data1);
+        );
+        Mail::to($request->user_email)->send(new EventRegMail($data1));
+
+        $data['error'] = false;
+        $data['message'] = 'Event Registered Succesfully!';
+        return response()->json($data);
 
 
         // $data['error'] = true;
