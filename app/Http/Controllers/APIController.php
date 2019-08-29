@@ -180,11 +180,10 @@ class APIController extends Controller
         $aaudit->save();
 
         $data = array(
-            'id' => $donations->prbi_id
+            'id' => "1"
             
 
         );
-
         Mail::to($request->user_email)->send(new VerifyDonation_Email($data));
 
 
@@ -235,7 +234,7 @@ class APIController extends Controller
         $aaudit->save();
 
         $data = array(
-            'event_id' => $event_list->event_id,
+            'id' => "1"
             
 
         );
@@ -341,7 +340,7 @@ class APIController extends Controller
 
 
         $data = array(
-            'id' => $payment->prbi_id,
+            'id' => "1"
             
 
         );
