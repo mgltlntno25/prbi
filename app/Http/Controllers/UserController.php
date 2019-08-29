@@ -21,6 +21,9 @@ use App\Rules\Captcha;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerfication;
+use App\Mail\EventRegMail;
+use App\Mail\DonationMail;
+use App\Mail\PaymentMail;
 
 class UserController extends Controller
 {
@@ -488,6 +491,12 @@ class UserController extends Controller
         $aaudit->action = " Member " . Auth::guard('user')->user()->prbi_id . "  Donated. ";
         $aaudit->save();
 
+        $data = array(
+            'amount' => $request->amount
+        );
+
+        Mail::to(Auth::guard('user')->user()->email)->send(new DonationMail($data));
+
         return redirect()->back()->with('success', 'Donation Added successfully added.');
     }
 
@@ -519,6 +528,12 @@ class UserController extends Controller
         $aaudit->user_email = Auth::guard('user')->user()->email;
         $aaudit->action = " Member " . Auth::guard('user')->user()->prbi_id . " Registered Event. ";
         $aaudit->save();
+
+        $data = array(
+            'event_name' => $events->event_name
+        );
+
+        Mail::to(Auth::guard('user')->user()->email)->send(new EventRegMail($data));
 
         return redirect('user/events')->with('success', 'Event successfully registered.');
     }
@@ -651,6 +666,12 @@ class UserController extends Controller
 
 
         $payments->save();
+
+        $data = array(
+            'amount' => $events->amount
+        );
+
+        Mail::to(Auth::guard('user')->user()->email)->send(new PaymentMail($data));
 
 
 
