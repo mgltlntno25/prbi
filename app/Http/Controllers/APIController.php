@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailVerfication;
+use App\Mail\EventRegMail;
+use App\Mail\DonationMail;
+use App\Mail\PaymentMail;
 use App\Mail\VerifyDonation_Email;
 use App\Mail\VerifyEventRegistration_Email;
 use Illuminate\Http\Request;
@@ -184,7 +189,7 @@ class APIController extends Controller
             
 
         );
-        Mail::to($request->user_email)->send(new VerifyDonation_Email($data));
+        Mail::to($request->user_email)->send(new DonationMail($data));
 
 
         $data['error'] = false;
@@ -238,8 +243,7 @@ class APIController extends Controller
             
 
         );
-
-        Mail::to($request->user_email)->send(new VerifyEventRegistration_Email($data));
+        Mail::to($request->user_email)->send(new EventRegMail($data));
 
 
         $data['error'] = false;
@@ -345,7 +349,7 @@ class APIController extends Controller
 
         );
 
-        Mail::to($request->user_email)->send(new VerifyPayment_Email($data));
+        Mail::to($request->user_email)->send(new PaymentMail($data));
 
 
         $data['error'] = false;
