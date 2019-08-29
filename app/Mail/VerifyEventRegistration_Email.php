@@ -30,7 +30,7 @@ class VerifyEventRegistration_Email extends Mailable
      */
     public function build()
     {
-        return $this->from('islaw.prbi@gmail.com')->subject('Event Registration Verification')->view('mail_eventRegistration_verification')->with('data',$this->data);
+        return $this->from('islaw.prbi@gmail.com')->subject('Event Registration Verification')->view('email_eventRegistration_verification')->with('data',$this->data);
 
     }
 }
