@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Image;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Carbon;
+use App\Event_list;
 
 class APIController extends Controller
 {
@@ -201,32 +202,18 @@ class APIController extends Controller
     public function doRegisterEvent(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'event_name' => 'required',
-            'event_date' => 'required',
-            'user_id' => 'required',
-            'user_name'=>'required',
-            'birthday'=>'required',
-            'user_email' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            $data['error'] = true;
-            $data['message'] = 'Something went wrong!';
-            return response()->json($data);
-        }
+        
 
 
         $event_list = new \App\Event_list;
         $event_list->event_id = $request->id;
         $event_list->event_name = $request->event_name;
         $event_list->event_date = $request->event_date;
-        $event_list->prbi_id = 'PRBI-' . $request->user_id;
+        $event_list->prbi_id = 'PRBI-'.$request->user_id;
         $event_list->user_name = $request->user_name;
         $event_list->user_email = $request->user_email;
-        //$age = Carbon::parse($request->birthday)->age;
-        $event_list->user_age = "18";
+        $age = Carbon::parse($request->birthday)->age;
+        $event_list->user_age = $age;
         $event_list->category = "Ammateur";
         $event_list->save();
 
@@ -244,7 +231,6 @@ class APIController extends Controller
 
         );
         Mail::to($request->user_email)->send(new EventRegMail($data));
-
 
         $data['error'] = false;
         $data['message'] = 'Event Registered Succesfully!';
@@ -345,7 +331,6 @@ class APIController extends Controller
 
         $data = array(
             'id' => "1"
-            
 
         );
 
