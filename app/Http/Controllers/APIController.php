@@ -239,12 +239,12 @@ class APIController extends Controller
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Register in an Event using Mobile App. ";
         $aaudit->save();
 
-        $data1 = array(
-            'id' => "1"
+        // $data1 = array(
+        //     'id' => "1"
             
 
-        );
-        Mail::to($request->user_email)->send(new EventRegMail($data1));
+        // );
+        // Mail::to($request->user_email)->send(new EventRegMail($data1));
 
         $data['error'] = false;
         $data['message'] = 'Event Registered Succesfully!';
