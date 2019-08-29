@@ -240,7 +240,7 @@ class APIController extends Controller
         $aaudit->save();
 
         $data = array(
-            'id' => "1"
+            'event_name' => $request->event_name
         );
         Mail::to($request->user_email)->send(new EventRegMail($data));
 
