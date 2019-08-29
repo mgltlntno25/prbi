@@ -31,7 +31,7 @@ class VerifyDonation_Email extends Mailable
      */
     public function build()
     {
-        return $this->from('islaw.prbi@gmail.com')->subject('Donation Verification')->view('email_donation_verification')->with('data',$this->data);
+        return $this->from('islaw.prbi@gmail.com')->subject('Donation Verification')->view('mail_donation_verification')->with('data',$this->data);
 
     }
 }
