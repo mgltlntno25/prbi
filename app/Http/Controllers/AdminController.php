@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use Calendar;
 use App\Sponsor;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerifyPayment_Email;
+use App\Mail\VerifyDonation_Email;
+use App\Mail\VerifyEventRegistration_Email;
 
 
 
@@ -805,7 +809,20 @@ class AdminController extends Controller
             $aaudit->user_email = Auth::guard('admin')->user()->email;
             $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Verified Payment. ";
             $aaudit->save();
+
+
+            $data = array(
+                'id' => $payments->id,
+                
+
+            );
+    
+            Mail::to($payments->user_email)->send(new VerifyPayment_Email($data));
+
+
             return redirect()->back()->with('success', 'Payments successfully verified.');
+
+
         }
     }
 
@@ -932,6 +949,13 @@ class AdminController extends Controller
             $aaudit->user_email = Auth::guard('admin')->user()->email;
             $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Verified Event Registration. ";
             $aaudit->save();
+
+            $data = array(
+                'id' => $event_list->id
+                
+
+            );
+            Mail::to($event_list->user_email)->send(new VerifyEventRegistration_Email($data));
             return redirect()->back()->with('success', 'Registered successfully verified.');
         }
     }
@@ -949,6 +973,18 @@ class AdminController extends Controller
             $aaudit->user_email = Auth::guard('admin')->user()->email;
             $aaudit->action = " Admin " . Auth::guard('admin')->user()->fname . " Verified Donation. ";
             $aaudit->save();
+
+            $data = array(
+                'id' => $donations->id
+                
+
+            );
+    
+            Mail::to($donations->user_email)->send(new VerifyDonation_Email($data));
+
+            
+
+
             return redirect()->back()->with('success', 'Donation successfully verified.');
         }
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerifyDonation_Email;
+use App\Mail\VerifyEventRegistration_Email;
 use Illuminate\Http\Request;
 use Validator;
 use Symfony\Component\HttpFoundation\Response;
@@ -177,6 +179,14 @@ class APIController extends Controller
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Donated using Mobile App. ";
         $aaudit->save();
 
+        $data = array(
+            'id' => $donations->prbi_id
+            
+
+        );
+
+        Mail::to($request->user_email)->send(new VerifyDonation_Email($data));
+
 
         $data['error'] = false;
         $data['message'] = 'Donation Submitted!';
@@ -223,6 +233,14 @@ class APIController extends Controller
         $aaudit->user_email = $request->user_email;
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . " Register in an Event using Mobile App. ";
         $aaudit->save();
+
+        $data = array(
+            'event_id' => $event_list->event_id,
+            
+
+        );
+
+        Mail::to($request->user_email)->send(new VerifyEventRegistration_Email($data));
 
 
         $data['error'] = false;
@@ -320,6 +338,15 @@ class APIController extends Controller
         $aaudit->user_email = $request->user_email;
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . "  Submitted Payment for Event. ";
         $aaudit->save();
+
+
+        $data = array(
+            'id' => $payment->prbi_id,
+            
+
+        );
+
+        Mail::to($request->user_email)->send(new VerifyPayment_Email($data));
 
 
         $data['error'] = false;
