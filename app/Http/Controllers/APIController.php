@@ -340,10 +340,10 @@ class APIController extends Controller
         $payment->bank_date = $request->bank_date;
         $payment->amount = $request->amount;
         $payment->status = "submitted";
+        $payment->save();
         $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
         ->where('event_id', '=', $id)
         ->update(['payment_status' => 'submitted']);
-        $payment->save();
         
 
         
