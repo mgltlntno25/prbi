@@ -293,15 +293,19 @@ class APIController extends Controller
 
         $events = \App\Event::find($id);
 
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
+
         
 
 
 
         $validator = Validator::make($request->all(), [
             'deposit_image' => 'required',
-            'trans_number' => 'required|max:255',
-            'bank_date' => 'required|date',
-            'amount' => 'required|numeric',
+            'trans_number' => 'required',
+            'bank_date' => 'required',
+            'amount' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -309,9 +313,7 @@ class APIController extends Controller
             $data['message'] = 'Fill all required fields';
             return response()->json($data);
         }
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-            ->where('event_id', '=', $id)
-            ->update(['payment_status' => 'submitted']);
+        
 
         $encode_string = $request->deposit_image;
         $decode_string = base64_decode($encode_string);
