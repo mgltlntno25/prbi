@@ -299,10 +299,6 @@ class APIController extends Controller
 
         
 
-        
-
-
-
         $validator = Validator::make($request->all(), [
             'deposit_image' => 'required',
             'trans_number' => 'required',
@@ -342,14 +338,11 @@ class APIController extends Controller
         $payment->payment_description = $events->id;
         $payment->trans_number = $request->trans_number;
         $payment->bank_date = $request->bank_date;
-        $payment->amount = $request->amount;
+        $payment->payment_amount = $request->amount;
         $payment->status = "submitted";
         $payment->save();
-        
-        
-
-        
-
+    
+    
         $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
@@ -357,10 +350,6 @@ class APIController extends Controller
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . "  Submitted Payment for Event. ";
         $aaudit->save();
         
-
-        
-
-
         $data = array(
             'id' => "1"
         );
