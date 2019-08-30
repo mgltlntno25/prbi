@@ -312,6 +312,9 @@ class APIController extends Controller
 
         $encode_string = $request->deposit_image;
         $decode_string = base64_decode($encode_string);
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
 
         if (!empty($decode_string)) {
             $image = $decode_string;
@@ -336,9 +339,7 @@ class APIController extends Controller
         $payment->status = "submitted";
         $payment->save();
 
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-            ->where('event_id', '=', $id)
-            ->update(['payment_status' => 'submitted']);
+        
 
         $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
