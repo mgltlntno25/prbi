@@ -330,9 +330,10 @@ class APIController extends Controller
 
         
 
-        
-
         $payment = new \App\Payment;
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+        ->where('event_id', '=', $id)
+        ->update(['payment_status' => 'submitted']);
         $payment->deposit_image = $filename;
         $payment->prbi_id =  'PRBI-'.$request->user_id;
         $payment->user_name =  $request->user_name;
@@ -353,9 +354,7 @@ class APIController extends Controller
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . "  Submitted Payment for Event. ";
         $aaudit->save();
 
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-        ->where('event_id', '=', $id)
-        ->update(['payment_status' => 'submitted']);
+        
 
 
         $data = array(
