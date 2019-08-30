@@ -331,10 +331,10 @@ class APIController extends Controller
         
 
         $payment = new \App\Payment;
+        $payment->deposit_image = $filename;
         $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
         ->where('event_id', '=', $id)
         ->update(['payment_status' => 'submitted']);
-        $payment->deposit_image = $filename;
         $payment->prbi_id =  'PRBI-'.$request->user_id;
         $payment->user_name =  $request->user_name;
         $payment->user_email =  $request->user_email;
