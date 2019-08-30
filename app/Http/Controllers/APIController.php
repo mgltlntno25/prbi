@@ -309,12 +309,13 @@ class APIController extends Controller
             $data['message'] = 'Fill all required fields';
             return response()->json($data);
         }
-
-        $encode_string = $request->deposit_image;
-        $decode_string = base64_decode($encode_string);
         $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
             ->where('event_id', '=', $id)
             ->update(['payment_status' => 'submitted']);
+
+        $encode_string = $request->deposit_image;
+        $decode_string = base64_decode($encode_string);
+        
 
         if (!empty($decode_string)) {
             $image = $decode_string;
