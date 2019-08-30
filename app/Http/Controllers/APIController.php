@@ -289,12 +289,13 @@ class APIController extends Controller
         return view('user/mobile_paypal', $data);
     }
 
-    public function payment_bank (Request $request,$id){
+    public function payment_bank (Request $request, $id){
 
         $events = \App\Event::find($id);
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-            ->where('event_id', '=', $id)
-            ->update(['payment_status' => 'submitted']);
+
+        
+
+
 
         $validator = Validator::make($request->all(), [
             'deposit_image' => 'required',
@@ -321,6 +322,8 @@ class APIController extends Controller
             $filename;
         }
 
+        
+
         $payment = new \App\Payment;
         $payment->deposit_image = $filename;
         $payment->prbi_id =  'PRBI-'.$request->user_id;
@@ -333,6 +336,10 @@ class APIController extends Controller
         $payment->status = "submitted";
         $payment->save();
 
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
+
         $aaudit = new \App\User_AuditTrail;
         $aaudit->user_id ='PRBI-'.$request->user_id;
         $aaudit->user_name = $request->user_name;
@@ -343,11 +350,9 @@ class APIController extends Controller
 
         $data = array(
             'id' => "1"
-
         );
 
         Mail::to($request->user_email)->send(new PaymentMail($data));
-
 
         $data['error'] = false;
         $data['message'] = 'Payment Submitted!';
