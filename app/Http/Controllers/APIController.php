@@ -328,9 +328,7 @@ class APIController extends Controller
             $filename;
         }
 
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-        ->where('event_id', '=', $id)
-        ->update(['payment_status' => 'submitted']);
+        
 
         
 
@@ -354,6 +352,10 @@ class APIController extends Controller
         $aaudit->user_email = $request->user_email;
         $aaudit->action = " Member " . 'PRBI-'.$request->user_id . "  Submitted Payment for Event. ";
         $aaudit->save();
+
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+        ->where('event_id', '=', $id)
+        ->update(['payment_status' => 'submitted']);
 
 
         $data = array(
