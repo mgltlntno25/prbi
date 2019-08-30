@@ -293,9 +293,7 @@ class APIController extends Controller
 
         $events = \App\Event::find($id);
 
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-            ->where('event_id', '=', $id)
-            ->update(['payment_status' => 'submitted']);
+        
 
         
 
@@ -317,6 +315,10 @@ class APIController extends Controller
 
         $encode_string = $request->deposit_image;
         $decode_string = base64_decode($encode_string);
+
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+            ->where('event_id', '=', $id)
+            ->update(['payment_status' => 'submitted']);
         
 
         if (!empty($decode_string)) {
