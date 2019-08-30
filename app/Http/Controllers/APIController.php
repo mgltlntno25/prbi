@@ -293,6 +293,10 @@ class APIController extends Controller
 
         $events = \App\Event::find($id);
 
+        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
+        ->where('event_id', '=', $id)
+        ->update(['payment_status' => 'submitted']);
+
         
 
         
@@ -332,7 +336,7 @@ class APIController extends Controller
 
         $payment = new \App\Payment;
         $payment->deposit_image = $filename;
-        $payment->prbi_id =  'PRBI-'.$request->user_id;
+        $payment->user_id =  'PRBI-'.$request->user_id;
         $payment->user_name =  $request->user_name;
         $payment->user_email =  $request->user_email;
         $payment->payment_description = $events->id;
@@ -341,9 +345,7 @@ class APIController extends Controller
         $payment->amount = $request->amount;
         $payment->status = "submitted";
         $payment->save();
-        $ev_l = \App\Event_list::where('prbi_id', '=', 'PRBI-'.$request->user_id)
-        ->where('event_id', '=', $id)
-        ->update(['payment_status' => 'submitted']);
+        
         
 
         
@@ -364,6 +366,7 @@ class APIController extends Controller
         );
 
         Mail::to($request->user_email)->send(new PaymentMail($data));
+
 
         $data['error'] = false;
         $data['message'] = 'Payment Submitted!';
