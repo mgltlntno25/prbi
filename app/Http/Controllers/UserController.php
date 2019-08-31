@@ -110,6 +110,10 @@ class UserController extends Controller
         $user->status = 'inactive';
         $token = $request->input('g-recaptcha-response');
         $user->isVerified_email = '0';
+        
+        $user->save();
+
+        
         $data  = array(
 
             'email' => $request->email,
@@ -118,9 +122,6 @@ class UserController extends Controller
         );
 
         Mail::to($request->email)->send(new EmailVerfication($data));
-        $user->save();
-
-        
 
         User::where('id', $user->id)
             ->update(['prbi_id' => 'PRBI-' . $user->id]);
