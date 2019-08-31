@@ -8,7 +8,7 @@
 
 <form action="{{url("/user/emailVerify/". $data['id']) }}" method="post">
 
-<!-- {{url("admin/events/events_lists/" . $event->id)}}' -->
+
     {{ csrf_field() }}
 
         <input type="hidden" class="form-control" name="email"  value="{{ $data['email'] }}">
