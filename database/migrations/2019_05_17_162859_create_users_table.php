@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('emergency_contact');
             $table->string('birthday');
             $table->string('gender');
+            $table->string('isEmailVerified')->default('0');
             
             //update
             $table->string('blood_type')->nullable();

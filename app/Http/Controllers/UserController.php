@@ -109,16 +109,18 @@ class UserController extends Controller
         $user->qrcode = $filename;
         $user->status = 'inactive';
         $token = $request->input('g-recaptcha-response');
-
+        $user->isVerified_email = '0';
         $data  = array(
 
-            'email' => $request->email
+            'email' => $request->email,
+            'id' => $user->id
 
         );
 
         Mail::to($request->email)->send(new EmailVerfication($data));
-        
         $user->save();
+
+        
 
         User::where('id', $user->id)
             ->update(['prbi_id' => 'PRBI-' . $user->id]);
@@ -143,10 +145,23 @@ class UserController extends Controller
 
     public function AccountVerifiy(Request $request){
 
-        User::where('email', $request->email)
-            ->update(['status' => 'active']);
+        $user = \App\User::find($request->id);
 
-        return redirect(url('user/events'))->with('success', 'Registration successfull! .');
+        if ($user->isVerified_email == '0' ){
+
+            User::where('email', $request->email)
+            ->update(['status' => 'active',
+            'isVerified_email' => '1']);
+
+            return redirect(url('user/events'))->with('success', 'Verification successfull! .');
+
+        }else{
+
+            return redirect(url('emailError'))->with('success', 'Verification Faild .');
+
+        }
+
+        
 
 
 

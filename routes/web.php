@@ -735,6 +735,12 @@ Route::group(
         Route::get('/registration', function () {
             return view('user_registration');
         });
+
+        Route::get('mail/error', function () {
+            return view('emailError');
+        });
+
+
         Route::post('user/doregister', 'UserController@AccountRegistration');
         Route::post('admin/dologin', 'AdminController@AdminLogin');
         Route::post('user/dologin', 'UserController@UserLogin');
