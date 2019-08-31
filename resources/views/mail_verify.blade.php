@@ -6,7 +6,7 @@
 
 
 
-<form action="{{url('/user/emailVerify/'. $data['id'] ) }}" method="post">
+<form action="{{url('/asd ) }}" method="post">
 
 
     {{ csrf_field() }}
