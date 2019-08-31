@@ -158,7 +158,7 @@ class UserController extends Controller
 
         }else{
 
-            return redirect(url('email/error'))->with('success', 'Verification Faild .');
+            return redirect(url('mail/error'))->with('success', 'Verification Faild .');
 
         }
 
