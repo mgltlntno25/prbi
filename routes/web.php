@@ -747,7 +747,7 @@ Route::group(
         Route::post('sysad/dologin', 'SysAdminController@SysAdLogin');
         Route::post('affiliatedstore/dologin', 'AffiliatedStoreController@ASlogin');
 
-        Route::post('user/emailVerify','UserController@AccountVerifiy');
+        Route::post('user/emailVerify/{id}','UserController@AccountVerifiy');
 
     }
 );

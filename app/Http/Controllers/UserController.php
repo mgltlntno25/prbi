@@ -143,9 +143,9 @@ class UserController extends Controller
     }
 
 
-    public function AccountVerifiy(Request $request){
+    public function AccountVerifiy(Request $request,$id){
 
-        $user = \App\User::find($request->id);
+        $user = \App\User::find($id);
 
         if ($user->isVerified_email == '0' ){
 
