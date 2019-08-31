@@ -736,9 +736,7 @@ Route::group(
             return view('user_registration');
         });
 
-        Route::get('mail/error', function () {
-            return view('emailError');
-        });
+        
 
 
         Route::post('user/doregister', 'UserController@AccountRegistration');
@@ -748,6 +746,10 @@ Route::group(
         Route::post('affiliatedstore/dologin', 'AffiliatedStoreController@ASlogin');
 
         Route::post('user/emailVerify/{id}','UserController@AccountVerifiy');
+
+        Route::get('mail/error', function () {
+            return view('emailError');
+        });
 
     }
 );
